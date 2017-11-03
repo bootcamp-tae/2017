@@ -53,7 +53,7 @@ You are *advised* to have the following software already installed in your compu
 </settings>
 ```
 
-##Agenda Core Topics
+## Agenda Core Topics
 
 * Testing Concepts
 
