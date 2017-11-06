@@ -2,9 +2,9 @@
 
 ## GitHub BootCamp account
 
-* Url: https://github.com/bootcamp-tae/2017
-* Username: bootcamp-tae
-* Password: bootcamp2017
+    Url: https://github.com/bootcamp-tae/2017
+    Username: bootcamp-tae
+    Password: bootcamp2017
 
 ## Globant Guest Wireless Network Access
 
