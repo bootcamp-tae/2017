@@ -62,7 +62,7 @@ You are *advised* to have the following software already installed in your compu
 
 * Version Control Systems - **Git**
 
-* Maven
+* Maven and [Maven Central Repository](https://search.maven.org/)
 
 * Test Runners
 
