@@ -6,6 +6,19 @@
 * Username: bootcamp-tae
 * Password: bootcamp2017
 
+## Globant Guest Wireless Network Access
+
+### Within Chill Out:
+
+    SSID: Globers Chill    
+    Password: gl0b4ntgu3st
+
+### Within Auditorium:
+
+    SSID: Globers    
+    Password: globersaudi
+
+
 ## Software Requirements
 
 You are *advised* to have the following software already installed in your computer by the time the BootCamp starts:   
@@ -30,28 +43,9 @@ You are *advised* to have the following software already installed in your compu
        
     * Clone this repository to your own computer
     
-    ```bash
-    git clone https://github.com/bootcamp-tae/2017.git
-    ```
-
-* Within Globant offices, in order to access internet from Maven, it *may* be required to define a Maven file called _[HOME]/.m2/settings.xml_ with the following content:
-
-```xml
-<settings>
-    <proxies>
-        <proxy>
-            <id>globant-proxy</id>
-            <active>true</active>
-            <protocol>http</protocol>
-            <host>proxy.corp.globant.com</host>
-            <port>3128</port>
-            <username></username>
-            <password></password>
-            <nonProxyHosts>127.0.0.1</nonProxyHosts>
-        </proxy>
-    </proxies>
-</settings>
-```
+        ```bash
+        git clone https://github.com/bootcamp-tae/2017.git
+        ```
 
 ## Agenda Core Topics
 
@@ -77,7 +71,7 @@ You are *advised* to have the following software already installed in your compu
 * [WebDriver](https://www.w3.org/TR/webdriver/) 
 
     * Architecture
-    * [Selenium](http://www.seleniumhq.org/docs/)    
+    * [Selenium](http://www.seleniumhq.org/docs/) ([Download](http://www.seleniumhq.org/download/))    
     * Locators
 
 * Good Practices
@@ -89,20 +83,20 @@ You are *advised* to have the following software already installed in your compu
 
 ### API / Service Testing
 
-* HTTP verbs, codes and flows
+* [HTTP](https://tools.ietf.org/html/rfc2616) verbs, codes and flows
 * Objects (un)marshalling
 * HTTP clients
     * [RestEasy](http://resteasy.jboss.org/)
     * [Retrofit](http://square.github.io/retrofit/)
-* Authorization & Authentication
+* Authorization / Authentication
 * Good Practices
 
 ### Mobile Automated Testing
 
 * [Appium](http://appium.io/) 
-* Android SDK
+* [Android SDK](https://developer.android.com/studio/index.html#downloads)
 * Android ADB
-* Emulators
+* Emulators: x86 [Genymotion](https://www.genymotion.com/fun-zone/)
 * iOS Simulator (if available)
 
 ### Continuous Integration
@@ -111,7 +105,8 @@ You are *advised* to have the following software already installed in your compu
 
 ### Distributed testing
 
-* Selenium Grid
+* [Selenium Grid](http://www.seleniumhq.org/download/)
+* [Selenium Extras](https://github.com/groupon/Selenium-Grid-Extras)
 
 ### Other testing types
 
