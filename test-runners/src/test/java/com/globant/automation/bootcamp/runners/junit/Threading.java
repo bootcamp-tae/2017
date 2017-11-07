@@ -4,13 +4,12 @@ import com.globant.automation.bootcamp.logging.Logging;
 import com.globant.automation.bootcamp.tests.junit.Parallelism;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.BlockJUnit4ClassRunner;
 
 import java.util.Random;
 
 import static java.lang.String.format;
 import static java.lang.Thread.currentThread;
-import static org.testng.Assert.assertEquals;
+import static org.junit.Assert.assertEquals;
 
 /**
  * DEMO test suite to show how JUnit focuses on test isolation. It creates a new class instance for every test method.
@@ -34,28 +33,28 @@ public class Threading implements Logging {
     public void test1() {
         boolean b = new Random().nextBoolean();
         a = b;
-        assertEquals(a, b, ERR_MESSAGE);
+        assertEquals(ERR_MESSAGE, a, b);
     }
 
     @Test
     public void test2() {
         boolean b = new Random().nextBoolean();
         a = b;
-        assertEquals(a, b, ERR_MESSAGE);
+        assertEquals(ERR_MESSAGE, a, b);
     }
 
     @Test
     public void test3() {
         boolean b = new Random().nextBoolean();
         a = b;
-        assertEquals(a, b, ERR_MESSAGE);
+        assertEquals(ERR_MESSAGE, a, b);
     }
 
     @Test
     public void test4() {
         boolean b = new Random().nextBoolean();
         a = b;
-        assertEquals(a, b, ERR_MESSAGE);
+        assertEquals(ERR_MESSAGE, a, b);
     }
 
 }
