@@ -5,31 +5,17 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.globant.bootcamp</groupId>
-    <artifactId>test-runners</artifactId>
+    <artifactId>parent</artifactId>
     <version>0.1</version>
 
-    <!-- MENTION MAVEN'S SCOPE USAGE! -->
+    <name>Parent Maven project</name>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
-            <version>6.10</version>
-        </dependency>
+    <packaging>pom</packaging>
 
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.12</version>
-        </dependency>
-
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>1.2.3</version>
-        </dependency>
-
-    </dependencies>
+    <modules>
+        <module>test-runners</module>
+        <module>webdriver</module>
+    </modules>
 
     <build>
         <plugins>
