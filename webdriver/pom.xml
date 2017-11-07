@@ -13,6 +13,8 @@
     <artifactId>webdriver</artifactId>
     <version>0.1</version>
 
+    <name>Maven module for WebDriver examples</name>
+
     <dependencies>
         <!-- REUSE CODE FROM TEST-RUNNERS MODULE -->
         <dependency>
