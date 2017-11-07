@@ -4,6 +4,7 @@ import com.globant.automation.bootcamp.logging.Logging;
 import com.globant.automation.bootcamp.tests.junit.Parallelism;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.junit.runners.BlockJUnit4ClassRunner;
 
 import java.util.Random;
 
@@ -22,39 +23,39 @@ import static org.testng.Assert.assertEquals;
 @RunWith(Parallelism.class)
 public class Threading implements Logging {
 
-  private static final String ERR_MESSAGE = "A is not what I set!";
-  private boolean a;
+    private static final String ERR_MESSAGE = "A is not what I set!";
+    private boolean a;
 
-  public Threading() {
-    getLogger().info(format("IN CONSTRUCTOR: Class instance: %s Thread ID: %s Thread Name: %s ", this.hashCode(), currentThread().getId(), currentThread().getName()));
-  }
+    public Threading() {
+        getLogger().info(format("IN CONSTRUCTOR: Class instance: %s Thread ID: %s Thread Name: %s ", this.hashCode(), currentThread().getId(), currentThread().getName()));
+    }
 
-  @Test
-  public void test1() {
-    boolean b = new Random().nextBoolean();
-    a = b;
-    assertEquals(a, b, ERR_MESSAGE);
-  }
+    @Test
+    public void test1() {
+        boolean b = new Random().nextBoolean();
+        a = b;
+        assertEquals(a, b, ERR_MESSAGE);
+    }
 
-  @Test
-  public void test2() {
-    boolean b = new Random().nextBoolean();
-    a = b;
-    assertEquals(a, b, ERR_MESSAGE);
-  }
+    @Test
+    public void test2() {
+        boolean b = new Random().nextBoolean();
+        a = b;
+        assertEquals(a, b, ERR_MESSAGE);
+    }
 
-  @Test
-  public void test3() {
-    boolean b = new Random().nextBoolean();
-    a = b;
-    assertEquals(a, b, ERR_MESSAGE);
-  }
+    @Test
+    public void test3() {
+        boolean b = new Random().nextBoolean();
+        a = b;
+        assertEquals(a, b, ERR_MESSAGE);
+    }
 
-  @Test
-  public void test4() {
-    boolean b = new Random().nextBoolean();
-    a = b;
-    assertEquals(a, b, ERR_MESSAGE);
-  }
+    @Test
+    public void test4() {
+        boolean b = new Random().nextBoolean();
+        a = b;
+        assertEquals(a, b, ERR_MESSAGE);
+    }
 
 }
