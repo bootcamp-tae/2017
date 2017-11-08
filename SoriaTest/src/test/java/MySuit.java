@@ -1,3 +1,5 @@
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
 public class MySuit {
@@ -13,7 +15,7 @@ public class MySuit {
 
     @After
     public void tearDown(){
-        _System.out.println("I'm running after every test");
+        System.out.println("I'm running after every test");
     }
 
     /*
@@ -28,7 +30,8 @@ public class MySuit {
 
     @Test
     public void test1(){
-    /*
+        System.out.println("I'm a test!");
+        /*
     ASSERTION : framework que ayuda a hacer validaciones y tira excepciones si no se corresponde con la validacion
     ASSUME : si la asuncion no se cumple, en vez de tirar una excepcion continua el programa.
 
