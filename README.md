@@ -18,6 +18,7 @@
     SSID: Globers    
     Password: globersaudi
 
+![alt text](https://lh3.googleusercontent.com/-DZIMoqrMBOw/UhY64BFk2eI/AAAAAAAADUI/S8XYMx3TgRw/anime-girl-writing.gif "Take note!")
 
 ## Software Requirements
 
@@ -113,4 +114,6 @@ You are *advised* to have the following software already installed in your compu
 * BDD & Gherkin syntax based automated tests
 
     * [JBehave](http://jbehave.org/reference/latest/) / [Selenium related](http://jbehave.org/reference/web/stable/using-selenium.html)
+
+![alt text](http://38.media.tumblr.com/223831baadc87b9df1906cf419d65afa/tumblr_mt3wyjH4hk1sgnprso1_500.gif "Don't want to...")
     
