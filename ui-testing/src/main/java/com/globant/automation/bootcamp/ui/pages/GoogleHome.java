@@ -1,19 +1,22 @@
 package com.globant.automation.bootcamp.ui.pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
-public class GoogleHome {
-  private static final By GOOGLE_SEARCH_TEXT_BOX = By.id("lst-ib");
-  private final WebDriver driver;
+public class GoogleHome extends Page {
 
-  public GoogleHome(WebDriver driver) {
-    this.driver = driver;
-  }
+    @FindBy(id = "lst-ib")
+    private WebElement searchBox;
 
-  public GoogleResults search(String criteria) {
-    driver.findElement(GOOGLE_SEARCH_TEXT_BOX).sendKeys(criteria + Keys.ENTER);
-    return new GoogleResults(driver);
-  }
+    public GoogleHome(WebDriver driver) {
+        super(driver);
+    }
+
+    public GoogleResults search(String criteria) {
+        searchBox.sendKeys(criteria + Keys.ENTER);
+        return new GoogleResults(getDriver());
+    }
+
 }
