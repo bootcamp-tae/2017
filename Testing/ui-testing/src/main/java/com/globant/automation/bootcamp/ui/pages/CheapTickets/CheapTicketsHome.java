@@ -4,7 +4,6 @@ import com.globant.automation.bootcamp.ui.pages.Page;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.Select;
 
 public class CheapTicketsHome extends Page {
 
@@ -37,15 +36,15 @@ public class CheapTicketsHome extends Page {
         super(driver);
     }
 
-    public CheapTicketsResults searchHotels(Search search){
+    public CheapTicketsResults searchHotels(HotelSearch hotelSearch){
 
         hotelTab.click();
-        hotelDestination.sendKeys(search.getCityDestination());
-        enterDate(checkInDate, search.getCheckInDate());
-        enterDate(checkOutDate, search.getCheckOutDate());
-        selectFromDropDown(hotelRooms, search.getRooms());
-        selectFromDropDown(adultsPassengers, search.getAdultPassengers());
-        selectFromDropDown(childrenPassengers, search.getChildrenPassengers());
+        hotelDestination.sendKeys(hotelSearch.getCityDestination());
+        enterDate(checkInDate, hotelSearch.getCheckInDate());
+        enterDate(checkOutDate, hotelSearch.getCheckOutDate());
+        selectFromDropDownText(hotelRooms, String.valueOf(hotelSearch.getRooms()));
+        selectFromDropDownText(adultsPassengers, String.valueOf(hotelSearch.getAdultPassengers()));
+        selectFromDropDownText(childrenPassengers, String.valueOf(hotelSearch.getChildrenPassengers()));
         searchButton.click();
         return new CheapTicketsResults(getDriver());
     }

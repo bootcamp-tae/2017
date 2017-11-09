@@ -1,6 +1,6 @@
 package com.globant.automation.bootcamp.ui.pages.CheapTickets;
 
-public class Search {
+public class HotelSearch {
 
     private String cityDestination;
     private String checkInDate;
@@ -9,7 +9,7 @@ public class Search {
     private int adultPassengers;
     private int childrenPassengers;
 
-    public Search(String cityDestination, String checkInDate, String checkOutDate, int rooms, int adultPassengers, int childrenPassengers) {
+    public HotelSearch(String cityDestination, String checkInDate, String checkOutDate, int rooms, int adultPassengers, int childrenPassengers) {
         this.cityDestination = cityDestination;
         this.checkInDate = checkInDate;
         this.checkOutDate = checkOutDate;

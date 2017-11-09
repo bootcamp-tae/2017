@@ -1,7 +1,7 @@
 package com.globant.automation.bootcamp.ui.CheapTicketsTest.pageObjects;
 
 import com.globant.automation.bootcamp.ui.pages.CheapTickets.CheapTicketsHome;
-import com.globant.automation.bootcamp.ui.pages.CheapTickets.Search;
+import com.globant.automation.bootcamp.ui.pages.CheapTickets.HotelSearch;
 import io.github.bonigarcia.wdm.ChromeDriverManager;
 import org.junit.After;
 import org.junit.Before;
@@ -33,7 +33,7 @@ public class POMCheapTicketsTest {
     public void pomTestVersion() {
         CheapTicketsHome home = new CheapTicketsHome(driver);
         home
-                .searchHotels(new Search("Mar del plata", "12/8/2017", "12/18/2017", 1, 2, 0))
+                .searchHotels(new HotelSearch("Mar del plata", "12/8/2017", "12/18/2017", 1, 2, 0))
                 .selectResult(5);
 
         try {
