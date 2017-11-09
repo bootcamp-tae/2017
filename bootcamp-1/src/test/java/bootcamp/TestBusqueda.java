@@ -52,15 +52,19 @@ public class TestBusqueda {
 
     @Test
     public void testSearch(){
-        try{
         CheapTicketsHome home= new CheapTicketsHome(this.driver);
-        CheapTicketsResult result=home.doSearch("Havana , Cuba","1/4/2017","1/5/2017","1","1","0");
-        //TODO
-        assertThat("Results exists",result.resultados());
-        }
-        catch (Exception e){
-            fail();
-            e.getStackTrace();
-        }
+        //old way
+        //CheapTicketsResult result=home.doSearch("Havana , Cuba","1/4/2017","1/5/2017","1","1","0");
+
+        CheapTicketsResult result2= home.clickTabHotel()
+                .enterSearch("Havana , Cuba")
+                .inputFirstDate("12/4/2017")
+                .inputLastDate("12/5/2017")
+                .inputHotelRooms("1")
+                .inputHotelAdults("1")
+                .inputHotelChildren("0")
+                .clickSearchButton();
+            assertThat("Results exists",result2.resultados());
+
     }
 }

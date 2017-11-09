@@ -86,5 +86,57 @@ public class CheapTicketsHome extends PageBase{
     }
 
 
+    //CALLING FROM TEST
+
+    public CheapTicketsHome enterSearch(String hotelDestino){
+        search.sendKeys(hotelDestino + Keys.TAB);
+        return this;
+    }
+
+    public CheapTicketsHome clickTabHotel(){
+        hotelBtn.click();
+        return this;
+    }
+
+    public CheapTicketsResult clickSearchButton(){
+        searchButton.sendKeys(Keys.ENTER);
+        return new CheapTicketsResult(getDriver());
+    }
+
+    public CheapTicketsHome clickCheckFlight(){
+        checkFlight.click();
+        return this;
+    }
+
+    public CheapTicketsHome clickCheckCar(){
+        checkCar.click();
+        return this;
+    }
+
+    public CheapTicketsHome inputFirstDate(String input){
+        this.enterData(dateInputFirst,input);
+        return this;
+    }
+
+    public CheapTicketsHome inputLastDate(String input){
+        this.enterData(dateInputLast,input);
+        return this;
+    }
+
+    public CheapTicketsHome inputHotelRooms(String input){
+        this.enterData(hotelRooms,input);
+        return this;
+    }
+
+    public CheapTicketsHome inputHotelAdults(String input){
+        this.enterData(hotelAdults,input);
+        return this;
+    }
+
+    public CheapTicketsHome inputHotelChildren(String input){
+        this.enterData(hotelChildrens,input);
+        return this;
+    }
+
 
 }
