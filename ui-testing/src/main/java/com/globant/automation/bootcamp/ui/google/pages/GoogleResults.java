@@ -8,11 +8,11 @@ import java.util.List;
 
 public class GoogleResults extends Page {
 
-  @FindBy(xpath = "//h3[@class='r']")
-  private List<WebElement> results;
+    @FindBy(xpath = "//h3[@class='r']")
+    private List<WebElement> results;
 
-  public AnotherPage selectResult(int index) {
-    results.get(index).click();
-    return new AnotherPage(getDriver());
-  }
+    public AnotherPage selectResult(int index) {
+        results.get(index).click();
+        return new AnotherPage(getDriver());
+    }
 }

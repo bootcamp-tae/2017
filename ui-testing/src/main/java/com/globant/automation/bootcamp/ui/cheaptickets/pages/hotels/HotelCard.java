@@ -9,36 +9,33 @@ import java.util.regex.Pattern;
 
 public class HotelCard extends Component {
 
-  @FindBy(css = ".flex-link")
-  private WebElement link;
+    private static final Pattern PATTERN = Pattern.compile("\\d+(([.,])\\d+?)?");
+    @FindBy(css = ".flex-link")
+    private WebElement link;
+    @FindBy(css = "[data-automation=\"hotel-name\"]")
+    private WebElement name;
+    @FindBy(css = "[data-automation='actual-price']")
+    private WebElement price;
 
-  @FindBy(css = "[data-automation=\"hotel-name\"]")
-  private WebElement name;
-
-  @FindBy(css = "[data-automation='actual-price']")
-  private WebElement price;
-
-  private static final Pattern PATTERN = Pattern.compile("\\d+(([.,])\\d+?)?");
-
-  public HotelCard(WebElement container) {
-    super(container);
-  }
-
-  public String getName() {
-    return getText(name);
-  }
-
-  public double getPrice() {
-    String p = getText(price);
-    Matcher m = PATTERN.matcher(p);
-    if (m.find()) {
-      return Double.parseDouble(m.group(0));
+    public HotelCard(WebElement container) {
+        super(container);
     }
-    return 0;
-  }
 
-  public HotelDetails select() {
-    click(link);
-    return new HotelDetails();
-  }
+    public String getName() {
+        return getText(name);
+    }
+
+    public double getPrice() {
+        String p = getText(price);
+        Matcher m = PATTERN.matcher(p);
+        if (m.find()) {
+            return Double.parseDouble(m.group(0));
+        }
+        return 0;
+    }
+
+    public HotelDetails select() {
+        click(link);
+        return new HotelDetails();
+    }
 }

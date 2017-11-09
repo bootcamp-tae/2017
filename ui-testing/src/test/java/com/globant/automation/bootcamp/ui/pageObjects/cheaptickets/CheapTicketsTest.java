@@ -12,37 +12,38 @@ import static org.junit.Assert.assertThat;
 
 public class CheapTicketsTest extends WebTest<Home> {
 
-  private final HotelCriteria hotelCriteria = aHotelCriteria()
-      .withDestination("Mar del Plata")
-      .withCheckIn(5)
-      .withCheckOut(10)
-      .withRooms(1)
-      .withAdults(1)
-      .withChildren(0)
-      .build();
+    private final HotelCriteria hotelCriteria = aHotelCriteria()
+            .withDestination("Mar del Plata")
+            .withCheckIn(5)
+            .withCheckOut(10)
+            .withRooms(1)
+            .withAdults(1)
+            .withChildren(0)
+            .build();
 
-  @Test
-  public void sample() {
-    HotelCard hotel = getInitialPage()
-        .tabsBar()
-        .toHotels()
-        .search(hotelCriteria)
-        .getHotels()
-        .get(5);
+    @Test
+    public void sample() {
 
-    assertThat("Hotel has a name", hotel.getName(), not(isEmptyString()));
-    assertThat("Hotel has a price", hotel.getPrice(), is(greaterThan(0d)));
+        HotelCard hotel = getInitialPage()
+                .tabsBar()
+                .toHotels()
+                .search(hotelCriteria)
+                .getHotels()
+                .get(5);
 
-    hotel.select();
-  }
+        assertThat("Hotel has a name", hotel.getName(), not(isEmptyString()));
+        assertThat("Hotel has a price", hotel.getPrice(), is(greaterThan(0d)));
 
-  @Override
-  protected Home getInitialPage() {
-    return new Home();
-  }
+        hotel.select();
+    }
 
-  @Override
-  protected String getInitialUrl() {
-    return "https://www.cheaptickets.com/";
-  }
+    @Override
+    protected Home getInitialPage() {
+        return new Home();
+    }
+
+    @Override
+    protected String getInitialUrl() {
+        return "https://www.cheaptickets.com/";
+    }
 }

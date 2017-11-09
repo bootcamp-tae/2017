@@ -11,12 +11,12 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfAllE
 
 public class HotelResults extends CheapTicketsPage {
 
-  @FindBy(css = "[data-automation='organic']")
-  private List<WebElement> hotels;
+    @FindBy(css = "[data-automation='organic']")
+    private List<WebElement> hotels;
 
-  public List<HotelCard> getHotels() {
-    waitFor(visibilityOfAllElements(hotels));
-    return hotels.stream().map(HotelCard::new).collect(toList());
-  }
+    public List<HotelCard> getHotels() {
+        waitFor(visibilityOfAllElements(hotels));
+        return hotels.stream().map(HotelCard::new).collect(toList());
+    }
 
 }
