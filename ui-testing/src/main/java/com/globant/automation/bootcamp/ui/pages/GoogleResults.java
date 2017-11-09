@@ -1,5 +1,7 @@
 package com.globant.automation.bootcamp.ui.pages;
 
+import com.globant.automation.bootcamp.ui.pages.PageObjectsByMe.AnotherPage;
+import com.globant.automation.bootcamp.ui.pages.PageObjectsByMe.Page;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;

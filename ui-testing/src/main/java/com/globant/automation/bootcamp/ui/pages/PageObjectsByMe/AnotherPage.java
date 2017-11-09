@@ -1,4 +1,4 @@
-package com.globant.automation.bootcamp.ui.pages;
+package com.globant.automation.bootcamp.ui.pages.PageObjectsByMe;
 
 import org.openqa.selenium.WebDriver;
 

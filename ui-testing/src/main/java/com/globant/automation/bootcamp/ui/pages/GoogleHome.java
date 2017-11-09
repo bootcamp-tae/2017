@@ -1,5 +1,6 @@
 package com.globant.automation.bootcamp.ui.pages;
 
+import com.globant.automation.bootcamp.ui.pages.PageObjectsByMe.Page;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

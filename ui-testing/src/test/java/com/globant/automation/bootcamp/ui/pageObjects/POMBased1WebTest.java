@@ -1,6 +1,6 @@
 package com.globant.automation.bootcamp.ui.pageObjects;
 
-import com.globant.automation.bootcamp.ui.pages.AnotherPage;
+import com.globant.automation.bootcamp.ui.pages.PageObjectsByMe.AnotherPage;
 import com.globant.automation.bootcamp.ui.pages.GoogleHome;
 import io.github.bonigarcia.wdm.ChromeDriverManager;
 import org.junit.After;
