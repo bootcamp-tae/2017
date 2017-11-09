@@ -1,6 +1,8 @@
+import io.github.bonigarcia.wdm.FirefoxDriverManager;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 import static org.hamcrest.core.Is.is;
 
@@ -12,7 +14,7 @@ public class CheapTicketHotelsSuitTest {
         @BeforeClass
         public static void setUp(){
                 System.setProperty("webdriver.gecko.driver", "C:\\drivers\\geckodriver.exe");
-                home = new CheapTicketHome();
+                home = new CheapTicketHome(new FirefoxDriver());
                 hotelView = home.SelectHotels();
         }
 
@@ -25,26 +27,23 @@ public class CheapTicketHotelsSuitTest {
 
         @Test
         public void testGoingTo () {
-                String destination = "Mar del Plata";
 
                 hotelView.getDestinationSearchBox()
-                        .sendKeys(destination);
-                Assert.assertEquals(destination, home.SelectHotels()
+                        .sendKeys(HotelSearchData.getLocation());
+                Assert.assertEquals(HotelSearchData.getLocation(), home.SelectHotels()
                                                         .getDestinationSearchBox()
                                                         .getAttribute("value"));
         }
 
         @Test
         public void testDates(){
-                String dateIn = "03/07/2017";
-                String dateOut =  "09/07/2017";
-                home.enterDate(hotelView.getCheckinBox(),dateIn);
-                Assert.assertEquals(dateIn, hotelView
+                home.enterDate(hotelView.getCheckinBox(),HotelSearchData.getCheckin());
+                Assert.assertEquals(HotelSearchData.getCheckin(), hotelView
                         .getCheckinBox()
                         .getAttribute("value"));
 
-                home.enterDate(hotelView.getCheckoutBox(),dateOut);
-                Assert.assertEquals(dateOut, hotelView
+                home.enterDate(hotelView.getCheckoutBox(),HotelSearchData.getCheckout());
+                Assert.assertEquals(HotelSearchData.getCheckout(), hotelView
                         .getCheckoutBox()
                         .getAttribute("value"));
         }
@@ -52,12 +51,17 @@ public class CheapTicketHotelsSuitTest {
         @Test
         public void testSelects(){
 
-                Integer rooms = 4;
-                Integer adults = 2;
-                Integer childrens = 3;
+                hotelView.selectRooms(HotelSearchData.getRooms());
+                Assert.assertThat(hotelView.getRoomSelector().getAttribute("value"), is(HotelSearchData.getRooms()));
 
-                hotelView.selectRooms(rooms.toString());
-                Assert.assertThat(hotelView.getRoomSelector().getAttribute("value"), is(rooms.toString()));
+                if(HotelSearchData.getRooms() < 9){
+                     for (int i = 1; i <= HotelSearchData.getRooms(); i++) {
+                             hotelView.pickKidsOnRoom(HotelSearchData.getKids(), i)
+                                      .pickAdultsOnRoom(HotelSearchData.getAdults(), i);
+                     }
+
+                }
+
         }
 
 

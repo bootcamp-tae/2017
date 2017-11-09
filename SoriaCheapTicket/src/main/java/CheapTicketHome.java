@@ -1,5 +1,5 @@
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.FindBy;
 
 public class CheapTicketHome extends InitialPage {
@@ -7,11 +7,8 @@ public class CheapTicketHome extends InitialPage {
     @FindBy(id = "tab-hotel-tab")
     WebElement hotelButton;
 
-    @FindBy(id = "search-button")
-    WebElement searchButton;
-
-    public CheapTicketHome(){
-        super(new FirefoxDriver());
+    public CheapTicketHome(WebDriver driver){
+        super(driver);
         getDriver().get("https://www.cheaptickets.com/");
     }
 
@@ -20,7 +17,4 @@ public class CheapTicketHome extends InitialPage {
         return new HotelView(getDriver());
     }
 
-    public WebElement getSearchButton() {
-        return searchButton;
-    }
 }
