@@ -39,7 +39,7 @@ public class CheapTicketsHome extends Page {
     public CheapTicketsResults searchHotels(HotelSearch hotelSearch){
 
         hotelTab.click();
-        hotelDestination.sendKeys(hotelSearch.getCityDestination());
+        hotelDestination.sendKeys(hotelSearch.getDestination());
         enterDate(checkInDate, hotelSearch.getCheckInDate());
         enterDate(checkOutDate, hotelSearch.getCheckOutDate());
         selectFromDropDownText(hotelRooms, String.valueOf(hotelSearch.getRooms()));

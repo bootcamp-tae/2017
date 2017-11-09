@@ -9,7 +9,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class POMCheapTicketsTest {
+public class POMCheapTicketsTest{
     private ChromeDriver driver;
 
     @BeforeClass
@@ -29,7 +29,7 @@ public class POMCheapTicketsTest {
         driver.quit();
     }
 
-    @Test
+    @Test 
     public void pomTestVersion() {
         CheapTicketsHome home = new CheapTicketsHome(driver);
         home
