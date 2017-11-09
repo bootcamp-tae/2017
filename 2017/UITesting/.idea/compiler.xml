@@ -6,18 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="framework" />
-        <module name="test-runners" />
         <module name="ui-testing" />
-        <module name="webdriver" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="framework" target="1.5" />
-      <module name="test-runners" target="1.5" />
-      <module name="Testing" target="1.8" />
       <module name="ui-testing" target="1.5" />
-      <module name="webdriver" target="1.5" />
+      <module name="UITesting" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>

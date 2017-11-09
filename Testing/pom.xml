@@ -12,6 +12,8 @@
     <modules>
         <module>test-runners</module>
         <module>webdriver</module>
+        <module>framework</module>
+        <module>ui-testing</module>
     </modules>
     <build>
         <plugins>

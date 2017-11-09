@@ -1,0 +1,41 @@
+Existe una librería que permite administarar drivers en selenium: se llama WebDriverManager.
+Se la debe agregar a las dependencias.
+Dependiendo del browser a utilizar se elegie el driver a utilizar. Luego se le puede pedir que se configure con setup() o setearle la arquitecutra, proxy, etc.
+Se le puede pedir la versión del browser con la que se desea trabajar. Con esto se vuelve más reutilizable la librería ya que no se debe especificar la ruta del 
+driver.
+
+Patrón Screenplay o PageObject (más utilizado)
+
+PageObject: modela una página web como una clase en java. Su representación debe ser funcional: debe tener métodos que permitan utilizar funcionalidades de la
+página, se deben poder realizar acciones coherentes con el sitio web.
+
+No necesariamente debe haber una clase por página, puede haber varias clases que colaboren para representar a la página web.
+
+DSL: Domain Syntax LAnguaje (hablar en el dominio del negocio). Se debe encapsualar lo mayor posible el test no haciendo referencia al driver.
+El cliente tal vez desee leer el test y el mismo debe ser lo más legible posible.
+Otra razón para eliminar toda referencia a los drivers es para lograr que sean reutilizables los test.
+El test habla con el PAgeObject y el PageObject habla con la tecnología que esté abajo (WebDriver).
+Al mirar un test no debemos saber cuál es la tecnología que se está utilizando.
+
+El patrón PageObject tiene una API fluida. Se pueden concatenar llamados a métodos para aprovechar seguir la cadena. Ej.: xxxxxx().xxxxxxx().xxxxxx();
+
+Si algún método es void se debe evitar esto y en su lugar devolver al mismo PageObject (return this) para hacer más fluida la API.
+
+@FindBy(id = "...") Permite identificar un WebElement por alguno de sus atributos.
+
+Los atributos se deben inicializar antes de utilizarlos. PageObject cuenta con un PageFactory para facilitar esta tarea. Puede inicializar WebElements o listas.
+
+Que un constructor no tenga ningún modificador de acceso ocasiona que tenga un acceso con alcance de paquete.
+Utilizando "protected", una clase de otro paquete que extienda de esta clase podría acceder al getter de esta clase (el test no debería poder acceder al getDriver()).
+
+Los test y el código source deben ir en distintos paquetes.
+
+Los métodos no deben tener más de 4 o 5 parámetros.
+
+Clase inmutable: solamente con métodos setters  y atributos final. Además no deben ser extensible para que no se genere un hijo medio inmutable. Debe ser FINAL la clase.
+La clase o el objeto instanciado es ReadOnly. Es buena para la concurrencia ya que los hilos no competirán por el recurso.
+
+git reset --hard origin/master  // Se resetea el branch actual y lo deja igual que el master remoto
+
+--hard / --soft
+

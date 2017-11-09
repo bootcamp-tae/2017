@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Testing.iml" filepath="$PROJECT_DIR$/Testing.iml" />
+      <module fileurl="file://$PROJECT_DIR$/framework/framework.iml" filepath="$PROJECT_DIR$/framework/framework.iml" />
       <module fileurl="file://$PROJECT_DIR$/test-runners/test-runners.iml" filepath="$PROJECT_DIR$/test-runners/test-runners.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ui-testing/ui-testing.iml" filepath="$PROJECT_DIR$/ui-testing/ui-testing.iml" />
       <module fileurl="file://$PROJECT_DIR$/webdriver/webdriver.iml" filepath="$PROJECT_DIR$/webdriver/webdriver.iml" />
     </modules>
   </component>
