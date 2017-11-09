@@ -45,47 +45,6 @@ public class CheapTicketsHome extends PageBase{
         super(driver);
     }
 
-    public CheapTicketsResult doSearch(String hotelDestino, String inDate, String outDate,String rooms, String nAdults,String nChilds){
-       try {
-           hotelBtn.click();
-           search.sendKeys(hotelDestino + Keys.TAB);
-           enterFirstDate(inDate);
-           enterLastDate(outDate);
-           enterHotelRooms(rooms);
-           enterHotelAdults(nAdults);
-           enterHotelChildren(nChilds);
-           //checkFlight.click();
-           //checkCar.click();
-           searchButton.sendKeys(Keys.ENTER);
-           return new CheapTicketsResult(getDriver());
-       }
-       catch (Exception e){
-           e.getStackTrace();
-           return null;
-       }
-    }
-
-    public void enterFirstDate(String input){
-        this.enterData(dateInputFirst,input);
-    }
-
-    public void  enterLastDate(String input){
-        this.enterData(dateInputLast,input);
-    }
-
-    public void enterHotelRooms(String input){
-        this.enterData(hotelRooms,input);
-    }
-
-    public void enterHotelAdults(String input){
-        this.enterData(hotelAdults,input);
-    }
-
-    public void enterHotelChildren(String input){
-        this.enterData(hotelChildrens,input);
-    }
-
-
     //CALLING FROM TEST
 
     public CheapTicketsHome enterSearch(String hotelDestino){

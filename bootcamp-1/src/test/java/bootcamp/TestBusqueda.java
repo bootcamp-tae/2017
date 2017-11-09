@@ -53,10 +53,7 @@ public class TestBusqueda {
     @Test
     public void testSearch(){
         CheapTicketsHome home= new CheapTicketsHome(this.driver);
-        //old way
-        //CheapTicketsResult result=home.doSearch("Havana , Cuba","1/4/2017","1/5/2017","1","1","0");
-
-        CheapTicketsResult result2= home.clickTabHotel()
+        CheapTicketsResult result= home.clickTabHotel()
                 .enterSearch("Havana , Cuba")
                 .inputFirstDate("12/4/2017")
                 .inputLastDate("12/5/2017")
@@ -64,7 +61,65 @@ public class TestBusqueda {
                 .inputHotelAdults("1")
                 .inputHotelChildren("0")
                 .clickSearchButton();
-            assertThat("Results exists",result2.resultados());
-
+            assertThat("Results exists",result.resultsExists());
     }
+
+    @Test
+    public void testClickOnOneSearchResult(){
+        CheapTicketsHome home= new CheapTicketsHome(this.driver);
+        CheapTicketsResult result=
+                home.clickTabHotel()
+                .enterSearch("Havana , Cuba")
+                .inputFirstDate("12/4/2017")
+                .inputLastDate("12/5/2017")
+                .inputHotelRooms("1")
+                .inputHotelAdults("1")
+                .inputHotelChildren("0")
+                .clickSearchButton()
+                .loadResult();
+        CheapTicketsOpenLink linkSelected=result
+                .clickOneResult(1)
+                .loadResult();
+    }
+
+    @Test
+    public void testSearchResultFromFiveStarLessSeventyFive(){
+        CheapTicketsHome home= new CheapTicketsHome(this.driver);
+        CheapTicketsResult result= home
+                .clickTabHotel()
+                .enterSearch("Havana , Cuba")
+                .inputFirstDate("12/4/2017")
+                .inputLastDate("12/5/2017")
+                .inputHotelRooms("1")
+                .inputHotelAdults("1")
+                .inputHotelChildren("0")
+                .clickSearchButton()
+                .loadResult();
+        CheapTicketsOpenLink linkSelected=result
+                .clickCheckFiveStar()
+                .clickCheckLessThanSeventyFive()
+                .clickOneResult(1)
+                .loadResult();
+    }
+
+    @Test
+    public void testSearchResultFromPropertyName(){
+        CheapTicketsHome home= new CheapTicketsHome(this.driver);
+        CheapTicketsResult result= home
+                .clickTabHotel()
+                .enterSearch("Havana , Cuba")
+                .inputFirstDate("12/4/2017")
+                .inputLastDate("12/5/2017")
+                .inputHotelRooms("1")
+                .inputHotelAdults("1")
+                .inputHotelChildren("0")
+                .clickSearchButton()
+                .loadResult();
+        CheapTicketsOpenLink linkSelected=result
+                .inputNameOfProperty("ibero")
+                .clickSearchNameProperty()
+                .clickOneResult(1)
+                .loadResult();
+    }
+
 }
