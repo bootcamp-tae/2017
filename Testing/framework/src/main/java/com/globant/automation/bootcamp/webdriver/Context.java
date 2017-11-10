@@ -12,42 +12,59 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 
 enum Context {
 
-  INSTANCE;
+    //SINGLETON
+    INSTANCE;
 
-  private static final ThreadLocal<WebDriver> DRIVERS_PER_THREAD = new ThreadLocal<>();
+    private static final ThreadLocal<WebDriver> DRIVERS_PER_THREAD = new ThreadLocal<>();
 
-  WebDriver getDriver() {
-    return DRIVERS_PER_THREAD.get();
-  }
-
-  WebDriver init(Browser browser) {
-    WebDriver driver = null;
-    switch (browser) {
-      case CHROME:
-        ChromeDriverManager.getInstance().setup();
-        driver = new ChromeDriver();
-        break;
-      case FIREFOX:
-        FirefoxDriverManager.getInstance().setup();
-        driver = new FirefoxDriver();
-        break;
-      case IE:
-        InternetExplorerDriverManager.getInstance().setup();
-        driver = new InternetExplorerDriver();
-        break;
-      case EDGE:
-        EdgeDriverManager.getInstance().setup();
-        driver = new EdgeDriver();
-        break;
+    /**
+     * @return Retorna el driver perteneciente al Thread que accede a la coleccion
+     */
+    WebDriver getDriver() {
+        return DRIVERS_PER_THREAD.get();
     }
-    DRIVERS_PER_THREAD.set(driver);
-    return driver;
-  }
 
-  void terminate() {
-    WebDriver driver = getDriver();
-    if (driver != null) {
-      getDriver().quit();
+    /**
+     * Metodo para solicitar el driver de los navagadores, esta implementacion me encapsula
+     * tanto la tecnologia(WebDriver), como la instanciacion
+     * @param browser Enum de navegador a utilizar en el test
+     * @return El driver del navegador
+     */
+    WebDriver init(Browser browser) {
+        WebDriver driver = null;
+        switch (browser) {
+            case CHROME:
+                ChromeDriverManager.getInstance().setup();
+                driver = new ChromeDriver();
+                break;
+            case FIREFOX:
+                FirefoxDriverManager.getInstance().setup();
+                driver = new FirefoxDriver();
+                break;
+            case IE:
+                InternetExplorerDriverManager.getInstance().setup();
+                driver = new InternetExplorerDriver();
+                break;
+            case EDGE:
+                EdgeDriverManager.getInstance().setup();
+                driver = new EdgeDriver();
+                break;
+        }
+        //Asigna el driver al Thread que lo solicito
+        DRIVERS_PER_THREAD.set(driver);
+        return driver;
     }
-  }
+
+    /**
+     * Este metodo me permite terminar el Thread que corre el Test finalice/falle;
+     * de este modo puedo eliminar su referencia en el ThreadLocal liberando asi
+     * espacio
+     */
+    void terminate() {
+        WebDriver driver = getDriver();
+        if (driver != null) {
+            getDriver().quit();
+        }
+        DRIVERS_PER_THREAD.remove();
+    }
 }
