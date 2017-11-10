@@ -7,6 +7,8 @@ public final class HotelSearchData {
     private final static int kids = 3;
     private final static int adults = 4;
 
+
+
     public static int getRooms() {
         return rooms;
     }

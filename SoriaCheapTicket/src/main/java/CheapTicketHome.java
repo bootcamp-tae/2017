@@ -13,6 +13,7 @@ public class CheapTicketHome extends InitialPage {
     }
 
     public HotelView SelectHotels() {
+
         hotelButton.click();
         return new HotelView(getDriver());
     }

@@ -47,9 +47,10 @@ class HotelView extends InitialPage{
         return checkoutBox;
     }
 
-    public HotelView selectRooms(int value) {
+    public HotelView selectRooms(int value) throws InterruptedException {
         Select roomSelect = new Select(this.roomSelector);
         roomSelect.selectByValue(String.valueOf(value));
+
         if (value < 9){
             String idToSearch;
             for (int i = 1; i <= value; ) {

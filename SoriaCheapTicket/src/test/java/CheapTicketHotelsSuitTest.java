@@ -49,11 +49,10 @@ public class CheapTicketHotelsSuitTest {
         }
 
         @Test
-        public void testSelects(){
+        public void testSelects() throws InterruptedException {
 
                 hotelView.selectRooms(HotelSearchData.getRooms());
                 Assert.assertThat(hotelView.getRoomSelector().getAttribute("value"), is(HotelSearchData.getRooms()));
-
                 if(HotelSearchData.getRooms() < 9){
                      for (int i = 1; i <= HotelSearchData.getRooms(); i++) {
                              hotelView.pickKidsOnRoom(HotelSearchData.getKids(), i)
