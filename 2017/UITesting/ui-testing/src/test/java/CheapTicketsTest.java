@@ -10,7 +10,7 @@ import static java.lang.Thread.sleep;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class WebTest { // La clase debe terminar con Test para que maven encuentre la Suite
+public class CheapTicketsTest extends WebTest<Home> { // La clase debe terminar con Test para que maven encuentre la Suite
 
     private  ChromeDriver driver;
 

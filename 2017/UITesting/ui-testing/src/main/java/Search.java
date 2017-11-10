@@ -1,14 +1,15 @@
-
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public final class Search {
     private final String cityDestination;
-    private final String dateCheckIn;
-    private final String dateCheckOut;
-    private final String rooms;
-    private final String adults;
-    private final String children;
+    private final int dateCheckIn;
+    private final int dateCheckOut;
+    private final int rooms;
+    private final int adults;
+    private final int children;
 
-    public Search(String cityDestination, String dateCheckIn, String dateCheckOut, String rooms, String adults, String children) {
+    public Search(String cityDestination, int dateCheckIn, int dateCheckOut, int rooms, int adults, int children) {
         this.cityDestination = cityDestination;
         this.dateCheckIn = dateCheckIn;
         this.dateCheckOut = dateCheckOut;
@@ -22,6 +23,8 @@ public final class Search {
     }
 
     public String getDateCheckIn() {
+        /*DateTimeFormatter format = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+        return LocalDate.now().plusDays(dateCheckIn).format(format);*/
         return dateCheckIn;
     }
 
@@ -40,4 +43,15 @@ public final class Search {
     public String getChildren() {
         return children;
     }
+
+    public static final class Builder{
+        private final String cityDestination;
+        private final int dateCheckIn;
+        private final int dateCheckOut;
+        private final int rooms;
+        private final int adults;
+        private final int children;
+    }
+
+    private Builder
 }

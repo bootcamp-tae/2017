@@ -6,28 +6,28 @@ import org.openqa.selenium.support.ui.Select;
 public class CheapTicketsHome extends Page
 {
     @FindBy(id = "tab-hotel-tab")
-    public WebElement tabHotel;
+    private WebElement tabHotel;
 
     @FindBy(id = "hotel-destination")
-    public WebElement destination;
+    private WebElement destination;
 
     @FindBy(id = "hotel-checkin")
-    public WebElement dateCheckIn;
+    private WebElement dateCheckIn;
 
     @FindBy(id = "hotel-checkout")
-    public WebElement dateCheckOut;
+    private WebElement dateCheckOut;
 
     @FindBy(id = "hotel-rooms")
-    public WebElement rooms;
+    private WebElement rooms;
 
     @FindBy(id = "hotel-1-adults")
-    public WebElement adults;
+    private WebElement adults;
 
     @FindBy(id = "hotel-1-children")
-    public WebElement children;
+    private WebElement children;
 
     @FindBy(id = "search-button")
-    public WebElement searchButton;
+    private WebElement searchButton;
 
     protected CheapTicketsHome(WebDriver driver) {
         super(driver);

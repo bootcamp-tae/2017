@@ -1,0 +1,117 @@
+La idea es sacar del test cualquier referencia a WebDriver.
+Buscamos que el test sea reutilizable si surge una tecnología más nueva.
+
+Alguien que no sea un técnico y desee leer los test debe poder leer el test con fluidez. No debe haber referencias
+a la sintaxis de Java. No debe por ejemplo haber un new xxxx().
+
+No se debe harcodear una fecha, el test dentro de unos días dejaría de funcionar.
+
+Al igual que se hizo con Page, los tests de UI tendrán una clase genérica que realiza todas las funciones básicas que
+se deben realizar siempre.
+
+Python --> ducktiping. La diferencia es que una variable puede adoptar diferentes tipos, todo en tiempo de ejecución.
+
+Java es un lenguaje tipado pero NO fuertemente tipado, permite la utilización de clases génericas. A través de esta
+incorporación se logró la reutilización de clases o implementaciones. El linkeo se realiza en tiempo de ejecución.
+
+No es fuertemente tipado ya que mientras no esté compilado se respeta el tipo de los genéricos pero cuando se compila
+todo se convierte a Object y se trabaja como tal. Durante el diseño se protege de que no haya errores.
+
+Un test no siempre deberá arrancar de la Home, se puede desear empezar desde una URL particular. Para esto se debe hacer
+un WebTest genérico.
+
+Test Parametrizado: es un test que recibe tantos parámetros como corridas se desee. 
+
+Patrón Builder
+
+Patrón POM: Page Object Model
+
+Test --> POM --> Tech (WebDriver)
+
+Test <-- POM <-- Tech (WebDriver)
+
+El test nunca se comunica con la tecnología.
+
+El POM se debe encargar de pedir el WebDriver en vez de recibirlo como parámetro.
+
+Todas las clases genéricas las podemos poner en el framework.
+
+En el paquete de ui-testing se puede declarar una clase genérica (CheapTicketPage) que tenga todo el comportamiento
+común de las páginas de esta web.
+
+La mejor forma de aplicar un Patrón Singleton es utilizar un enum.
+Una enumeración no puede ser instanciada (la JVM carga al enum), extendida, tiene un constructor por defecto privado.
+En su creación se definen constantes que están ordenadas (son ordinales). 
+Las enumeraciones se utilizan como están, no se instancian.
+Al ser enumerable es sencillo hacer un switch con sus elementos. Nunca puede ser null.
+
+Los enum pueden extender o implementar de otras clases pero nunca una clase puede extender de él.
+
+Enum es thread safe, es serializable, no se instancia, lo carga la JVM.
+
+Mientras no se tenga más de un elemento el enum está aplicando un Singleton. Cuando tenga más de uno no se tiene
+que tirar todo el código a la basura, se agrega un nuevo elemento y ya está.
+
+Map es una tabla de clave-valor. Cada valor está mapeado por una clave. Es una forma de tener una caché en memoria.
+Al haber varios PageObjects se pueden tener hasheados los <ThreadID, WebDriver>. Se puede saber quién pidió, si lo
+tiene y si se debe instanciar el driver o dárselo si ya se lo hizo.
+
+Thread Local: es un mapa en la cual la key es la id del Thread. Solamente se le debe especificar el value.
+
+En el Context tenemos:
+	getDriver
+	init(Browser browser)
+	terminate()
+
+Si no se da siempre la chance de terminar el Thread puede llegar a ocurrir un Memory Leak ya que si el thread explota
+habrá una zona del map que nunca podrá ser garbage collected. Esto reduce procesamiento, memoria RAM, memoria de la JMV,
+etc.
+
+En el @Before se debe llamar al getDriver y al init y en el @After SE LLAMA AL TERMINATE SIEMPRE.
+
+El objetivo final es que el test pueda correr en otra parte del mundo (en el cloud) y que vuelva con la respuesta.
+Esta es la metodología que realiza Globant.
+
+Context debe tener un scope package para que no pueda ser accedido por los tests. La idea es que los tests sólo puedan
+acceder a ciertas clases que. Con esto garantizamos que el framework que estamos utilizando se lo utilice correctamente
+por un dev no tan experimentado.
+Las clases tiene un package level != protected. Para que sea package level no se le debe poner nada al modo de acceso
+de la clase.
+
+Page tiene todo protected porque le interesa solamente a Page y a su herencia, no es incumbencia del test.
+
+No se puede asumir que un elemento existe antes de interactuar con él. Se debe garantizar que el elemento haya 
+aparecido para poder utilizarlo.
+Se le debe dar tiempo a la página web para que pueda cargar.
+HAY QUE ESPERAR QUE LAS COSAS QUE ESTÉN Y TAMBIÉN QUE DESAPAREZCAN (Ej.: pop up)
+
+Selenium es la implementación de WebDriver
+
+Se puede utlizar la espera implícita y explícita.
+Implicíta: WebDriver espera que se cargue la página por ejemplo.  
+
+getDriver().manage().timeouts(). Aquí están los métodos para definir las esperas.
+
+No se utiliza el Thread.sleep() ya que el thread sigue consumiendo recursos. No es la solución.
+En su lugar se debe utilizar FluentWait que permite esperar al trabajar con WebDrivers o WebElements. 
+WebDriverWait también es posible de utilizar pero el Ruso no la recomienda.
+
+Librería ExpectedConditions dentro de WebDriver: tiene múltiples métodos útiles para interactuar con la página web.
+
+No hace falta esperar a que un WebElement sea visible y luego clickeable para que se pueda clickear con él.
+Con esperar a la última condición ya es suficiente.
+
+Se debe separar el concepto de PAGE de COMPONENT.
+
+El initComponents() en realidad crea proxys que son un intermediario con el WebElement real.
+Se pueden crear elementos que aún no existan en la página gracias a los proxys. Cuando realmente se necesite al elemento
+se irá a buscar al elemento.
+Los proxys implementan la misma interfaz que los WebElement (interfaz) y permiten ser creados como clases anónimas 
+antes de que realmente se las "pueda utilizar". Son PROXYS DINÁMICOS.
+
+Librería reflection
+
+Proxy
+InvocationHandler
+
+Librería Mocking, Mockito.
