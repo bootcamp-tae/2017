@@ -11,7 +11,7 @@ import static com.globant.automation.bootcamp.ui.cheaptickets.models.HotelCriter
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.assertThat;
 
-public class CheapTicketsTest extends WebTest<WizardContainer> {
+public class CheapTicketsTest extends WebTest<DontWannaSaveExtra> {
 
     private final HotelCriteria hotelCriteria = aHotelCriteria()
             .withDestination("Mar del Plata")
@@ -27,6 +27,8 @@ public class CheapTicketsTest extends WebTest<WizardContainer> {
 
         HotelCard hotel = getInitialPage()
                 .closeAdvice()
+                .checkoutNotifications()
+                .closeNotificationTooltip()
                 .tabsBar()
                 .toHotels()
                 .search(hotelCriteria)
@@ -39,7 +41,6 @@ public class CheapTicketsTest extends WebTest<WizardContainer> {
         hotel.select();
     }
 
-    //Dont understand why this isnt working, "getInitialPage" its declared with generic
     @Override
     protected DontWannaSaveExtra getInitialPage() {
         return new DontWannaSaveExtra();

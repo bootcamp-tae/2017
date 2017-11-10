@@ -7,15 +7,14 @@ import org.openqa.selenium.support.FindBy;
 /**
  * Created by Facundo on 10/11/2017.
  */
-public class DontWannaSaveExtra extends CheapTicketsPage{
+public class NotificationTooltip extends CheapTicketsPage {
 
-    @FindBy(css = "#join-rewards-close-btn > span.icon.icon-close")
-    WebElement crossForClose;
+    @FindBy(id = "spSignIn52-delete")
+    WebElement crossTooltip;
 
-    public NotificationIcon closeAdvice() {
-
-        click(crossForClose);
-        return new NotificationIcon();
+    public WizardContainer closeNotificationTooltip() {
+        click(crossTooltip);
+        return new WizardContainer();
     }
 
 }
