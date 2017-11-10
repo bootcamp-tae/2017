@@ -10,7 +10,6 @@
     <packaging>pom</packaging>
     <name>Parent Maven project</name>
 
-    <packaging>pom</packaging>
 
     <modules>
         <module>Framework</module>
@@ -27,28 +26,29 @@
                     <source>9</source>
                     <target>9</target>
                 </configuration>
-            <dependencies>
-                <dependency>
-                    <groupId>junit</groupId>
-                    <artifactId>junit</artifactId>
-                    <version>4.12</version>
-                </dependency>
-
-
-                <dependency>
-                    <groupId>org.seleniumhq.selenium</groupId>
-                    <artifactId>selenium-java</artifactId>
-                    <version>3.7.0</version>
-                </dependency>
-
-                <dependency>
-                    <groupId>io.github.bonigarcia</groupId>
-                    <artifactId>webdrivermanager</artifactId>
-                    <version>1.7.2</version>
-                </dependency>
-            </dependencies>
             </plugin>
         </plugins>
+
     </build>
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>3.7.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>1.7.2</version>
+        </dependency>
+    </dependencies>
+
 
 </project>
