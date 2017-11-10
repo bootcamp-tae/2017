@@ -2,6 +2,7 @@ package com.globant.automation.bootcamp.ui.pageObjects.cheaptickets;
 
 import com.globant.automation.bootcamp.ui.cheaptickets.models.HotelCriteria;
 import com.globant.automation.bootcamp.ui.cheaptickets.pages.hotels.HotelCard;
+import com.globant.automation.bootcamp.ui.cheaptickets.pages.hotels.HotelDetails;
 import com.globant.automation.bootcamp.ui.cheaptickets.pages.landing.DontWannaSaveExtra;
 import com.globant.automation.bootcamp.ui.cheaptickets.pages.landing.WizardContainer;
 import com.globant.automation.bootcamp.webdriver.WebTest;
@@ -33,12 +34,16 @@ public class CheapTicketsTest extends WebTest<DontWannaSaveExtra> {
                 .toHotels()
                 .search(hotelCriteria)
                 .getHotels()
-                .get(5);
+                .get(1);
 
         assertThat("Hotel has a name", hotel.getName(), not(isEmptyString()));
         assertThat("Hotel has a price", hotel.getPrice(), is(greaterThan(0d)));
 
         hotel.select();
+                /*.clickOnTopReserveButton()
+                .clickOnRealReserveButton()
+                .closeModal();*/
+
     }
 
     @Override
