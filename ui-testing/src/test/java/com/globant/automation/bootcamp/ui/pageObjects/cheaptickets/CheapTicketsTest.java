@@ -5,6 +5,9 @@ import com.globant.automation.bootcamp.ui.cheaptickets.pages.hotels.HotelCard;
 import com.globant.automation.bootcamp.ui.cheaptickets.pages.landing.Home;
 import com.globant.automation.bootcamp.webdriver.WebTest;
 import org.junit.Test;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 import static com.globant.automation.bootcamp.ui.cheaptickets.models.HotelCriteria.Builder.aHotelCriteria;
 import static org.hamcrest.Matchers.*;
@@ -23,7 +26,6 @@ public class CheapTicketsTest extends WebTest<Home> {
 
   @Test
   public void sample() {
-
     HotelCard hotel = getInitialPage()
         .tabsBar()
         .toHotels()

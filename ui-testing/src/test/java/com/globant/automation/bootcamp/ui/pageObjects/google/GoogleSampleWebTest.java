@@ -3,6 +3,7 @@ package com.globant.automation.bootcamp.ui.pageObjects.google;
 import com.globant.automation.bootcamp.ui.google.pages.AnotherPage;
 import com.globant.automation.bootcamp.ui.google.pages.GoogleHome;
 import io.github.bonigarcia.wdm.ChromeDriverManager;
+import io.github.bonigarcia.wdm.FirefoxDriverManager;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -18,7 +19,7 @@ public class GoogleSampleWebTest {
 
   @BeforeClass
   public static void doOnce() {
-    ChromeDriverManager.getInstance().setup();
+    FirefoxDriverManager.getInstance().setup();
   }
 
   @Before
