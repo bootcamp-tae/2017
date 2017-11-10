@@ -1,55 +1,53 @@
 package com.globant.automation.bootcamp.webdriver;
 
-import io.github.bonigarcia.wdm.ChromeDriverManager;
-import io.github.bonigarcia.wdm.EdgeDriverManager;
-import io.github.bonigarcia.wdm.FirefoxDriverManager;
-import io.github.bonigarcia.wdm.InternetExplorerDriverManager;
+import ch.qos.logback.classic.Level;
+import ch.qos.logback.classic.Logger;
+import org.openqa.grid.internal.utils.configuration.StandaloneConfiguration;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.remote.server.SeleniumServer;
+import org.slf4j.LoggerFactory;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.logging.LogManager;
 
 enum Context {
 
-    INSTANCE;
+  INSTANCE;
 
-    private static final ThreadLocal<WebDriver> DRIVERS_PER_THREAD = new ThreadLocal<>();
+  private static final ThreadLocal<WebDriver> DRIVERS_PER_THREAD = new ThreadLocal<>();
 
-    WebDriver getDriver() {
-        return DRIVERS_PER_THREAD.get();
+  WebDriver getDriver() {
+    return DRIVERS_PER_THREAD.get();
+  }
+
+  WebDriver init(Browser browser) throws MalformedURLException {
+    terminate(); // Just in case we have an existing driver running in the same thread
+    browser.initialize();
+    URL url = new URL(System.getProperty("SELENIUM_URL", "http://127.0.0.1:4444/wd/hub"));
+    WebDriver driver = new RemoteWebDriver(url, browser.getCapabilities());
+    DRIVERS_PER_THREAD.set(driver);
+    return driver;
+  }
+
+  void terminate() {
+    WebDriver driver = getDriver();
+    if (driver != null) {
+      getDriver().quit();
     }
+    DRIVERS_PER_THREAD.remove();
+  }
 
-    WebDriver init(Browser browser) {
-        WebDriver driver = null;
-        switch (browser) {
-            case CHROME:
-                ChromeDriverManager.getInstance().setup();
-                driver = new ChromeDriver();
-                break;
-            case FIREFOX:
-                FirefoxDriverManager.getInstance().setup();
-                driver = new FirefoxDriver();
-                break;
-            case IE:
-                InternetExplorerDriverManager.getInstance().setup();
-                driver = new InternetExplorerDriver();
-                break;
-            case EDGE:
-                EdgeDriverManager.getInstance().setup();
-                driver = new EdgeDriver();
-                break;
-        }
-        DRIVERS_PER_THREAD.set(driver);
-        return driver;
-    }
+  Context() {
+    StandaloneConfiguration configuration = new StandaloneConfiguration();
+    SeleniumServer server = new SeleniumServer(configuration);
+    // Turn off verbose logging from Selenium Server...(default is ON)
+    ((Logger) LoggerFactory.getLogger(Logger.ROOT_LOGGER_NAME)).setLevel(Level.OFF);
+    LogManager.getLogManager().getLogger("").setLevel(java.util.logging.Level.OFF);
+    server.boot();
+    // Register a hook in the JVM to shut down the Selenium server cleanly before terminating
+    Runtime.getRuntime().addShutdownHook(new Thread(server::stop));
+  }
 
-    void terminate() {
-        WebDriver driver = getDriver();
-        if (driver != null) {
-            getDriver().quit();
-        }
-        DRIVERS_PER_THREAD.remove();
-
-    }
 }

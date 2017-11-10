@@ -48,6 +48,13 @@
             <version>3.7.1</version>
         </dependency>
 
+        <!-- SELENIUM WEB DRIVER DEPENDENCY -->
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-server</artifactId>
+            <version>3.7.1</version>
+        </dependency>
+
         <!-- WEB DRIVER MANAGER DEPENDENCY - OPTIONAL - MAKES LIFE EASIER -->
         <dependency>
             <groupId>io.github.bonigarcia</groupId>

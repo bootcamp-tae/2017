@@ -6,11 +6,11 @@ import org.openqa.selenium.support.FindBy;
 
 public class Tabs extends Page {
 
-    @FindBy(id = "tab-hotel-tab")
-    private WebElement hotelsTab;
+  @FindBy(id = "tab-hotel-tab")
+  private WebElement hotelsTab;
 
-    public Hotels toHotels() {
-        click(hotelsTab);
-        return new Hotels();
-    }
+  public Hotels toHotels() {
+    click(hotelsTab);
+    return new Hotels();
+  }
 }

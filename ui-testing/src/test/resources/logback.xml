@@ -9,6 +9,7 @@
 
     <logger name="io.github.bonigarcia.wdm" level="OFF"/>
     <logger name="org.openqa.selenium.remote.server" level="OFF"/>
+    <logger name="org.seleniumhq" level="OFF"/>
 
     <logger name="com.globant.automation.bootcamp" level="DEBUG"/>
 

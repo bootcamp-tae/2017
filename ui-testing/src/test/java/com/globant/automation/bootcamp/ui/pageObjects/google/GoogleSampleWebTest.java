@@ -14,32 +14,32 @@ import static org.junit.Assert.assertThat;
 
 public class GoogleSampleWebTest {
 
-    private ChromeDriver driver;
+  private ChromeDriver driver;
 
-    @BeforeClass
-    public static void doOnce() {
-        ChromeDriverManager.getInstance().setup();
-    }
+  @BeforeClass
+  public static void doOnce() {
+    ChromeDriverManager.getInstance().setup();
+  }
 
-    @Before
-    public void setUp() {
-        this.driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.get("http://www.google.com");
-    }
+  @Before
+  public void setUp() {
+    this.driver = new ChromeDriver();
+    driver.manage().window().maximize();
+    driver.get("http://www.google.com");
+  }
 
-    @After
-    public void tearDown() {
-        driver.quit();
-    }
+  @After
+  public void tearDown() {
+    driver.quit();
+  }
 
-    @Test
-    public void pomTestVersion1() {
-        AnotherPage result = new GoogleHome()
-                .search("Buscame algo")
-                .selectResult(5);
+  @Test
+  public void pomTestVersion1() {
+    AnotherPage result = new GoogleHome()
+        .search("Buscame algo")
+        .selectResult(5);
 
-        assertThat("Page contains text", result.getTitle(), containsString("BUSCAME"));
-    }
+    assertThat("Page contains text", result.getTitle(), containsString("BUSCAME"));
+  }
 
 }

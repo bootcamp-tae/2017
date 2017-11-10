@@ -7,12 +7,12 @@ import org.openqa.selenium.support.FindBy;
 
 public class GoogleHome extends Page {
 
-    @FindBy(id = "lst-ib")
-    private WebElement searchBox;
+  @FindBy(id = "lst-ib")
+  private WebElement searchBox;
 
-    public GoogleResults search(String criteria) {
-        searchBox.sendKeys(criteria + Keys.ENTER);
-        return new GoogleResults();
-    }
+  public GoogleResults search(String criteria) {
+    searchBox.sendKeys(criteria + Keys.ENTER);
+    return new GoogleResults();
+  }
 
 }
