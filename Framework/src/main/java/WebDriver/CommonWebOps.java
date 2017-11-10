@@ -1,5 +1,6 @@
 package WebDriver;
 
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
@@ -31,19 +32,19 @@ abstract class CommonWebOps {
         element.sendKeys(text);
     }
 
-    protected CommonWebOps searchByValue(WebElement element, String value){
+    protected CommonWebOps selectByValue(WebElement element, String value){
         waitFor(elementToBeSelected(element));
         new Select(element).selectByValue(value);
         return this;
     }
 
-    protected CommonWebOps searchByIndex(WebElement element, int index){
+    protected CommonWebOps selectByIndex(WebElement element, int index){
         waitFor(elementToBeSelected(element));
         new Select(element).selectByIndex(index);
         return this;
     }
 
-    protected CommonWebOps searchByVisibleText(WebElement element, String text){
+    protected CommonWebOps selectByVisibleText(WebElement element, String text){
         waitFor(elementToBeSelected(element));
         new Select(element).selectByVisibleText(text);
         return this;
@@ -59,6 +60,7 @@ abstract class CommonWebOps {
                 .withTimeout(60, SECONDS)
                 .pollingEvery(1, SECONDS)
                 .ignoring(NoSuchElementException.class)
+                .ignoring(StaleElementReferenceException.class)
                 .until(condition);
     }
 
