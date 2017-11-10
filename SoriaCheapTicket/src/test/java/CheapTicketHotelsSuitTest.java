@@ -15,7 +15,7 @@ public class CheapTicketHotelsSuitTest {
         public static void setUp(){
                 System.setProperty("webdriver.gecko.driver", "C:\\drivers\\geckodriver.exe");
                 home = new CheapTicketHome(new FirefoxDriver());
-                hotelView = home.SelectHotels();
+                home.getTabBar().clickHotels();
         }
 
         /*

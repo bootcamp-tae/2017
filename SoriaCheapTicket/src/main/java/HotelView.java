@@ -1,14 +1,13 @@
+import WebDriver.Component;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 
-import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 
-class HotelView extends InitialPage{
+class HotelView extends Component {
 
     @FindBy(id = "hotel-destination")
     WebElement destinationSearchBox;
@@ -29,8 +28,8 @@ class HotelView extends InitialPage{
     List<WebElement> adultsPerRoom;
 
 
-    public HotelView(WebDriver driver){
-        super(driver);
+    public HotelView(){
+        super();
         kidsPerRoom = new ArrayList<>();
         adultsPerRoom = new ArrayList<>();
     }
@@ -53,7 +52,7 @@ class HotelView extends InitialPage{
 
         if (value < 9){
             String idToSearch;
-            for (int i = 1; i <= value; ) {
+            for (int i = 1; i <= value; i++) {
                 idToSearch = "hotel-"+i+"-children";
                 kidsPerRoom.add(getDriver().findElement(By.id(idToSearch)));
             }

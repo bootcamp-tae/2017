@@ -1,21 +1,18 @@
-import org.openqa.selenium.WebDriver;
+import WebDriver.Page;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class CheapTicketHome extends InitialPage {
+public class CheapTicketHome extends Page {
 
-    @FindBy(id = "tab-hotel-tab")
-    WebElement hotelButton;
+    Tabs tabs;
 
-    public CheapTicketHome(WebDriver driver){
-        super(driver);
-        getDriver().get("https://www.cheaptickets.com/");
+    public CheapTicketHome(){
+        super();
+        //getDriver().get("https://www.cheaptickets.com/");
     }
 
-    public HotelView SelectHotels() {
-
-        hotelButton.click();
-        return new HotelView(getDriver());
+    public Tabs getTabBar(){
+        return this.tabs;
     }
 
 }

@@ -1,5 +1,6 @@
 package WebDriver;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -53,6 +54,11 @@ abstract class CommonWebOps {
     protected String getText(WebElement element){
         waitFor(visibilityOf(element));
         return element.getText();
+    }
+
+    public CommonWebOps enterDate(WebElement element, String date){
+        ((JavascriptExecutor) getDriver()).executeScript ( "arguments[0].value = arguments[1];", element, date );
+        return this;
     }
 
     protected <T> void waitFor(ExpectedCondition<T> condition){
