@@ -1,11 +1,13 @@
 package com.globant.automation.bootcamp.ui.pageObjects.cheaptickets;
 
+import com.globant.automation.bootcamp.ui.cheaptickets.models.FlightCriteria;
 import com.globant.automation.bootcamp.ui.cheaptickets.models.HotelCriteria;
 import com.globant.automation.bootcamp.ui.cheaptickets.pages.hotels.HotelCard;
 import com.globant.automation.bootcamp.ui.cheaptickets.pages.landing.Home;
 import com.globant.automation.bootcamp.webdriver.WebTest;
 import org.junit.Test;
 
+import static com.globant.automation.bootcamp.ui.cheaptickets.models.FlightCriteria.Builder.aFlightCriteria;
 import static com.globant.automation.bootcamp.ui.cheaptickets.models.HotelCriteria.Builder.aHotelCriteria;
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.assertThat;
@@ -18,6 +20,15 @@ public class CheapTicketsTest extends WebTest<Home> {
             .withCheckOut(10)
             .withRooms(1)
             .withAdults(1)
+            .withChildren(0)
+            .build();
+
+    private final FlightCriteria flightCriteria = aFlightCriteria()
+            .withFlyingFrom("Buenos Aires")
+            .withFlyingTo("Barcelona")
+            .withDeparting(30)
+            .withReturning(45)
+            .withAdults(2)
             .withChildren(0)
             .build();
 
@@ -35,6 +46,16 @@ public class CheapTicketsTest extends WebTest<Home> {
         assertThat("Hotel has a price", hotel.getPrice(), is(greaterThan(0d)));
 
         hotel.select();
+    }
+
+    @Test
+    public void flightTest() {
+        getInitialPage()
+                .tabsBar()
+                .toFlights()
+                .search(flightCriteria);
+
+
     }
 
     @Override

@@ -9,8 +9,16 @@ public class Tabs extends Page {
     @FindBy(id = "tab-hotel-tab")
     private WebElement hotelsTab;
 
+    @FindBy(id = "tab-flight-tab")
+    private WebElement flightsTab;
+
     public Hotels toHotels() {
         click(hotelsTab);
         return new Hotels();
+    }
+
+    public Flights toFlights() {
+        click(flightsTab);
+        return new Flights();
     }
 }
