@@ -42,4 +42,8 @@ public class POMBased1WebTest {
         assertThat("Page contains text", result.getTitle(), containsString("BUSCAME"));
     }
 
+
+
+    //wizard-container
+
 }

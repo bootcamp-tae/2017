@@ -40,7 +40,7 @@ public class Simple2WebTest {
     @Test
     public void simpleTestVersion2() {
         WebElement searchBox = driver.findElement(GOOGLE_SEARCH_TEXT_BOX);
-        searchBox.sendKeys("Buscame algo" + Keys.ENTER);
+        searchBox.sendKeys("Busca" + Keys.ENTER);
         List<WebElement> results = driver.findElements(GOOGLE_RESULT_LINKS);
         results.get(5).click();
         assertThat("Page contains text", driver.getTitle(), containsString("BUSCAME"));

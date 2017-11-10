@@ -1,6 +1,8 @@
 package com.globant.automation.bootcamp.ui.pages;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
 public abstract class Page {
@@ -13,6 +15,13 @@ public abstract class Page {
     }
 
     protected WebDriver getDriver() {
+
         return driver;
     }
+
+    public void enterDate(WebElement element, String date){
+        ((JavascriptExecutor) getDriver()).executeScript("arguments[0].value = arguments[1];", element, date);
+
+    }
+
 }
