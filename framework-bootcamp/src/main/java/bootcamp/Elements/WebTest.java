@@ -4,7 +4,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.WebDriver;
 
-public abstract class WebTest <T extends PageBase>{
+public abstract class WebTest <T extends Page>{
 
     protected abstract T getInitialPage();
     protected abstract String getUrl();

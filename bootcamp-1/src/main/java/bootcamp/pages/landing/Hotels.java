@@ -27,13 +27,13 @@ public class Hotels extends CheapTicketsPage{
 
     @FindBy(id="hotel-1-children")
     private WebElement hotelChildrens;
-
+/*
     @FindBy(id="hotel-add-flight-checkbox")
     private WebElement checkFlight;
 
     @FindBy(id="hotel-add-car-checkbox")
     private WebElement checkCar;
-
+*/
     public HotelResults search(HotelBuilder builder) {
         type(searchInput, builder.getDestination());
         enterDate(dateInputFirst, builder.getCheckIn());
