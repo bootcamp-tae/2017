@@ -46,7 +46,7 @@ public abstract class PageBase {
     }
 
     protected void click(WebElement element) {
-        waitFor(elementToBeClickable(element));
+        waitFor(visibilityOf(element));
         element.click();
     }
 

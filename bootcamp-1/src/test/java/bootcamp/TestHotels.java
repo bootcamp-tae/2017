@@ -12,7 +12,7 @@ import static bootcamp.model.HotelBuilder.Builder.hotelCriteria;
 public class TestHotels extends WebTest<CheapTicketsHome>{
 
     private final HotelBuilder hotelSearch = hotelCriteria()
-            .withDestination("Mar del Plata")
+            .withDestination("Havana , Cuba")
             .withCheckIn(5)
             .withCheckOut(10)
             .withRooms(1)
@@ -35,7 +35,12 @@ public class TestHotels extends WebTest<CheapTicketsHome>{
     @Test
     public void testSearchForResults() {
 
-        getInitialPage().tabsBar().toHotels().search(hotelSearch);
+        HotelCard hotel = getInitialPage()
+                .tabsBar()
+                .toHotels()
+                .search(hotelSearch)
+                .getHotels()
+                .get(1);
 
         //assertThat("Hotel has a name", hotel.getName(), not(isEmptyString()));
         //assertThat("Hotel has a price", hotel.getPrice(), is(greaterThan(0d)));

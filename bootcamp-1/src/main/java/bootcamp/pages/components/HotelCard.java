@@ -23,7 +23,7 @@ public class HotelCard extends WebComponent {
     private static final Pattern PATTERN = Pattern.compile("\\d+(([.,])\\d+?)?");
 
 
-    protected HotelCard(WebElement container) {
+    public HotelCard(WebElement container) {
         super(container);
     }
 

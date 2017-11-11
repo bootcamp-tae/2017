@@ -6,11 +6,11 @@ import org.openqa.selenium.support.FindBy;
 
 public class Tabs extends PageBase{
 
-    @FindBy(xpath = "//*[@id=\"wizard-theme-wrapper\"]/ul/li[2]")
+    @FindBy(id = "tab-hotel-tab")
     private WebElement hotelBtn;
 
     public Hotels toHotels() {
-        hotelBtn.click();
+        click(hotelBtn);
         return new Hotels();
     }
 }
