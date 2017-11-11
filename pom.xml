@@ -15,6 +15,7 @@
     <modules>
         <module>framework</module>
         <module>ui-testing</module>
+        <module>api-testing</module>
     </modules>
 
     <build>

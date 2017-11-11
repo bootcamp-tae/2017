@@ -1,14 +1,10 @@
 package com.globant.automation.bootcamp.webdriver;
 
-import io.github.bonigarcia.wdm.ChromeDriverManager;
-import io.github.bonigarcia.wdm.EdgeDriverManager;
-import io.github.bonigarcia.wdm.FirefoxDriverManager;
-import io.github.bonigarcia.wdm.InternetExplorerDriverManager;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.remote.RemoteWebDriver;
+
+import java.net.MalformedURLException;
+import java.net.URL;
 
 enum Context {
 
@@ -20,27 +16,19 @@ enum Context {
         return DRIVERS_PER_THREAD.get();
     }
 
-    WebDriver init(Browser browser) {
-        WebDriver driver = null;
-        switch (browser) {
-            case CHROME:
-                ChromeDriverManager.getInstance().setup();
-                driver = new ChromeDriver();
-                break;
-            case FIREFOX:
-                FirefoxDriverManager.getInstance().setup();
-                driver = new FirefoxDriver();
-                break;
-            case IE:
-                InternetExplorerDriverManager.getInstance().setup();
-                driver = new InternetExplorerDriver();
-                break;
-            case EDGE:
-                EdgeDriverManager.getInstance().setup();
-                driver = new EdgeDriver();
-                break;
-        }
+    WebDriver init(Browser browser) throws MalformedURLException {
+        terminate(); // Just in case we have an existing driver running in the same thread
+
+        browser.initialize();
+
+        SeleniumServerBoot.INSTANCE.start();
+
+        URL url = new URL(System.getProperty("SELENIUM_URL", "http://127.0.0.1:4444/wd/hub"));
+
+        WebDriver driver = new RemoteWebDriver(url, browser.getCapabilities());
+
         DRIVERS_PER_THREAD.set(driver);
+
         return driver;
     }
 

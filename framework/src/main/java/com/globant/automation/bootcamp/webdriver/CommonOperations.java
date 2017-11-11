@@ -14,6 +14,8 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOf;
 
 public abstract class CommonOperations {
 
+
+
     protected WebDriver getDriver() {
         return Context.INSTANCE.getDriver();
     }
