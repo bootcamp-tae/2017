@@ -15,7 +15,7 @@ import static org.junit.Assert.assertThat;
 public class CheapTicketsTest extends WebTest<DontWannaSaveExtra> {
 
     private final HotelCriteria hotelCriteria = aHotelCriteria()
-            .withDestination("Mar del Plata")
+            .withDestination("New York")
             .withCheckIn(5)
             .withCheckOut(10)
             .withRooms(1)
@@ -34,15 +34,15 @@ public class CheapTicketsTest extends WebTest<DontWannaSaveExtra> {
                 .toHotels()
                 .search(hotelCriteria)
                 .getHotels()
-                .get(1);
+                .get(3);
 
         assertThat("Hotel has a name", hotel.getName(), not(isEmptyString()));
         assertThat("Hotel has a price", hotel.getPrice(), is(greaterThan(0d)));
 
-        hotel.select();
-                /*.clickOnTopReserveButton()
+        hotel.select()
+                .clickOnTopReserveButton()
                 .clickOnRealReserveButton()
-                .closeModal();*/
+                .closeModal();
 
     }
 

@@ -9,10 +9,11 @@ public class HotelDetails extends CheapTicketsPage {
     @FindBy(id = "mock-book-button")
     WebElement topReserveButton;
 
-    @FindBy(css = "[data-automation=\"launchETPModal\"]")
+    @FindBy(xpath = "//*[@id=\"rooms-and-rates\"]/div/article/table/tbody[1]/tr/td[4]/div/div[1]/button")
     WebElement realReserveButton;
 
     public HotelDetails clickOnTopReserveButton() {
+        changeTab();
         click(topReserveButton);
         return this;
     }
@@ -21,5 +22,7 @@ public class HotelDetails extends CheapTicketsPage {
         click(realReserveButton);
         return new MakeReserveModal();
     }
+
+
 
 }
