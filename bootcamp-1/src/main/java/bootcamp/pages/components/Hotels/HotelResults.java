@@ -8,6 +8,8 @@ import java.util.List;
 
 import static java.util.stream.Collectors.toList;
 
+import static org.openqa.selenium.support.ui.ExpectedConditions.invisibilityOf;
+import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOf;
 import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfAllElements;
 
 public class HotelResults extends CheapTicketsPage{
@@ -35,6 +37,13 @@ public class HotelResults extends CheapTicketsPage{
     private List<WebElement> hotels;
 
     public List<HotelCard> getHotels() {
+        waitFor(visibilityOfAllElements(hotels));
+        return hotels.stream().map(HotelCard::new).collect(toList());
+    }
+
+    public List<HotelCard> getHotelWithFiveStars() {
+        waitFor(visibilityOf(checkFiveStars));
+        click(checkFiveStars);
         waitFor(visibilityOfAllElements(hotels));
         return hotels.stream().map(HotelCard::new).collect(toList());
     }

@@ -16,12 +16,13 @@ import static org.hamcrest.number.OrderingComparison.greaterThan;
 public class TestHotels extends WebTest<CheapTicketsHome>{
 
     private final HotelBuilder hotelSearch = hotelCriteria()
-            .withDestination("Havana , Cuba")
+            .withDestination("Miami (and vicinity), Florida, United States of America")
             .withCheckIn(9)
             .withCheckOut(10)
             .withRooms(1)
             .withAdults(1)
             .withChildren(0)
+            .withAirport("Buenos Aires, Argentina (EZE-Ministro Pistarini Intl.)")
             .build();
 
 
@@ -51,4 +52,67 @@ public class TestHotels extends WebTest<CheapTicketsHome>{
 
         hotel.select();
     }
+
+    @Test
+    public void testSearchForHotelFiveStars() {
+
+        HotelCard hotel = getInitialPage()
+                .tabsBar()
+                .toHotels()
+                .search(hotelSearch)
+                .getHotelWithFiveStars()
+                .get(1);
+
+        assertThat("Hotel has a name", hotel.getName(), not(isEmptyString()));
+        assertThat("Hotel has a price", hotel.getPrice(), is(greaterThan(0d)));
+
+        hotel.select();
+    }
+
+    @Test
+    public void testSearchWithCar(){
+        HotelCard hotel = getInitialPage()
+                .tabsBar()
+                .toHotels()
+                .searchWithCar(hotelSearch)
+                .getHotels()
+                .get(1);
+
+        assertThat("Hotel has a name", hotel.getName(), not(isEmptyString()));
+        assertThat("Hotel has a price", hotel.getPrice(), is(greaterThan(0d)));
+
+        hotel.select();
+    }
+
+    @Test
+    public void testSearchWithFlight(){
+        HotelCard hotel = getInitialPage()
+                .tabsBar()
+                .toHotels()
+                .searchWithFlight(hotelSearch)
+                .getHotels()
+                .get(1);
+
+        assertThat("Hotel has a name", hotel.getName(), not(isEmptyString()));
+        assertThat("Hotel has a price", hotel.getPrice(), is(greaterThan(0d)));
+
+        hotel.select();
+    }
+
+    @Test
+    public void testSearchWithFlightAndCar(){
+        HotelCard hotel = getInitialPage()
+                .tabsBar()
+                .toHotels()
+                .searchWithFlightAndCar(hotelSearch)
+                .getHotels()
+                .get(1);
+
+        assertThat("Hotel has a name", hotel.getName(), not(isEmptyString()));
+        assertThat("Hotel has a price", hotel.getPrice(), is(greaterThan(0d)));
+
+        hotel.select();
+    }
+
+
 }

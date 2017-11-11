@@ -44,7 +44,7 @@ public abstract class PageBasicOps {
     }
 
     protected void click(WebElement element) {
-        waitFor(visibilityOf(element));
+        waitFor(elementToBeClickable(element));
         element.click();
     }
 

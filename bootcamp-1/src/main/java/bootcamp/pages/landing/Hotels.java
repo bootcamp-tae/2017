@@ -83,7 +83,7 @@ public class Hotels extends CheapTicketsPage{
         selectByText(hotelChildrens, String.valueOf(builder.getChildren()));
         click(checkCar);
         click(checkFlight);
-        selectByText(flightOrigin,String.valueOf(builder.getAirport()));
+        type(flightOrigin,builder.getAirport());
         click(searchButton);
         return new HotelResults();
     }
