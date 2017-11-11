@@ -1,4 +1,11 @@
 package bootcamp.pages.landing;
 
-public class CheapTicketsHome {
+import bootcamp.pages.CheapTicketsPage;
+
+public class CheapTicketsHome extends CheapTicketsPage{
+    private Tabs tabs = new Tabs();
+
+    public Tabs tabsBar() {
+        return tabs;
+    }
 }

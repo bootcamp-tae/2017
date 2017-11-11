@@ -1,13 +1,12 @@
-package bootcamp;
+package bootcamp.pages;
 
+import bootcamp.PageBase;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
-import sun.awt.SunHints;
 
-public class CheapTicketsHome extends PageBase{
+public class CheapTicketsHome extends PageBase {
 
 
     @FindBy(xpath = "//*[@id=\"wizard-theme-wrapper\"]/ul/li[2]")
@@ -33,7 +32,6 @@ public class CheapTicketsHome extends PageBase{
 
     @FindBy(id="hotel-1-children")
     private WebElement hotelChildrens;
-
 
     @FindBy(id="hotel-add-flight-checkbox")
     private WebElement checkFlight;

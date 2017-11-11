@@ -3,6 +3,7 @@ package bootcamp;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -14,6 +15,7 @@ public abstract class PageBase {
 
     private final WebDriver driver;
     private final WebDriverWait wait;
+    //private final FluentWait fluentWait;
 
     protected PageBase(WebDriver driver){
         this.driver=driver;
@@ -32,6 +34,10 @@ public abstract class PageBase {
 
     public  void enterData(WebElement element, String date){
         ((JavascriptExecutor)getDriver()).executeScript("arguments[0].value = arguments[1];",element,date);
+    }
+
+    protected <T> void waitFor(ExpectedCondition<T> condition){
+        //new FluentWait<T>(getDriver());
     }
 
 }

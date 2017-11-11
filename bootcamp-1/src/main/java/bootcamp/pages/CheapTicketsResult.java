@@ -1,6 +1,6 @@
-package bootcamp;
+package bootcamp.pages;
 
-import org.openqa.selenium.Keys;
+import bootcamp.PageBase;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -9,7 +9,7 @@ import java.util.List;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfAllElements;
 
-public class CheapTicketsResult extends PageBase{
+public class CheapTicketsResult extends PageBase {
 
     @FindBy(id="resultsContainer")
     private WebElement resultsContainer;

@@ -1,24 +1,26 @@
 package bootcamp;
 
+import bootcamp.pages.CheapTicketsHome;
+import bootcamp.pages.CheapTicketsOpenLink;
+import bootcamp.pages.CheapTicketsResult;
 import io.github.bonigarcia.wdm.ChromeDriverManager;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.util.Arrays;
 
 import static junit.framework.TestCase.fail;
-import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 @RunWith(Parameterized.class)
-public class TestBusqueda {
-
+//public class TestBusqueda extends WebTest<>{
+    public class TestBusqueda{
 
     private WebDriver driver;
 
@@ -28,6 +30,7 @@ public class TestBusqueda {
 
     @Parameterized.Parameters(name = "{index}:Browser[{0}]")
     public static Iterable<Object[]> data() {
+        RemoteWebDriver remoteWebDriver;
         ChromeDriverManager.getInstance().setup();
         return Arrays.asList(new Object[][]{
                 {new ChromeDriver()}}
