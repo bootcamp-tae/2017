@@ -16,6 +16,7 @@
 
   <modules>
     <module>bootcamp-1</module>
+    <module>framework-bootcamp</module>
   </modules>
 
   <build>
