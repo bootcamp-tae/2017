@@ -30,7 +30,7 @@ public class Flights extends CheapTicketsPage{
     private WebElement searchBtn;
 
     public FlightResults search(FlightBuilder builder){
-
+        click(btnOneWatFlight);
         type(inputOrigin, builder.getOrigin());
         type(inputDestination, builder.getDestination());
         enterDate(inputDateDeparting, builder.getDateDeparting());
