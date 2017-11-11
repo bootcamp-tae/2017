@@ -18,9 +18,6 @@ public class HotelResults extends CheapTicketsPage{
     @FindBy(id="resultsContainer")
     private WebElement resultsContainer;
 
-    @FindBy(className = "flex-content info-and-price HIGHER_LEVEL_REGION avgPerNight")
-    private List<WebElement> resultLinks;
-
     @FindBy(id="star5")
     private WebElement checkFiveStars;
 
@@ -42,7 +39,6 @@ public class HotelResults extends CheapTicketsPage{
     }
 
     public List<HotelCard> getHotelWithFiveStars() {
-        waitFor(visibilityOf(checkFiveStars));
         click(checkFiveStars);
         waitFor(visibilityOfAllElements(hotels));
         return hotels.stream().map(HotelCard::new).collect(toList());
