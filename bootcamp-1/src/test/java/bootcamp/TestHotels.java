@@ -1,19 +1,23 @@
 package bootcamp;
 
-import bootcamp.Elements.PageBase;
 import bootcamp.Elements.WebTest;
 import bootcamp.model.HotelBuilder;
-import bootcamp.pages.components.HotelCard;
+import bootcamp.pages.components.Hotels.HotelCard;
 import bootcamp.pages.landing.CheapTicketsHome;
 import org.junit.Test;
 
+import static org.hamcrest.Matchers.*;
 import static bootcamp.model.HotelBuilder.Builder.hotelCriteria;
+import static org.hamcrest.CoreMatchers.not;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.isEmptyString;
+import static org.hamcrest.number.OrderingComparison.greaterThan;
 
 public class TestHotels extends WebTest<CheapTicketsHome>{
 
     private final HotelBuilder hotelSearch = hotelCriteria()
             .withDestination("Havana , Cuba")
-            .withCheckIn(5)
+            .withCheckIn(9)
             .withCheckOut(10)
             .withRooms(1)
             .withAdults(1)
@@ -42,9 +46,9 @@ public class TestHotels extends WebTest<CheapTicketsHome>{
                 .getHotels()
                 .get(1);
 
-        //assertThat("Hotel has a name", hotel.getName(), not(isEmptyString()));
-        //assertThat("Hotel has a price", hotel.getPrice(), is(greaterThan(0d)));
+        assertThat("Hotel has a name", hotel.getName(), not(isEmptyString()));
+        assertThat("Hotel has a price", hotel.getPrice(), is(greaterThan(0d)));
 
-        //hotel.select();
+        hotel.select();
     }
 }

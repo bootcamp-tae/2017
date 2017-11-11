@@ -10,14 +10,16 @@ public final class HotelBuilder {
     private final int rooms;
     private final int adults;
     private final int children;
+    private final String airport;
 
-    HotelBuilder(String destination, int checkIn, int checkOut, int rooms, int adults, int children) {
+    HotelBuilder(String destination, int checkIn, int checkOut, int rooms, int adults, int children,String airport) {
         this.destination = destination;
         this.checkIn = checkIn;
         this.checkOut = checkOut;
         this.rooms = rooms;
         this.adults = adults;
         this.children = children;
+        this.airport=airport;
     }
 
     public String getDestination() {
@@ -46,6 +48,10 @@ public final class HotelBuilder {
         return children;
     }
 
+    public String getAirport(){
+        return airport;
+    }
+
     public static final class Builder {
         private String destination;
         private int checkIn;
@@ -53,6 +59,7 @@ public final class HotelBuilder {
         private int rooms;
         private int adults;
         private int children;
+        private String airport;
 
         private Builder() {
         }
@@ -91,8 +98,13 @@ public final class HotelBuilder {
             return this;
         }
 
+        public Builder withAirport(String airport){
+            this.airport=airport;
+            return this;
+        }
+
         public HotelBuilder build() {
-            return new HotelBuilder(destination, checkIn, checkOut, rooms, adults, children);
+            return new HotelBuilder(destination, checkIn, checkOut, rooms, adults, children,airport);
         }
     }
 }

@@ -1,4 +1,4 @@
-package bootcamp.pages.components;
+package bootcamp.pages.components.Hotels;
 
 import bootcamp.Elements.WebComponent;
 import org.openqa.selenium.WebElement;

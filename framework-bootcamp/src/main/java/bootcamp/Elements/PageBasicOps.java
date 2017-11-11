@@ -4,42 +4,40 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.openqa.selenium.support.ui.ExpectedConditions.elementToBeClickable;
 import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOf;
 
-public abstract class PageBase {
+public abstract class PageBasicOps {
 
 
     protected WebDriver getDriver(){
        return ContextDriver.INSTANCE.getDriver();
     }
 
-    protected PageBase selectByText(WebElement element, String text) {
+    protected PageBasicOps selectByText(WebElement element, String text) {
         waitFor(visibilityOf(element));
         new Select(element).selectByVisibleText(text);
         return this;
     }
 
-    protected PageBase selectByValue(WebElement element, String value) {
+    protected PageBasicOps selectByValue(WebElement element, String value) {
         waitFor(visibilityOf(element));
         new Select(element).selectByValue(value);
         return this;
     }
 
-    protected PageBase selectByIndex(WebElement element, int index) {
+    protected PageBasicOps selectByIndex(WebElement element, int index) {
         waitFor(visibilityOf(element));
         new Select(element).selectByIndex(index);
         return this;
     }
 
-    protected PageBase type(WebElement element, String text) {
+    protected PageBasicOps type(WebElement element, String text) {
         waitFor(visibilityOf(element));
         element.sendKeys(text);
         return this;

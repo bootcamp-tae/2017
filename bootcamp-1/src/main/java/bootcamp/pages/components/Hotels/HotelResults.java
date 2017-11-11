@@ -1,7 +1,6 @@
-package bootcamp.pages.landing;
+package bootcamp.pages.components.Hotels;
 
 import bootcamp.pages.CheapTicketsPage;
-import bootcamp.pages.components.HotelCard;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
