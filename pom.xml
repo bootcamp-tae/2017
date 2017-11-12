@@ -17,6 +17,7 @@
   <modules>
     <module>bootcamp-1</module>
     <module>framework-bootcamp</module>
+    <module>apitest</module>
   </modules>
 
   <build>
