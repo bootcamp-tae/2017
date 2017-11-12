@@ -2,6 +2,7 @@ package bootcamp.Elements;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 
 public abstract class WebTest <T extends Page>{
