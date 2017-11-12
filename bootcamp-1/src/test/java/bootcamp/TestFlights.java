@@ -14,7 +14,7 @@ public class TestFlights extends WebTest<CheapTicketsHome> {
     private final FlightBuilder flightSearch= flightCriteria()
             .setOrigin("Buenos Aires, Argentina (EZE-Ministro Pistarini Intl.)")
             .setDestination("Miami (and vicinity), Florida, United States of America")
-            .setDateDeparting(10)
+            .setDateDeparting(25)
             .setAdults(1)
             .setChildren(0)
             .build();

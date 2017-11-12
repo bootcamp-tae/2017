@@ -1,3 +1,5 @@
+package junit;
+
 import org.junit.runners.Parameterized;
 
 public class ParametrizedParallelism extends Parameterized {
