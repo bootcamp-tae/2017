@@ -19,6 +19,7 @@ public class MercadoLibreTest extends WebTest<Home> {
                 .navbar()
                 .setSearchText("Asus")
                 .seeResults()
+                .onlyNews()
                 .getProducts()
                 .get(1);
         assertThat("Product has a name", product.getProductName(), not(isEmptyString()));

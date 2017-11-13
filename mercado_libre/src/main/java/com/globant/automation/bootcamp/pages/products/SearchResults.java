@@ -17,6 +17,14 @@ public class SearchResults extends MercadoLibrePage {
     @FindBy(css = ".results-item.article.stack")
     private List<WebElement> results;
 
+    @FindBy(css = "#id_condition > dd:nth-child(2) > a")
+    private WebElement onlyNewsFilter;
+
+    public SearchResults onlyNews() {
+        click(onlyNewsFilter);
+        return this;
+    }
+
     public List<ProductCard> getProducts() {
         waitFor(visibilityOfAllElements(results));
         return results.parallelStream()
