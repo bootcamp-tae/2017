@@ -1,14 +1,29 @@
 package com.globant.automation.bootcamp.ui.pages.hotels;
 
-import org.openqa.selenium.WebDriver;
+import com.globant.automation.bootcamp.ui.pages.CheapTicketsPage;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
-public class CheapTicketsHotelsResults extends Component {
+import java.util.List;
 
-    public CheapTicketsHotelsResults(WebDriver driver){
-        super(driver);
+import static java.util.stream.Collectors.toList;
+import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfAllElements;
+
+public class CheapTicketsHotelsResults extends CheapTicketsPage{
+
+    @FindBy(css = ".flex-link")
+    private List<WebElement> hotels;
+
+    /*public void getHotels(){
+        waitFor(visibilityOfAllElements(hotels));
+        hotels.forEach();
+
+    }*/
+
+    public HotelDetail selectResult(int index){
+        waitFor(visibilityOfAllElements(hotels));
+        click(hotels.get(index));
+        return new HotelDetail();
     }
 
-    public CheapTicketsHotelsResults selectResult(int resultIndex){
-        return this;
-    }
 }

@@ -1,6 +1,6 @@
 package com.globant.automation.bootcamp.ui.pages;
 
-import com.globant.automation.bootcamp.webdriver.Page;
+import com.globant.automation.bootcamp.webdriver.webdriver.Page;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 

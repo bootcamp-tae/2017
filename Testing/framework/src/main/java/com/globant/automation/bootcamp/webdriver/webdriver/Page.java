@@ -1,4 +1,4 @@
-package com.globant.automation.bootcamp.webdriver;
+package com.globant.automation.bootcamp.webdriver.webdriver;
 
 import org.openqa.selenium.support.PageFactory;
 

@@ -1,5 +1,6 @@
 package com.globant.automation.bootcamp.ui.pages;
 
+import com.globant.automation.bootcamp.ui.models.HotelSearch;
 import com.globant.automation.bootcamp.ui.pages.hotels.CheapTicketHotelTab;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -18,11 +19,8 @@ public class CheapTicketsTabs extends CheapTicketsPage {
     @FindBy(id = "tab-cruise-tab")
     private WebElement cruisesTab;
 
-    @FindBy(id = "tab-hotel-tab")
-    private WebElement activitiesTab;
-
-    public CheapTicketHotelTab searchHotels()
-    {
+    public CheapTicketHotelTab toHotels(){
+        click(hotelTab);
         return new CheapTicketHotelTab();
     }
 }

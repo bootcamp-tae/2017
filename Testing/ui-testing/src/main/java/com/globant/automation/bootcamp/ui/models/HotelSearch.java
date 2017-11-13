@@ -50,11 +50,11 @@ public class HotelSearch {
 
     public static final class Builder {
         private String destination;
-        private int checkIn;
-        private int checkOut;
+        private int checkInDate;
+        private int checkOutDate;
         private int rooms;
-        private int adults;
-        private int children;
+        private int adultsPassengers;
+        private int childrenPassengers;
 
         /**
          * Clase anonima, aplicando patron Builder la cual me permite crear un Objeto tipo
@@ -73,12 +73,12 @@ public class HotelSearch {
         }
 
         public Builder withCheckIn(int checkIn) {
-            this.checkIn = checkIn;
+            this.checkInDate = checkIn;
             return this;
         }
 
         public Builder withCheckOut(int checkOut) {
-            this.checkOut = checkOut;
+            this.checkOutDate = checkOut;
             return this;
         }
 
@@ -88,17 +88,17 @@ public class HotelSearch {
         }
 
         public Builder withAdults(int adults) {
-            this.adults = adults;
+            this.adultsPassengers = adults;
             return this;
         }
 
         public Builder withChildren(int children) {
-            this.children = children;
+            this.childrenPassengers = children;
             return this;
         }
 
         public HotelSearch build() {
-            return new HotelSearch(destination, checkIn, checkOut, rooms, adults, children);
+            return new HotelSearch(destination, checkInDate, checkOutDate, rooms, adultsPassengers, childrenPassengers);
         }
     }
 }

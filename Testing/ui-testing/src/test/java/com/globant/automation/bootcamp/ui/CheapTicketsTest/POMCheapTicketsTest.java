@@ -2,22 +2,38 @@ package com.globant.automation.bootcamp.ui.CheapTicketsTest;
 
 import com.globant.automation.bootcamp.ui.pages.CheapTicketsHome;
 import com.globant.automation.bootcamp.ui.models.HotelSearch;
-import com.globant.automation.bootcamp.ui.pages.hotels.CheapTicketsHotelsResults;
-import com.globant.automation.bootcamp.webdriver.WebTest;
-import io.github.bonigarcia.wdm.ChromeDriverManager;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.BeforeClass;
+import com.globant.automation.bootcamp.ui.pages.hotels.HotelDetail;
+import com.globant.automation.bootcamp.webdriver.webdriver.WebTest;
 import org.junit.Test;
-import org.openqa.selenium.chrome.ChromeDriver;
+
+
+import static com.globant.automation.bootcamp.ui.models.HotelSearch.Builder.aHotelSearch;
+import static org.hamcrest.Matchers.*;
+import static org.junit.Assert.assertThat;
 
 public class POMCheapTicketsTest extends WebTest<CheapTicketsHome>{
 
+
+    private final HotelSearch hotelSearch = aHotelSearch()
+            .withDestination("New York")
+            .withCheckIn(5)
+            .withCheckOut(20)
+            .withRooms(1)
+            .withAdults(2)
+            .withChildren(0)
+            .build();
+
     @Test
     public void testSample() {
-        CheapTicketsHotelsResults hotel = getInitialPage()
+        HotelDetail hotel = getInitialPage()
                 .getTabsBar()
-                .searchHotels();
+                .toHotels()
+                .searchHotels(hotelSearch)
+                .selectResult(0);
+
+        assertThat("This hotel sucks!", hotel.getHotelRating(), is(lessThan(2.0d)));
+        assertThat("Hotel has a name", hotel.getName(), not(isEmptyString()));
+
     }
 
     @Override
