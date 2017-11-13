@@ -16,6 +16,7 @@
         <module>framework</module>
         <module>ui-testing</module>
         <module>api-testing</module>
+        <module>mercado_libre</module>
     </modules>
 
     <build>

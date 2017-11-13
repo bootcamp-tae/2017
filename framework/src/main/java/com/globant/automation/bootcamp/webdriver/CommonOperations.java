@@ -24,6 +24,12 @@ public abstract class CommonOperations {
         return this;
     }
 
+    protected CommonOperations sendKeys(WebElement element, String text) {
+        waitFor(visibilityOf(element));
+        element.sendKeys(text);
+        return this;
+    }
+
     protected CommonOperations selectByValue(WebElement element, String value) {
         waitFor(visibilityOf(element));
         new Select(element).selectByValue(value);
