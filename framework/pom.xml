@@ -50,6 +50,26 @@
             <version>1.2.3</version>
         </dependency>
 
+        <!-- SELENIUM WEB DRIVER DEPENDENCY -->
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>3.7.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-server</artifactId>
+            <version>3.7.1</version>
+        </dependency>
+
+        <!-- WEB DRIVER MANAGER DEPENDENCY - OPTIONAL - MAKES LIFE EASIER -->
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>1.7.2</version>
+        </dependency>
+
     </dependencies>
 
 </project>
