@@ -19,41 +19,41 @@ import java.util.List;
 @RunWith(ParametrizedParallelism.class)
 public class WDMCrap {
 
-  @Parameter
-  public Browser browser;
+    @Parameter
+    public Browser browser;
 
-  private WebDriver driver;
+    private WebDriver driver;
 
-  @Parameters(name = "Browser {0}")
-  public static List<Browser> browsers() {
-    return Arrays.asList(Browser.CHROME, Browser.IE);
-  }
-
-  @Test
-  public void kaput() {
-    browser.initialize();
-    switch (browser) {
-      case CHROME:
-        driver = new ChromeDriver();
-        break;
-      case FIREFOX:
-        driver = new FirefoxDriver();
-        break;
-      case IE:
-        driver = new InternetExplorerDriver();
-        break;
-      case EDGE:
-        driver = new EdgeDriver();
-        break;
+    @Parameters(name = "Browser {0}")
+    public static List<Browser> browsers() {
+        return Arrays.asList(Browser.CHROME, Browser.IE);
     }
-    driver.get("http://www.google.com");
-  }
 
-  @After
-  public void shutDown() {
-    if (driver != null) {
-      driver.quit();
+    @Test
+    public void kaput() {
+        browser.initialize();
+        switch (browser) {
+            case CHROME:
+                driver = new ChromeDriver();
+                break;
+            case FIREFOX:
+                driver = new FirefoxDriver();
+                break;
+            case IE:
+                driver = new InternetExplorerDriver();
+                break;
+            case EDGE:
+                driver = new EdgeDriver();
+                break;
+        }
+        driver.get("http://www.google.com");
     }
-  }
+
+    @After
+    public void shutDown() {
+        if (driver != null) {
+            driver.quit();
+        }
+    }
 
 }
