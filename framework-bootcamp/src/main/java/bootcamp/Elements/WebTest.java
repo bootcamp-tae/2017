@@ -4,7 +4,8 @@ import junit.ParametrizedParallelism;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
+import org.junit.runners.Parameterized.Parameter;
+import org.junit.runners.Parameterized.Parameters;
 import org.openqa.selenium.WebDriver;
 
 import java.net.MalformedURLException;
@@ -17,11 +18,11 @@ public abstract class WebTest <T extends Page>{
     protected abstract T getInitialPage();
     protected abstract String getUrl();
 
-    @Parameterized.Parameter
+    @Parameter
     public Browser browser;
 
 
-    @Parameterized.Parameters(name = "Browser: {0}")
+    @Parameters(name = "Browser: {0}")
     public static List<Browser> browsers() {
         return Arrays.asList(Browser.values());
     }
