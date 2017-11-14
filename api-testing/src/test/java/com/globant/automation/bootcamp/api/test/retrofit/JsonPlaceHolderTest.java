@@ -16,24 +16,24 @@ import static org.junit.Assert.assertThat;
 
 public class JsonPlaceHolderTest {
 
-    @Test
-    public void getCommentsRetrofit() throws IOException {
-        OkHttpClient c = new OkHttpClient.Builder().build();
+  @Test
+  public void getCommentsRetrofit() throws IOException {
+    OkHttpClient c = new OkHttpClient.Builder().build();
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://jsonplaceholder.typicode.com")
-                .addConverterFactory(JacksonConverterFactory.create())
-                .client(c)
-                .build();
+    Retrofit retrofit = new Retrofit.Builder()
+        .baseUrl("https://jsonplaceholder.typicode.com")
+        .addConverterFactory(JacksonConverterFactory.create())
+        .client(c)
+        .build();
 
-        Comments api = retrofit.create(Comments.class);
+    Comments api = retrofit.create(Comments.class);
 
-        Response<List<Comment>> response = api.getAll().execute();
+    Response<List<Comment>> response = api.getAll().execute();
 
-        List<Comment> comments = response.body();
+    List<Comment> comments = response.body();
 
-        assertThat("HTTP code is OK", response.code(), is(500));
-        assertThat("Shit got real", comments.size(), is(500));
-    }
+    assertThat("HTTP code is OK", response.code(), is(500));
+    assertThat("Shit got real", comments.size(), is(500));
+  }
 
 }

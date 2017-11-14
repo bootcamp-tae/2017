@@ -9,12 +9,12 @@ import java.util.List;
 
 public interface Comments {
 
-    @GET
-    @Path("/comments")
-    List<Comment> getAll();
+  @GET
+  @Path("/comments")
+  List<Comment> getAll();
 
-    @GET
-    @Path("/comments/{commentId}")
-    Comment get(@PathParam("commentId") int commentId);
+  @GET
+  @Path("/comments/{commentId}")
+  Comment get(@PathParam("commentId") int commentId);
 
 }
