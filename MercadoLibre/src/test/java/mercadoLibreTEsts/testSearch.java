@@ -1,11 +1,11 @@
 package mercadoLibreTEsts;
 
 import bootcamp.Elements.WebTest;
-import bootcamp.landing.Items;
+import bootcamp.PageComponents.Items;
 import bootcamp.landing.MercadoLibreHome;
 import org.junit.Test;
 
-import static bootcamp.landing.Filters.Condition.NEW;
+import static bootcamp.PageComponents.Filters.Condition.NEW;
 import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.isEmptyString;

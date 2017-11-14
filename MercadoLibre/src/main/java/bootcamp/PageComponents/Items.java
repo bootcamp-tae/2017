@@ -1,7 +1,8 @@
-package bootcamp.landing;
+package bootcamp.PageComponents;
 
 import bootcamp.Elements.WebComponent;
 import bootcamp.MercadoLibrePage;
+import bootcamp.landing.ItemDetails;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -14,7 +15,7 @@ public class Items extends WebComponent {
     private WebElement name;
 
 
-    protected Items(WebElement container) {
+    public Items(WebElement container) {
         super(container);
     }
 

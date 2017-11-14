@@ -1,6 +1,7 @@
-package bootcamp.landing;
+package bootcamp.PageComponents;
 
 import bootcamp.Elements.WebComponent;
+import bootcamp.landing.MercadoLibreResults;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -14,7 +15,7 @@ public class Filters extends WebComponent{
     @FindBy(css = "#id_condition a")
     private List<WebElement> conditions;
 
-    protected Filters(WebElement container) {
+    public Filters(WebElement container) {
         super(container);
     }
 
