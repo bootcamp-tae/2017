@@ -21,7 +21,7 @@ public class Tests extends WebTest<Home> {
                 .filter()
                 .byCondition(FiltersComponent.Conditions.NEW)
                 .atTheProductResults()
-                .selectProduct(1)
+                .selectProduct(0)
                 .goToDetails()
                 .askQuestion("este auto se vende?");
 

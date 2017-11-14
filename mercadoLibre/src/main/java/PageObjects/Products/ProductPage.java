@@ -8,9 +8,13 @@ public class ProductPage extends MercadoLibrePage {
     @FindBy (id = "question")
     private WebElement questionField;
 
+    @FindBy (id = "question-btn")
+    private WebElement questionButton;
+
 
     public HaveAccount askQuestion(String question) {
         type(questionField, question);
+        click(questionButton);
         return new HaveAccount();
     }
 }
