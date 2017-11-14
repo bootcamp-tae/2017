@@ -7,6 +7,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.openqa.selenium.WebDriver;
 
+import java.net.MalformedURLException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -26,8 +27,8 @@ public abstract class WebTest <T extends Page>{
     }
 
     @Before
-    public void setUp(){
-        WebDriver webDriver = ContextDriver.INSTANCE.init(Browser.CHROME);
+    public void setUp()throws MalformedURLException {
+        WebDriver webDriver = ContextDriver.INSTANCE.init(browser);
         webDriver.manage().window().maximize();
         webDriver.get(getUrl());
     }

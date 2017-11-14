@@ -18,7 +18,7 @@ public class ThreadPoolScheduler implements RunnerScheduler, Logging {
     private final ExecutorService executor;
 
     ThreadPoolScheduler() {
-        this.executor = Executors.newWorkStealingPool(Runtime.getRuntime().availableProcessors());
+        this.executor = Executors.newWorkStealingPool(2);
     }
 
     @Override

@@ -1,10 +1,6 @@
 package bootcamp.Elements;
 
-import io.github.bonigarcia.wdm.ChromeDriverManager;
-import io.github.bonigarcia.wdm.FirefoxDriverManager;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 
 enum ContextDriver {
 
@@ -17,17 +13,7 @@ enum ContextDriver {
     }
 
     WebDriver init(Browser browser){
-        WebDriver driver=null;
-        switch (browser){
-            case CHROME:
-                ChromeDriverManager.getInstance().setup();
-                driver=new ChromeDriver();
-                break;
-            case FIREFOX:
-                FirefoxDriverManager.getInstance().setup();
-                driver=new FirefoxDriver();
-                break;
-        }
+        WebDriver driver=browser.initialize();
         driver_thread.set(driver);
         return driver;
     }

@@ -5,11 +5,12 @@ import bootcamp.Elements.WebTest;
 import bootcamp.model.FlightBuilder;
 import bootcamp.pages.components.Flights.FlightCard;
 import bootcamp.pages.landing.CheapTicketsHome;
+import logging.Logging;
 import org.junit.Test;
 
 import static bootcamp.model.FlightBuilder.Builder.flightCriteria;
 
-public class TestFlights extends WebTest<CheapTicketsHome> {
+public class TestFlights extends WebTest<CheapTicketsHome>{
 
     private final FlightBuilder flightSearch= flightCriteria()
             .setOrigin("Buenos Aires, Argentina (EZE-Ministro Pistarini Intl.)")
