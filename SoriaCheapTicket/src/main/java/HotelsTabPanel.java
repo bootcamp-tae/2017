@@ -7,7 +7,7 @@ import org.openqa.selenium.support.ui.Select;
 import java.util.ArrayList;
 import java.util.List;
 
-class HotelView extends Component {
+class HotelsTabPanel extends Component {
 
     @FindBy(id = "hotel-destination")
     WebElement destinationSearchBox;
@@ -28,8 +28,8 @@ class HotelView extends Component {
     List<WebElement> adultsPerRoom;
 
 
-    public HotelView(){
-        super();
+    public HotelsTabPanel(WebElement container){
+        super(container);
         kidsPerRoom = new ArrayList<>();
         adultsPerRoom = new ArrayList<>();
     }
@@ -46,7 +46,7 @@ class HotelView extends Component {
         return checkoutBox;
     }
 
-    public HotelView selectRooms(int value) throws InterruptedException {
+    public HotelsTabPanel selectRooms(int value){
         Select roomSelect = new Select(this.roomSelector);
         roomSelect.selectByValue(String.valueOf(value));
 
@@ -72,15 +72,13 @@ class HotelView extends Component {
         return searchButton;
     }
 
-    public HotelView pickAdultsOnRoom(int adults, int room) {
-            Select adultsSelector = new Select(adultsPerRoom.get(room));
-            adultsSelector.selectByValue(String.valueOf(adults));
+    public HotelsTabPanel pickAdultsOnRoom(int adults, int room) {
+            selectByIndex(adultsPerRoom.get(room), adults);
         return this;
     }
 
-    public HotelView pickKidsOnRoom(int kids, int room) {
-            Select kidsSelector = new Select(kidsPerRoom.get(room));
-            kidsSelector.selectByValue(String.valueOf(room));
+    public HotelsTabPanel pickKidsOnRoom(int kids, int room) {
+            selectByIndex(kidsPerRoom.get(room), kids);
         return this;
     }
 }

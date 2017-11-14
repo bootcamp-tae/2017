@@ -1,4 +1,6 @@
-import io.github.bonigarcia.wdm.FirefoxDriverManager;
+import WebDriver.Page;
+import WebDriver.WebTest;
+import javafx.util.Builder;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -6,18 +8,58 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 import static org.hamcrest.core.Is.is;
 
-public class CheapTicketHotelsSuitTest {
+public class CheapTicketHotelsSuitTest extends WebTest{
 
         private static CheapTicketHome home;
-        private static HotelView hotelView;
 
-        @BeforeClass
-        public static void setUp(){
-                System.setProperty("webdriver.gecko.driver", "C:\\drivers\\geckodriver.exe");
-                home = new CheapTicketHome(new FirefoxDriver());
-                home.getTabBar().clickHotels();
+        @Override
+        protected Page getInitialPage() {
+                return null;
         }
 
+        @Override
+        protected String getInitialURL() {
+                return null;
+        }
+
+        @BeforeClass
+        public static void init(){
+                //TODO usar RemoteWebDriver y borrar esta linea.
+                System.setProperty("webdriver.gecko.driver", "C:\\drivers\\geckodriver.exe");
+                home = new CheapTicketHome();
+        }
+
+        @Test
+        public void doOneSearch(){
+
+                HotelsTabPanel hotelsTabPanel = home.getTabBar().clickHotels();
+                HotelCriteria hotelSearchData = HotelCriteria.Builder.anHotelCriteria()
+                        .withDestination("Mar del Plata")
+                        .withRooms(3)
+                        .withAdults(2)
+                        .withChildren(3)
+                        .withCheckIn(7)
+                        .withCheckOut(20)
+                        .build();
+
+
+                hotelsTabPanel.getDestinationSearchBox()
+                        .sendKeys(hotelSearchData.getDestination());
+
+                home.enterDate(hotelsTabPanel.getCheckinBox(),hotelSearchData.getCheckIn());
+
+                home.enterDate(hotelsTabPanel.getCheckoutBox(),hotelSearchData.getCheckOut());
+
+                hotelsTabPanel.selectRooms(hotelSearchData.getRooms());
+                Assert.assertThat(hotelsTabPanel.getRoomSelector().getAttribute("value"), is(hotelSearchData.getRooms()));
+                if(hotelSearchData.getRooms() < 9){
+                        for (int i = 1; i <= hotelSearchData.getRooms(); i++) {
+                                hotelsTabPanel.pickKidsOnRoom(hotelSearchData.getKids(), i)
+                                        .pickAdultsOnRoom(hotelSearchData.getAdults(), i);
+                        }
+
+                }
+        }
         /*
         Escribir en un campo Date:
                 ((JavascriptExecutor) getDriver()).executeScript ( "arguments[0].value = arguments[1];", element, date )
@@ -25,43 +67,6 @@ public class CheapTicketHotelsSuitTest {
         Clas
          */
 
-        @Test
-        public void testGoingTo () {
-
-                hotelView.getDestinationSearchBox()
-                        .sendKeys(HotelSearchData.getLocation());
-                Assert.assertEquals(HotelSearchData.getLocation(), home.SelectHotels()
-                                                        .getDestinationSearchBox()
-                                                        .getAttribute("value"));
-        }
-
-        @Test
-        public void testDates(){
-                home.enterDate(hotelView.getCheckinBox(),HotelSearchData.getCheckin());
-                Assert.assertEquals(HotelSearchData.getCheckin(), hotelView
-                        .getCheckinBox()
-                        .getAttribute("value"));
-
-                home.enterDate(hotelView.getCheckoutBox(),HotelSearchData.getCheckout());
-                Assert.assertEquals(HotelSearchData.getCheckout(), hotelView
-                        .getCheckoutBox()
-                        .getAttribute("value"));
-        }
-
-        @Test
-        public void testSelects() throws InterruptedException {
-
-                hotelView.selectRooms(HotelSearchData.getRooms());
-                Assert.assertThat(hotelView.getRoomSelector().getAttribute("value"), is(HotelSearchData.getRooms()));
-                if(HotelSearchData.getRooms() < 9){
-                     for (int i = 1; i <= HotelSearchData.getRooms(); i++) {
-                             hotelView.pickKidsOnRoom(HotelSearchData.getKids(), i)
-                                      .pickAdultsOnRoom(HotelSearchData.getAdults(), i);
-                     }
-
-                }
-
-        }
 
 
 }
