@@ -1,13 +1,10 @@
 package MercadoLibreTests;
 
-import com.globant.automation.bootcamp.webdriver.junit.ParametrizedParallelism;
 import com.globant.automation.bootcamp.webdriver.webdriver.WebTest;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import pages.MercadoLibreHome;
 import pages.ProductPage;
 
-import static org.junit.Assert.assertThat;
 
 public class MercadoLibreTest extends WebTest<MercadoLibreHome> {
 

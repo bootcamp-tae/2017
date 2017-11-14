@@ -13,6 +13,7 @@ public class ProductPage extends MercadoLibreHome{
 
     public ProductPage ask(String question){
         type(questionBar, question);
+        click(questionButton);
         return this;
     }
 }
