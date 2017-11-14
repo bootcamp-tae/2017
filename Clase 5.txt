@@ -1,0 +1,143 @@
+El cliente es el WebDriver que se instancia como ChromeWebDriver, FirefoxWebDriver, etc. Es un cliente http que conoce
+como correr el browser.
+Cuando se baja el ChromeWebDriver se está descargando una pequeña parte (mini implementación) del servidor.
+Al hacer un ChromeWebDriver.getisntace().setup() se está creando un servidor. Luego, cuando se hace el new se crea el
+cliente http.
+El sitio oficial de Selenium permite descargar un server standalone que sirve como server de soporte para todos los drivers
+que se deseen descargar. Este standalone contiene todos los drivers hasta una determinada versión.
+WebDriver es un estándar y cuando se lo instancia se le pasan ciertas capabilities o cualidades al archivo que lo crea
+para que se inicie con ciertos parámetros por defecto.
+
+Se desea que se pueda utilizar WebDriver remotamente en vez de localmente. En vez de WebDriver se debe usar RemoteWebDriver.
+
+Las Capabilities son un mapa que contiene las cualidades o características que tendrá la instancia. Se le puede indicar
+browserName, URL. Si no se le indica la remoteAddress la URL se toma por defecto la local (corre contra sí mismo).
+
+DesiredCapabilities: clase que contiene las Capabilities mínimas para correr en el browser. Al RemoteWebDriver se le debe
+pasar la url y el browser.getCapabilities().
+
+Los test se pueden Parametrizar (@Parameters).
+
+@RunWith(Parameterized.class) agrega 2 anotaciones más a JUnit.
+
+@Parameter establece el parámetro a correr el test.
+
+@Parameters: establece los parámetros que utilizará el test. Se debe armar una lista y luego se irán inyectando uno a uno
+en el @Parameter para las sucesivas corridas del test.
+
+Los test se pueden correr en paralelo si se extiende Parameterized y se le agrega un setScheduler.
+
+___________________________________________________________________________________________________________________________
+
+API Testing
+
+La rama que se dedica al testing se llama Service Testing. Se puede hacer testing de servicios web, mensajería. Básicamente
+componenten de software que escuchan un puerto. 
+Cuando se hace service testing se hace testing sin asociar una UI. Se interactúa de otra forma, intercambiando mensajes.
+Utilizaremos HTTP.
+Se excita al componente y se ve si responde de la forma adecuada. Se utilizan escenarios y la misma metodología de siempre.
+Las librerías que utilizaremos son Retrofit y RestEasy (clientes HTTP (web)). Otras son: RestAssure y JDK 9 (contiene un cliente
+HTTP para hacer get y post fácilmente).
+
+Estaremos enfocados API (servicios web) pero el Service Testing abarca a mucho más.
+
+Retrofit y RestEasy permiten trabajar con objetos. Devuelven un objeto en vez de texto plano. Proveen facilidades para la
+serialización.
+Retrofit viene con un cliente llamado OK_HTTP3, es rápido y ligero. Su última versión separa el procesamiento sincrónico
+del asincrónico. Requiere mucho código alrededor de la llamada para asegurar las posibles salidas.
+RestEasy por otro lado es sincrónico (bloqueante la operación) y permite crear una API y mandarla. También puede volverse
+asincrónico. RestEasy NO ES THREAD SAFE. No se garantiza que todo salga bien al correr varios threads.
+
+Sincrónico: hasta que una sentencia no termina de ejecutarse no se continúa con el flujo del programa. Si hubo una llamada
+al servidor se queda esperando hasta que vuelva la información.
+Por ej: los INPUT/OUTPUT en Java.
+Asincronismo: lo contrario de sincrónico, se continúa con la ejecución a pesar de no haber terminado la sentencia.
+
+HTTP: cada conexión con el servidor es stateless, se le debe indicar que se desea hacer continuamente.
+Métodos HTTP: 
+
+LECTURA
+GET: leer URL. Debe pasar parámetros a través de la URL. El ? separa la dirección de los parámetros y luego es clave-valor
+separados por &.
+
+ESCRITURA
+POST: escribir. Se sube información que se considera nueva, no existe en el servicio web.
+PUT: modificar
+PATCH
+Ambos modifican algo del servidor, su diferencia depende de lo que hacen y es muy sútil.
+DELETE (escritura destructiva, borrar algo de la información que viene en la URL como "parámetro").
+Se borra un recurso del servidor.
+
+OPTIONS, HEAD, TRACE, CONNECT
+HEAD: se consulta si la información existe en el servidor antes de ir a buscarla. Pide el encabezado del documento
+recibiendo si existe o no sumado a la información del server.
+
+OPTIONS: si se está utilizando un proxy.
+
+TRACE: permite saber que está siendo recibido del otro lado del server.
+
+Existe un estándar para construir la URL.
+
+Restfull: se pasan cada vez más especificaciones en la URL escribiendo xxxx/xx/xxxx/xxx.
+
+**************
+nc web server
+Patrón Builder
+**************
+
+Los métodos que utilizaremos serán GET, POST, PUT, PATCH Y DELETE.
+
+Los modelos que van y vienen en la API van en un paquete models.
+
+@GET("/comments") --> Se realiza un GET a esta sección particular de la URL.
+
+@GET("/comments/[commentId]")
+Comments get (@Path("commentId") int id); // Retrofit se encarga de hacer la sustitución de Strings para completar
+					   // el get.
+
+@GET("/comments/[commentId]")
+Comments get (@Path("commentId") int id, @Query("var") String value); // Ejemplo de una cola
+
+Si se desea trabajar con texto que viene del browser y luego convertirlo a objeto (Comment) se debe utilizar un Converter.
+Retrofit posee un converter y RestEasy tiene un adapter.
+
+Jackson: librería que se encarga de la serialización y desearialización de JSON.
+
+Es más eficiente transmitir bytes por la red que un archivo JSON por ejemplo.
+
+Jackson trae anotaciones para convertir objetos.
+Se debe marcar los atributos como @JsonProperty para poder ser serializados.
+
+Transient son variables no candidatas para serializar. Las librerías RestEasy y Retrofit respetan esta propiedad.
+
+@JsonProperty(value = "post-Id") // Permite darle un nombre a la propiedad en el Json
+private int postId;
+// Las variables en Java no permiten guiones pero le podemos decir que en el archivo se llamen como queramos.
+
+Retrofit retrofit = new Retrofit.Builder()
+	.baseURL("http://...) // URL con la que se comunicará
+	.addConverterFactory(JacksonConverterFactory.create())
+	.build();
+
+Comments api = retrofit.create(Comments.class)
+
+Retrofit 1 es sincrono pero Retrifit 2 impone que se deba envolver a los resultados de las operaciones en un Call.
+Si uno desea ejecutar sincrónicamente se debe hacer .execute al response y luego le puedo pedir a la response su body, code,
+etc. Si se desea correr en forma asincrónica se debe usar .enqueue debiendo sobreescribir los métodos cuando se recibe
+una respuesta correcta o de falla. En testing es muy raro utilizar asincronismo.
+Cuando se crea la aplicación se quiere que todo sea asincrónico pero al correr los test se desea lo opuesto.
+
+Se puede testear por ejemplo que luego de un update se cuente con un elemento más. También que se obtuvo un Error 404
+cuando se hizo un test para que esto suceda.
+Siempre que se haga un INPUT/OUTPUT hay una probabilidad de error.
+
+RestEasy cambian los nombres de las anotaciones: se utilizan @GET, @Path y @PathParam.
+Ya no se debe utilizar Call.
+RestEasy es mucho más sencillo de leer y escribir en código. El test queda más despejado.
+
+*************************
+www.jsonschema2pojo.org
+*************************
+
+FORMAT TO POJO
+Permite convertir un archivo de cualquier tipo a una clase de java, con esto nos ahorramos trabajo. (Por ej: Comments)
