@@ -16,7 +16,7 @@ public class testMercado extends WebTest<Buscar> {
 
     @Test
     public void sample() {
-	getInitialPage().busqueda().getProductos().get(2).verProducto().pregunta();
+	getInitialPage().busqueda().clickearNuevo().getProductos().get(2).verProducto().pregunta();
 
 	// Buscar bus = new Buscar();
 	// bus.busqueda();

@@ -13,10 +13,10 @@ public class Buscar extends Page {
     @FindBy(xpath = "/html/body/header/div/form/button[3]/i")
     private WebElement lupa;
 
-    public listaBusqueda busqueda() {
+    public Filtrar busqueda() {
 	barra.sendKeys("coches");
 	click(lupa);
-	return new listaBusqueda();
+	return new Filtrar();
     }
 
 }

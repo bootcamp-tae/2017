@@ -13,28 +13,19 @@ import lista.producto;
 
 public class listaBusqueda extends Page {
 
-    @FindBy(xpath = "//*[@id='id_category']/dd[1]/h3/a")
-    private WebElement filtroUno;
     @FindBy(css = "li.results-item")
     private WebElement listar;
-
-    @FindBy(xpath = "//*[@id='id_condition']/dd[1]/a")
-    private WebElement condicion;
 
     @FindBy(css = "li.results-item")
     private List<WebElement> link;
 
     public Pregunta filtrarPrimerOpcion() {
-	click(filtroUno);
+
 	return new Pregunta();
     }
 
-    public void clickearNuevo() {
-	click(condicion);
-    }
-
     public List<producto> getProductos() {
-	clickearNuevo();
+
 	return link.stream().map(producto::new).collect(toList());
 
     }
