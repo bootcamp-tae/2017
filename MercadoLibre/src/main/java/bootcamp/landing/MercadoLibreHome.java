@@ -1,11 +1,16 @@
 package bootcamp.landing;
 
 import bootcamp.MercadoLibrePage;
+import bootcamp.PageComponents.SearchBar;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 public class MercadoLibreHome extends MercadoLibrePage{
-    private SearchBar bar=new SearchBar();
+
+    @FindBy(className = "nav-search")
+    private WebElement navbar;
 
     public SearchBar getBar() {
-        return bar;
+        return new SearchBar(navbar);
     }
 }
