@@ -29,7 +29,7 @@ public enum Browser implements Initializable, HasCapabilities, Logging {
     public Capabilities getCapabilities() {
       return DesiredCapabilities.chrome();
     }
-  },
+  }/*,
   FIREFOX {
     @Override
     public void initialize() {
@@ -71,7 +71,7 @@ public enum Browser implements Initializable, HasCapabilities, Logging {
     public Capabilities getCapabilities() {
       return DesiredCapabilities.edge();
     }
-  };
+  }*/;
 
   private static final Map<Integer, Boolean> INITIALIZED = new ConcurrentHashMap<>();
 
