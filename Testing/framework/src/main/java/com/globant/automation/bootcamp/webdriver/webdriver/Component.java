@@ -4,11 +4,16 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.DefaultElementLocatorFactory;
 import org.openqa.selenium.support.pagefactory.DefaultFieldDecorator;
+import org.openqa.selenium.support.pagefactory.ElementLocatorFactory;
 
 public abstract class Component extends CommonOperations {
 
+  /**
+   *
+   * @param container
+   */
   protected Component(WebElement container) {
-    PageFactory.initElements(new DefaultFieldDecorator(new DefaultElementLocatorFactory(container)), this);
+      PageFactory.initElements((new DefaultElementLocatorFactory(container)), this);
   }
 
 }

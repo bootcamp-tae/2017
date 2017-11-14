@@ -1,14 +1,11 @@
 package com.globant.automation.bootcamp.webdriver.webdriver;
 
-import io.github.bonigarcia.wdm.ChromeDriverManager;
-import io.github.bonigarcia.wdm.EdgeDriverManager;
-import io.github.bonigarcia.wdm.FirefoxDriverManager;
-import io.github.bonigarcia.wdm.InternetExplorerDriverManager;
+
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.remote.RemoteWebDriver;
+
+import java.net.MalformedURLException;
+import java.net.URL;
 
 enum Context {
 
@@ -30,26 +27,19 @@ enum Context {
      * @param browser Enum de navegador a utilizar en el test
      * @return El driver del navegador
      */
-    WebDriver init(Browser browser) {
-        WebDriver driver = null;
-        switch (browser) {
-            case CHROME:
-                ChromeDriverManager.getInstance().setup();
-                driver = new ChromeDriver();
-                break;
-            case FIREFOX:
-                FirefoxDriverManager.getInstance().setup();
-                driver = new FirefoxDriver();
-                break;
-            case IE:
-                InternetExplorerDriverManager.getInstance().setup();
-                driver = new InternetExplorerDriver();
-                break;
-            case EDGE:
-                EdgeDriverManager.getInstance().setup();
-                driver = new EdgeDriver();
-                break;
-        }
+    WebDriver init(Browser browser) throws MalformedURLException {
+
+        terminate();
+
+        browser.initialize();
+
+        SeleniumServerBoot.INSTANCE.start();
+
+        //URL url = new URL(System.getProperty("SELENIUM_URL", "http://127.0.0.1:4444/wd/hub"));
+
+        //WebDriver driver = new RemoteWebDriver(url, browser.getCapabilities());
+
+        WebDriver driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"),browser.getCapabilities());
         //Asigna el driver al Thread que lo solicito
         DRIVERS_PER_THREAD.set(driver);
         return driver;

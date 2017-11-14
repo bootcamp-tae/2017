@@ -9,7 +9,7 @@ public class HotelDetail extends CheapTicketsPage {
     @FindBy(id = "hotel-name")
     private WebElement hotelName;
 
-    @FindBy(css = "price link-to-rooms")
+    @FindBy(css = ".price link-to-rooms")
     private WebElement hotelPricePerNight;
 
     //Check if there is a better identificator

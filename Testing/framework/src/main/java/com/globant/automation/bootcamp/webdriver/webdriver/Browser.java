@@ -1,7 +1,7 @@
 package com.globant.automation.bootcamp.webdriver.webdriver;
 
-import com.globant.automation.bootcamp.logging.Logging;
 import io.github.bonigarcia.wdm.ChromeDriverManager;
+import com.globant.automation.bootcamp.webdriver.logging.Logging;
 import io.github.bonigarcia.wdm.EdgeDriverManager;
 import io.github.bonigarcia.wdm.FirefoxDriverManager;
 import io.github.bonigarcia.wdm.InternetExplorerDriverManager;
@@ -29,7 +29,7 @@ public enum Browser implements Initializable, HasCapabilities, Logging {
         public Capabilities getCapabilities() {
             return DesiredCapabilities.chrome();
         }
-    },
+    }/*,
     FIREFOX {
         @Override
         public void initialize() {
@@ -71,7 +71,7 @@ public enum Browser implements Initializable, HasCapabilities, Logging {
         public Capabilities getCapabilities() {
             return DesiredCapabilities.edge();
         }
-    };
+    }*/;
 
     private static final Map<Integer, Boolean> INITIALIZED = new ConcurrentHashMap<>();
 

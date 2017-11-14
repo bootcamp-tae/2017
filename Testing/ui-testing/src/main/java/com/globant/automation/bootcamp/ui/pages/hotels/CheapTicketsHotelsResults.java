@@ -11,19 +11,12 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfAllE
 
 public class CheapTicketsHotelsResults extends CheapTicketsPage{
 
-    @FindBy(css = ".flex-link")
+    @FindBy(css = "[data-automation='organic']")
     private List<WebElement> hotels;
-
-    /*public void getHotels(){
-        waitFor(visibilityOfAllElements(hotels));
-        hotels.forEach();
-
-    }*/
 
     public HotelDetail selectResult(int index){
         waitFor(visibilityOfAllElements(hotels));
         click(hotels.get(index));
         return new HotelDetail();
     }
-
 }

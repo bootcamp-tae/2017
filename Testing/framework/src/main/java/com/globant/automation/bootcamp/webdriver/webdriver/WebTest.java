@@ -1,23 +1,35 @@
 package com.globant.automation.bootcamp.webdriver.webdriver;
 
+import com.globant.automation.bootcamp.webdriver.junit.ParametrizedParallelism;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized.Parameter;
+import org.junit.runners.Parameterized.Parameters;
 import org.openqa.selenium.WebDriver;
 
+import java.net.MalformedURLException;
+import java.util.Arrays;
+import java.util.List;
+
+@RunWith(ParametrizedParallelism.class)
 public abstract class WebTest<T extends Page> {
+
+    @Parameter
+    public Browser browser;
+
+    @Parameters(name = "Browser: {0}")
+    public static List<Browser> browsers() {
+        return Arrays.asList(Browser.values());
+    }
 
     protected abstract T getInitialPage();
 
     protected abstract String getInitialUrl();
 
     @Before
-    public void setUp() {
-        WebDriver driver = Context.INSTANCE.init(Browser.CHROME);
-        /*Como corro otros test con otros driver de otros navegadores
-        WebDriver driver = Context.INSTANCE.init(Browser.EDGE);
-        WebDriver driver = Context.INSTANCE.init(Browser.FIREFOX);
-        WebDriver driver = Context.INSTANCE.init(Browser.IE);*/
-
+    public void setUp() throws MalformedURLException {
+        WebDriver driver = Context.INSTANCE.init(browser);
         driver.manage().window().maximize();
         driver.get(getInitialUrl());
     }
@@ -26,5 +38,4 @@ public abstract class WebTest<T extends Page> {
     public void tearDown() {
         Context.INSTANCE.terminate();
     }
-
 }
