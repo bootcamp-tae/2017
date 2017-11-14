@@ -3,20 +3,14 @@ package mercadoLibreTEsts;
 import bootcamp.Elements.WebTest;
 import bootcamp.landing.Items;
 import bootcamp.landing.MercadoLibreHome;
-import bootcamp.model.MercadoBuilder;
 import org.junit.Test;
 
 import static bootcamp.landing.Filters.Condition.NEW;
-import static bootcamp.model.MercadoBuilder.Builder.mercadoCriteria;
 import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.isEmptyString;
 
 public class testSearch extends WebTest<MercadoLibreHome>{
-
-    private final MercadoBuilder mercadoBuilder= mercadoCriteria()
-            .setSearchItem("camiseta")
-            .build();
 
     @Override
     protected MercadoLibreHome getInitialPage() {
@@ -32,7 +26,7 @@ public class testSearch extends WebTest<MercadoLibreHome>{
     public void testSearch(){
         Items items=getInitialPage()
                 .getBar()
-                .search(mercadoBuilder)
+                .search("camiseta")
                 .filter().byCondition(NEW)
                 .getItems()
                 .get(1);

@@ -16,8 +16,8 @@ public class SearchBar extends MercadoLibrePage{
     @FindBy(className = "nav-search-btn")
     private WebElement clickSearch;
 
-    public MercadoLibreResults search(MercadoBuilder builder){
-        type(searchInput, builder.getSearchItem());
+    public MercadoLibreResults search(String search){
+        type(searchInput, search);
         click(clickSearch);
         return new MercadoLibreResults();
     }
