@@ -1,6 +1,6 @@
 package WebDriver;
 
-import com.globant.automation.bootcamp.tests.junit.ParametrizedParallelism;
+import Junit.ParametrizedParallelism;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.runner.RunWith;
@@ -13,6 +13,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @RunWith(ParametrizedParallelism.class)
+
 public abstract class WebTest<T extends Page> {
 
   @Parameter

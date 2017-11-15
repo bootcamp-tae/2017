@@ -1,6 +1,6 @@
 package WebDriver;
 
-import com.globant.automation.bootcamp.logging.Logging;
+
 import io.github.bonigarcia.wdm.ChromeDriverManager;
 import io.github.bonigarcia.wdm.EdgeDriverManager;
 import io.github.bonigarcia.wdm.FirefoxDriverManager;
@@ -13,6 +13,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 import static java.lang.String.format;
+import Login.Logging;
 
 public enum Browser implements Initializable, HasCapabilities, Logging {
 
@@ -27,7 +28,8 @@ public enum Browser implements Initializable, HasCapabilities, Logging {
 
     @Override
     public Capabilities getCapabilities() {
-      return DesiredCapabilities.chrome();
+
+        return DesiredCapabilities.chrome();
     }
   },
   FIREFOX {

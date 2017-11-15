@@ -1,4 +1,4 @@
-package Parallelism;
+package Junit;
 
 import org.junit.runners.BlockJUnit4ClassRunner;
 

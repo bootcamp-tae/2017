@@ -1,4 +1,4 @@
-package com.globant.automation.bootcamp.tests.junit;
+package Parallelism;
 
 import org.junit.runners.Parameterized;
 

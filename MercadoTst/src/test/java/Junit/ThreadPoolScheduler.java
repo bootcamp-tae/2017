@@ -1,6 +1,6 @@
-package Parallelism;
+package Junit;
 
-import com.globant.automation.bootcamp.logging.Logging;
+
 import org.junit.runners.model.RunnerScheduler;
 
 import java.util.concurrent.ExecutorService;
@@ -18,6 +18,7 @@ import static java.util.concurrent.TimeUnit.MINUTES;
  *
  * @author Juan Krzemien
  */
+import Login.Logging;
 public class ThreadPoolScheduler implements RunnerScheduler, Logging {
 
   private static final int TIMEOUT_MINUTES = 10;
