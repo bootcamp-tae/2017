@@ -66,12 +66,12 @@ public final class HotelCriteria {
         }
 
         public Builder withCheckIn(int checkIn){
-            this.checkin = checkIn;
+            this.checkIn = checkIn;
             return this;
         }
 
         public Builder withCheckOut(int checkOut){
-            this.checkout = checkOut;
+            this.checkOut = checkOut;
             return this;
         }
 
