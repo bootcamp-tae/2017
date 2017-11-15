@@ -16,7 +16,7 @@ enum Context {
         return DRIVERS_PER_THREAD.get();
     }
 
-    WebDriver init(Browser browser) throws MalformedURLException {
+    WebDriver initBrowser(Browser browser) throws MalformedURLException {
         terminate(); // Just in case we have an existing driver running in the same thread
 
         browser.initialize();

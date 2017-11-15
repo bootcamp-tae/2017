@@ -16,6 +16,7 @@ import static java.lang.String.format;
 
 public enum Browser implements Initializable, HasCapabilities, Logging{
 
+
   CHROME {
     @Override
     public void initialize() {
