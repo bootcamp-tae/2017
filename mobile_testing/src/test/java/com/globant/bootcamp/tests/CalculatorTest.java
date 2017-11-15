@@ -78,6 +78,33 @@ public class CalculatorTest /*extends MobileTest</*I think here it goes initial 
     }
 
     @Test
+    public void testAllInOne() {
+        driver.findElement(By.id("digit_2")).click();
+        driver.findElement(By.id("digit_4")).click();
+        driver.findElement(By.id("op_add")).click();
+        driver.findElement(By.id("digit_8")).click();
+        driver.findElement(By.id("op_sub")).click();
+        driver.findElement(By.id("digit_2")).click();
+
+        driver.findElement(By.id("eq")).click();
+        //30
+
+        driver.findElement(By.id("op_div")).click();
+        driver.findElement(By.id("digit_3")).click();
+
+        driver.findElement(By.id("eq")).click();
+        //10
+
+        driver.findElement(By.id("op_mul")).click();
+        driver.findElement(By.id("digit_4")).click();
+
+        driver.findElement(By.id("eq")).click();
+        //40
+        
+        Assert.assertEquals("40", driver.findElement(By.id("formula")).getText());
+    }
+
+    @Test
     public void testAll() {
         testPlus();
         testMinus();
