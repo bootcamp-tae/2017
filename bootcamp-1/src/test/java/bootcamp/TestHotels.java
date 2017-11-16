@@ -1,10 +1,9 @@
 package bootcamp;
 
-import bootcamp.Elements.WebTest;
+import components.WebTest;
 import bootcamp.model.HotelBuilder;
 import bootcamp.pages.components.Hotels.HotelCard;
 import bootcamp.pages.landing.CheapTicketsHome;
-import logging.Logging;
 import org.junit.Test;
 
 import static org.hamcrest.Matchers.*;

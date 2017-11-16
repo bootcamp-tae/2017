@@ -1,6 +1,5 @@
 package bootcamp.landing;
 
-import bootcamp.Elements.WebComponent;
 import bootcamp.MercadoLibrePage;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;

@@ -1,6 +1,6 @@
 package mercadoLibreTEsts;
 
-import bootcamp.Elements.WebTest;
+import components.WebTest;
 import bootcamp.PageComponents.Items;
 import bootcamp.landing.MercadoLibreHome;
 import org.junit.Test;

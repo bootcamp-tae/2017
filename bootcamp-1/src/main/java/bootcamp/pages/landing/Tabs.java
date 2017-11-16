@@ -1,6 +1,6 @@
 package bootcamp.pages.landing;
 
-import bootcamp.Elements.Page;
+import components.Page;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 

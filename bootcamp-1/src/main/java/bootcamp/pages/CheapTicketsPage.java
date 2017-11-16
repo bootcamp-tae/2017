@@ -1,6 +1,6 @@
 package bootcamp.pages;
 
-import bootcamp.Elements.Page;
+import components.Page;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 

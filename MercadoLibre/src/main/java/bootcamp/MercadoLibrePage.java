@@ -1,6 +1,6 @@
 package bootcamp;
 
-import bootcamp.Elements.Page;
+import components.Page;
 
 
 public class MercadoLibrePage extends Page {

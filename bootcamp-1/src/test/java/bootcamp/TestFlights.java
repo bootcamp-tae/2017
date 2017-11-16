@@ -1,11 +1,10 @@
 package bootcamp;
 
 
-import bootcamp.Elements.WebTest;
+import components.WebTest;
 import bootcamp.model.FlightBuilder;
 import bootcamp.pages.components.Flights.FlightCard;
 import bootcamp.pages.landing.CheapTicketsHome;
-import logging.Logging;
 import org.junit.Test;
 
 import static bootcamp.model.FlightBuilder.Builder.flightCriteria;

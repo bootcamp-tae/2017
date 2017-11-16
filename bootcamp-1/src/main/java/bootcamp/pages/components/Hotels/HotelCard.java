@@ -1,6 +1,6 @@
 package bootcamp.pages.components.Hotels;
 
-import bootcamp.Elements.WebComponent;
+import components.WebComponent;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import java.util.regex.Matcher;

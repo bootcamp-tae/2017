@@ -1,12 +1,9 @@
 package bootcamp.PageComponents;
 
-import bootcamp.Elements.WebComponent;
-import bootcamp.MercadoLibrePage;
+import components.WebComponent;
 import bootcamp.landing.MercadoLibreResults;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
-import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfAllElements;
 
 public class SearchBar extends WebComponent{
 
