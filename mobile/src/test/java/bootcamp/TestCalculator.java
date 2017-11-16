@@ -33,6 +33,6 @@ public class TestCalculator extends MobileTest<CalculatorHome> {
     protected void setCapabilities(DesiredCapabilities desiredCapabilities) {
         //tested on android 6.0.1
         desiredCapabilities.setCapability("appPackage", "com.google.android.calculator");
-        desiredCapabilities.setCapability("appActivity", ".Calculator");
+        desiredCapabilities.setCapability("appActivity", "com.android.calculator2.Calculator");
     }
 }
