@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 
 public class ClockInitialPage extends MobilePage{
 
-    public static final String  ANDROID_CLOCK_PACKAGE= "com.android.deskclock:id/";
+    private static final String  ANDROID_CLOCK_PACKAGE= "com.android.deskclock:id/";
 
     @AndroidFindBy(accessibility = "Stopwatch")
     private WebElement chronometer;
