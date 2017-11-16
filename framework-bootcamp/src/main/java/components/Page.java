@@ -1,4 +1,4 @@
-package bootcamp.Elements;
+package components;
 
 import org.openqa.selenium.support.PageFactory;
 

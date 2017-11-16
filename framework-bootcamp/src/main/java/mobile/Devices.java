@@ -1,9 +1,5 @@
 package mobile;
 
-import bootcamp.Elements.Initializable;
-import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.android.AndroidDriver;
-import logging.Logging;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.HasCapabilities;
 import org.openqa.selenium.remote.DesiredCapabilities;

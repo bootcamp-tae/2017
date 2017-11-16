@@ -1,4 +1,4 @@
-package bootcamp.Elements;
+package components;
 
 import io.github.bonigarcia.wdm.ChromeDriverManager;
 import io.github.bonigarcia.wdm.FirefoxDriverManager;

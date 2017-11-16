@@ -9,8 +9,6 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfAllE
 
 public class CalculatorHome extends CalculatorPage{
 
-    private static final String ANDROID_PREFIX = "com.android.calculator2:id/";
-
     @AndroidFindBy(id = ANDROID_PREFIX + "digit_0")
     private MobileElement ceroNumberElement;
 
@@ -72,7 +70,7 @@ public class CalculatorHome extends CalculatorPage{
     private MobileElement padAdvanced;
 
     public CalculatorHome (){
-        waitFor(visibilityOfAllElements(Arrays.asList(resultElement,formulaElement,addElement,subElement,multiplyElement
+        waitFor(visibilityOfAllElements(Arrays.asList(resultElement,addElement,subElement,multiplyElement
         ,deleteElement,equalElement,decPointElement,nineNumberElement,eightNumberElement,sevenNumberElement,sixNumberElement
         ,fiveNumberElement,fourNumberElement,threeNumberElement,twoNumberElement,oneNumberElement,ceroNumberElement,padAdvanced)));
     }

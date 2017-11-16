@@ -1,4 +1,4 @@
-package bootcamp.Elements;
+package components;
 
 import junit.ParametrizedParallelism;
 import org.junit.After;

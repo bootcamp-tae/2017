@@ -1,5 +1,6 @@
 package mobile;
 
+import components.ContextDriver;
 import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
 import junit.ParametrizedParallelism;
@@ -20,7 +21,7 @@ public abstract class MobileTest <T extends MobilePage>{
     @Parameter
     public Devices device;
 
-    @Parameters(name = "Device: {0}")
+    @Parameters(name = "Devices: {0}")
     public static List<Devices> browsers() {
         return Arrays.asList(Devices.ANDROID);
     }
@@ -30,14 +31,14 @@ public abstract class MobileTest <T extends MobilePage>{
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
         desiredCapabilities.merge(device.getCapabilities());
         setCapabilities(desiredCapabilities);
-        ContextMobile.INSTANCE.init(desiredCapabilities);
+        ContextDriver.INSTANCE.init(desiredCapabilities);
     }
 
     protected abstract void setCapabilities(DesiredCapabilities desiredCapabilities);
 
     @After
     public void tearDown(){
-        ContextMobile.INSTANCE.terminate();
+        ContextDriver.INSTANCE.terminate();
     }
 }
 

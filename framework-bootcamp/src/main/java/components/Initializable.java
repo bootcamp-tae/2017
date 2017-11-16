@@ -1,4 +1,4 @@
-package bootcamp.Elements;
+package components;
 
 public interface Initializable {
 

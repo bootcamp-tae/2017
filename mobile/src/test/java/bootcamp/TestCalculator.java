@@ -32,13 +32,13 @@ public class TestCalculator extends MobileTest<CalculatorHome> {
     @Override
     protected void setCapabilities(DesiredCapabilities desiredCapabilities) {
         //tested on android 6.0.1
-        //desiredCapabilities.setCapability("appPackage", "com.google.android.calculator");
-        //desiredCapabilities.setCapability("appActivity", "com.android.calculator2.Calculator");
-        //desiredCapabilities.setCapability("platformName", "android");
-        //desiredCapabilities.setCapability("deviceName", "VZY223HC2RD");
+        desiredCapabilities.setCapability("platformName", "android");
+        desiredCapabilities.setCapability("deviceName", "VZY223HC2RD");
+        desiredCapabilities.setCapability("appPackage", "com.google.android.calculator");
+        desiredCapabilities.setCapability("appActivity", "com.android.calculator2.Calculator");
 
         //tested with genymotion
-        desiredCapabilities.setCapability("appPackage","com.android.calculator2");
-        desiredCapabilities.setCapability("appActivity",".Calculator");
+        //desiredCapabilities.setCapability("appPackage","com.android.calculator2");
+        //desiredCapabilities.setCapability("appActivity",".Calculator");
     }
 }
