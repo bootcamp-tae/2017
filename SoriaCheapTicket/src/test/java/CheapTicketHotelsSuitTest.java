@@ -1,10 +1,8 @@
-import WebDriver.Page;
-import WebDriver.WebTest;
-import javafx.util.Builder;
+import framework.WebDriver.Page;
+import framework.WebDriver.WebTest;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.openqa.selenium.firefox.FirefoxDriver;
 
 import static org.hamcrest.core.Is.is;
 

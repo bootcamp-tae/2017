@@ -1,4 +1,4 @@
-import WebDriver.Page;
+import framework.WebDriver.Page;
 
 public class CheapTicketHome extends Page {
 

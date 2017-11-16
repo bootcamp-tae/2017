@@ -1,4 +1,4 @@
-package WebDriver;
+package framework.WebDriver;
 
 import framework.CommonWebOps;
 import org.openqa.selenium.support.PageFactory;

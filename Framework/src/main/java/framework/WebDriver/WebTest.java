@@ -1,4 +1,4 @@
-package WebDriver;
+package framework.WebDriver;
 
 import org.junit.After;
 import org.junit.Before;

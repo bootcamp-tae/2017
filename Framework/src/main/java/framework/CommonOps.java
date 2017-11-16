@@ -18,9 +18,7 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOf;
 
  public abstract class CommonOps {
 
-    protected WebDriver getDriver(){
-        return WebDriver.Context.INSTANCE.getDriver();
-    }
+     protected abstract WebDriver getDriver();
 
     protected CommonOps click(WebElement element){
         waitFor(elementToBeClickable(element));
@@ -28,9 +26,10 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOf;
         return this;
     }
 
-    protected CommonOps Type(String text , WebElement element){
+    protected CommonOps type(String text , WebElement element){
         waitFor(visibilityOf(element));
         element.sendKeys(text);
+        return this;
     }
 
     protected CommonOps selectByValue(WebElement element, String value){
