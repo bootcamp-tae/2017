@@ -11,6 +11,11 @@
             <artifactId>selenium-api</artifactId>
             <version>RELEASE</version>
         </dependency>
+        <dependency>
+            <groupId>io.appium</groupId>
+            <artifactId>java-client</artifactId>
+            <version>RELEASE</version>
+        </dependency>
     </dependencies>
 
     <groupId>BootcampTae2017</groupId>

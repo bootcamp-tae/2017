@@ -1,4 +1,4 @@
-package WebDriver;
+package framework;
 
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.StaleElementReferenceException;
@@ -16,36 +16,36 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.elementToBeClick
 import static org.openqa.selenium.support.ui.ExpectedConditions.elementToBeSelected;
 import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOf;
 
-abstract class CommonWebOps {
+ public abstract class CommonOps {
 
     protected WebDriver getDriver(){
-        return Context.INSTANCE.getDriver();
+        return WebDriver.Context.INSTANCE.getDriver();
     }
 
-    protected CommonWebOps click(WebElement element){
+    protected CommonOps click(WebElement element){
         waitFor(elementToBeClickable(element));
         element.click();
         return this;
     }
 
-    protected CommonWebOps Type(String text , WebElement element){
+    protected CommonOps Type(String text , WebElement element){
         waitFor(visibilityOf(element));
         element.sendKeys(text);
     }
 
-    protected CommonWebOps selectByValue(WebElement element, String value){
+    protected CommonOps selectByValue(WebElement element, String value){
         waitFor(elementToBeSelected(element));
         new Select(element).selectByValue(value);
         return this;
     }
 
-    protected CommonWebOps selectByIndex(WebElement element, int index){
+    protected CommonOps selectByIndex(WebElement element, int index){
         waitFor(elementToBeSelected(element));
         new Select(element).selectByIndex(index);
         return this;
     }
 
-    protected CommonWebOps selectByVisibleText(WebElement element, String text){
+    protected CommonOps selectByVisibleText(WebElement element, String text){
         waitFor(elementToBeSelected(element));
         new Select(element).selectByVisibleText(text);
         return this;
@@ -56,7 +56,7 @@ abstract class CommonWebOps {
         return element.getText();
     }
 
-    public CommonWebOps enterDate(WebElement element, String date){
+    public CommonOps enterDate(WebElement element, String date){
         ((JavascriptExecutor) getDriver()).executeScript ( "arguments[0].value = arguments[1];", element, date );
         return this;
     }
