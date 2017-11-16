@@ -1,4 +1,4 @@
-package com.globant.automation.bootcamp.webDriver;
+package com.globant.automation.bootcamp.webDriver.Web;
 import com.globant.automation.bootcamp.logging.Logging;
 import io.github.bonigarcia.wdm.ChromeDriverManager;
 import io.github.bonigarcia.wdm.EdgeDriverManager;

@@ -1,5 +1,9 @@
 package com.globant.automation.bootcamp.webDriver;
 
+import com.globant.automation.bootcamp.webDriver.Web.Browser;
+import com.globant.automation.bootcamp.webDriver.Web.SeleniumServerBoot;
+import io.appium.java_client.AppiumDriver;
+import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
@@ -23,12 +27,26 @@ enum Context {
 
         SeleniumServerBoot.INSTANCE.start();
 
-        URL url = new URL(System.getProperty("SELENIUM_URL", "http://127.0.0.1:4444/wd/hub"));
+        URL url = new URL(System.getProperty("WEB_DRIVER_URL", "http://127.0.0.1:4444/wd/hub"));
 
         WebDriver driver = new RemoteWebDriver(url, browser.getCapabilities());
 
         DRIVERS_PER_THREAD.set(driver);
 
+        return driver;
+    }
+
+    public WebDriver init (Capabilities capabilities)throws MalformedURLException{
+        URL url = new URL(System.getProperty("WEB_DRIVER_URL", "http://127.0.0.1:4723/wd/hub"));
+        return init(url, capabilities);
+    }
+
+    private WebDriver init (URL webDriverServer, Capabilities capabilities) throws MalformedURLException {
+        terminate();
+
+        WebDriver driver = new AppiumDriver<>(webDriverServer, capabilities);
+
+        DRIVERS_PER_THREAD.set(driver);
         return driver;
     }
 

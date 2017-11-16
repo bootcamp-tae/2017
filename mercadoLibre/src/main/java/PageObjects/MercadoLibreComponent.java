@@ -1,6 +1,6 @@
 package PageObjects;
 
-import com.globant.automation.bootcamp.webDriver.Component;
+import com.globant.automation.bootcamp.webDriver.Web.Component;
 import org.openqa.selenium.WebElement;
 
 public class MercadoLibreComponent extends Component {

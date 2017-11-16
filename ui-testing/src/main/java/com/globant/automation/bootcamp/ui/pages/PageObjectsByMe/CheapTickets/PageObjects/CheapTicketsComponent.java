@@ -1,6 +1,6 @@
 package com.globant.automation.bootcamp.ui.pages.PageObjectsByMe.CheapTickets.PageObjects;
 
-import com.globant.automation.bootcamp.webDriver.Component;
+import com.globant.automation.bootcamp.webDriver.Web.Component;
 import org.openqa.selenium.WebElement;
 
 /**

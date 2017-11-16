@@ -1,6 +1,6 @@
 package com.globant.automation.bootcamp.ui.pages.PageObjectsByMe.CheapTickets.PageObjects.Hotels;
 
-import com.globant.automation.bootcamp.webDriver.Component;
+import com.globant.automation.bootcamp.webDriver.Web.Component;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 

@@ -1,4 +1,4 @@
-package com.globant.automation.bootcamp.webDriver;
+package com.globant.automation.bootcamp.webDriver.Web;
 
 import ch.qos.logback.classic.Level;
 import ch.qos.logback.classic.Logger;

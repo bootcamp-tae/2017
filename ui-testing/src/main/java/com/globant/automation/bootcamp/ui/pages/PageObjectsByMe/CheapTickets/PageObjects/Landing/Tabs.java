@@ -1,6 +1,6 @@
 package com.globant.automation.bootcamp.ui.pages.PageObjectsByMe.CheapTickets.PageObjects.Landing;
 
-import com.globant.automation.bootcamp.webDriver.Page;
+import com.globant.automation.bootcamp.webDriver.Web.Page;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 

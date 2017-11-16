@@ -1,6 +1,8 @@
 package com.globant.automation.bootcamp.webDriver;
 
 import com.globant.automation.bootcamp.tests.junit.ParametrizedParallelism;
+import com.globant.automation.bootcamp.webDriver.Web.Browser;
+import com.globant.automation.bootcamp.webDriver.Web.Page;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.runner.RunWith;

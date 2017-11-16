@@ -1,7 +1,7 @@
 package PageObjects;
 
 import PageObjects.Landing.NavBound;
-import com.globant.automation.bootcamp.webDriver.Page;
+import com.globant.automation.bootcamp.webDriver.Web.Page;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOf;

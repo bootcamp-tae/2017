@@ -16,6 +16,7 @@
         <module>framework</module>
         <module>ui-testing</module>
         <module>mercadoLibre</module>
+        <module>mobile-testing</module>
     </modules>
 
     <build>
