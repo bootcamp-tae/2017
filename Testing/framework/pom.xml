@@ -19,14 +19,6 @@
 
     <dependencies>
 
-        <!-- CHOOSE ONE TEST RUNNER! -->
-
-        <dependency>
-            <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
-            <version>6.10</version>
-        </dependency>
-
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -60,6 +52,14 @@
             <artifactId>webdrivermanager</artifactId>
             <version>1.7.2</version>
         </dependency>
+
+        <!-- APPIUM DEPENDENCY -->
+        <dependency>
+            <groupId>io.appium</groupId>
+            <artifactId>java-client</artifactId>
+            <version>5.0.4</version>
+        </dependency>
+
 
         <!-- DEPENDENCY TO SIMPLIFY LOGGING -->
 

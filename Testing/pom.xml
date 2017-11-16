@@ -17,7 +17,7 @@
         <module>ui-testing</module>
         <module>api-testing</module>
         <module>mercado-libre</module>
-        <module>mobiletesting</module>
+        <module>mobile-testing</module>
     </modules>
 
     <build>

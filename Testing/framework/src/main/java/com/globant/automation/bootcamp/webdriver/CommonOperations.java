@@ -1,4 +1,4 @@
-package com.globant.automation.bootcamp.webdriver.webdriver;
+package com.globant.automation.bootcamp.webdriver;
 
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.StaleElementReferenceException;

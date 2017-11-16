@@ -1,6 +1,5 @@
 package com.globant.automation.bootcamp.ui.pages;
 
-import com.globant.automation.bootcamp.ui.models.HotelSearch;
 import com.globant.automation.bootcamp.ui.pages.hotels.CheapTicketHotelTab;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;

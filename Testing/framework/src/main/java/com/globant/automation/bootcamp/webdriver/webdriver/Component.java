@@ -1,10 +1,9 @@
 package com.globant.automation.bootcamp.webdriver.webdriver;
 
+import com.globant.automation.bootcamp.webdriver.CommonOperations;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.DefaultElementLocatorFactory;
-import org.openqa.selenium.support.pagefactory.DefaultFieldDecorator;
-import org.openqa.selenium.support.pagefactory.ElementLocatorFactory;
 
 public abstract class Component extends CommonOperations {
 
