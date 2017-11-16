@@ -5,6 +5,7 @@ import com.globant.automation.bootcamp.webdriver.web.Browser;
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -43,10 +44,9 @@ public enum Context {
 
     terminate(); // Just in case we have an existing driver running in the same thread
 
-    WebDriver driver = //capabilities.is("deviceName") ?
-        new AppiumDriver<>(webDriverServer, capabilities);
-//        :
-//        new RemoteWebDriver(webDriverServer, capabilities);
+    boolean isMobile = capabilities.getCapability("deviceName") != null;
+
+    WebDriver driver = isMobile ? new AppiumDriver<>(webDriverServer, capabilities) : new RemoteWebDriver(webDriverServer, capabilities);
 
     DRIVERS_PER_THREAD.set(driver);
 
