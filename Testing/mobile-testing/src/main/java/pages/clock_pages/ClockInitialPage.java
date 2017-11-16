@@ -5,8 +5,8 @@ import io.appium.java_client.pagefactory.AndroidFindBy;
 import org.openqa.selenium.WebElement;
 
 public class ClockInitialPage extends MobilePage{
-
-    @AndroidFindBy()
+    
+    @AndroidFindBy(accessibility = "Stopwatch")
     private WebElement chronometer;
 
     public ChronometerPage goToChronometer(){

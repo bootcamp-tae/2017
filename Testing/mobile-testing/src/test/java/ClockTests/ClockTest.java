@@ -18,10 +18,15 @@ public class ClockTest extends MobileTest<ClockInitialPage> {
         ChronometerPage chronometer = getInitialPage()
                 .goToChronometer()
                 .start()
-                .timeOut(5)
+                .timeOut(500)
                 .stop();
 
+        System.out.println("Tiempo" + chronometer.getTime());
         assertThat("The chronometer works", Double.valueOf(chronometer.getTime()), is(greaterThan(0d)));
+
+        chronometer.reset();
+
+        assertThat("The chronometer has been reset", Double.valueOf(chronometer.getTime()), is((0d)));
     }
 
     @Override
@@ -32,8 +37,8 @@ public class ClockTest extends MobileTest<ClockInitialPage> {
     @Override
     protected void setCapabilities(DesiredCapabilities capabilities) {
         capabilities.setCapability("appPackage", "com.android.deskclock");
-        capabilities.setCapability("appActivity", ".Desklock");
-        capabilities.setCapability("deviceName", "myDevice");
+        capabilities.setCapability("appActivity", ".DeskClock");
+        capabilities.setCapability("deviceName", "kenzo");
         capabilities.setCapability("platformName", "android");
     }
 }

@@ -5,23 +5,24 @@ import org.openqa.selenium.WebElement;
 
 public class ChronometerPage extends ClockInitialPage{
 
-    @AndroidFindBy()
+    @AndroidFindBy(id = "fab")
     WebElement startButton;
 
-    @AndroidFindBy()
+    @AndroidFindBy(id = "fab")
     WebElement stopButton;
 
-    @AndroidFindBy()
+    @AndroidFindBy(id = "stopwatch_time_text")
     WebElement clock;
+
 
     public ChronometerPage start(){
         click(startButton);
         return this;
     }
 
-    public ChronometerPage timeOut(long timeOut){
+    public ChronometerPage timeOut(long millis){
         try {
-            Thread.sleep(timeOut);
+            Thread.sleep(millis);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -30,6 +31,12 @@ public class ChronometerPage extends ClockInitialPage{
 
     public ChronometerPage stop(){
         click(stopButton);
+        return this;
+    }
+
+    public ChronometerPage reset(){
+        type(clock, "0");
+
         return this;
     }
 

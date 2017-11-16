@@ -1,7 +1,9 @@
 package com.globant.automation.bootcamp.webdriver.mobile;
 
+import com.globant.automation.bootcamp.webdriver.junit.ParametrizedParallelism;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import com.globant.automation.bootcamp.webdriver.Context;
@@ -10,6 +12,7 @@ import java.net.MalformedURLException;
 import java.util.Arrays;
 import java.util.List;
 
+@RunWith(ParametrizedParallelism.class)
 public abstract class MobileTest<T extends MobilePage> {
 
     @Parameterized.Parameter
