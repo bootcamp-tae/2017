@@ -34,5 +34,7 @@ public class TestCalculator extends MobileTest<CalculatorHome> {
         //tested on android 6.0.1
         desiredCapabilities.setCapability("appPackage", "com.google.android.calculator");
         desiredCapabilities.setCapability("appActivity", "com.android.calculator2.Calculator");
+        desiredCapabilities.setCapability("platformName", "android");
+        desiredCapabilities.setCapability("deviceName", "VZY223HC2RD");
     }
 }
