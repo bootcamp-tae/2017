@@ -28,10 +28,7 @@ public enum ContextMobile {
 
         terminate(); // Just in case we have an existing driver running in the same thread
 
-        WebDriver driver = //capabilities.is("deviceName") ?
-                new AppiumDriver<>(webDriverServer, capabilities);
-//        :
-//        new RemoteWebDriver(webDriverServer, capabilities);
+        WebDriver driver = new AppiumDriver<>(webDriverServer, capabilities);
 
         DRIVERS_PER_THREAD.set(driver);
 
@@ -45,5 +42,4 @@ public enum ContextMobile {
         }
         DRIVERS_PER_THREAD.remove();
     }
-
 }

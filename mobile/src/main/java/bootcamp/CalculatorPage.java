@@ -5,6 +5,10 @@ import mobile.MobilePage;
 
 public class CalculatorPage extends MobilePage {
 
-    protected static final String ANDROID_PREFIX = "com.google.android.calculator:id/";
+    //with moto g 4 6.0.1
+    //protected static final String ANDROID_PREFIX = "com.google.android.calculator:id/";
+
+    //with genymotion android 6.0
+    protected static final String ANDROID_PREFIX = "com.android.calculator2:id/";
 
 }
