@@ -1,6 +1,6 @@
 package mercadolibre.models;
 
-import com.globant.automation.bootcamp.webdriver.Component;
+import com.globant.automation.bootcamp.webdriver.web.Component;
 import mercadolibre.pages.Product;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;

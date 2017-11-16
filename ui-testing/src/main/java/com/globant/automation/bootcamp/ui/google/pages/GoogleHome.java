@@ -1,6 +1,6 @@
 package com.globant.automation.bootcamp.ui.google.pages;
 
-import com.globant.automation.bootcamp.webdriver.Page;
+import com.globant.automation.bootcamp.webdriver.web.Page;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;

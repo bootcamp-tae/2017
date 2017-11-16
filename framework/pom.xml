@@ -62,12 +62,24 @@
             <version>1.7.2</version>
         </dependency>
 
+        <!-- APPIUM DEPENDENCY -->
+        <dependency>
+            <groupId>io.appium</groupId>
+            <artifactId>java-client</artifactId>
+            <version>5.0.4</version>
+        </dependency>
+
         <!-- DEPENDENCY TO SIMPLIFY LOGGING -->
 
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
             <version>1.2.3</version>
+        </dependency>
+        <dependency>
+            <groupId>cglib</groupId>
+            <artifactId>cglib</artifactId>
+            <version>RELEASE</version>
         </dependency>
 
     </dependencies>

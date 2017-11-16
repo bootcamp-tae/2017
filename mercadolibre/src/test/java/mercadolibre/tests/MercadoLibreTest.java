@@ -1,6 +1,6 @@
 package mercadolibre.tests;
 
-import com.globant.automation.bootcamp.webdriver.WebTest;
+import com.globant.automation.bootcamp.webdriver.web.WebTest;
 import mercadolibre.pages.Home;
 import mercadolibre.pages.Register;
 import org.junit.Test;

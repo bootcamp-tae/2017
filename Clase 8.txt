@@ -1,0 +1,84 @@
+15/11/2017
+
+Appium es el servidor de WebDriver que hablará con el ADB. Es el intermediario que permitirá tirar los comandos y que no fallen.
+El puerto por defecto en el que escucha es el 4723 (se puede cambiar).
+El servidor andando puede ser local o en un servidor externo a través de Internet.
+
+La librería cliente que utiliza Appium se llama io.appium - java-client.
+
+En Devices es posible elegir Android o iOS.
+En MobileComponent podemos armar una parte de la MobilePage.
+
+Todos los tests Extenderán de MobileTest y las páginas extenderán de MobilePage.
+No debe aparecer el WebDriver en los tests.
+Puede haber más de un Before y un After en la misma clase.
+
+Todo WebDriver requiere una URL y Capabilities (cualidades que queremos que el driver tenga).
+La URL puede ser la máquina local o un server externo. El driver server necesita saber qué versión del browser debe correr, esto se le debe pasar en las capabilities.
+Todas esas variabilidades se deben especificar en ellas.
+
+Appium posee una seccion Appium server capabilities --> Android Only donde aparecen todas las capabilites que puede tener el S.O.
+Por ej: arrancar en modo avión, utilizar 4G y no Wifi.
+
+Nos centraremos en appActivity, appPackage.
+
+Toda aplicación Android tiene un paquete que la identifica, es su id. Los paquetes son únicos. Se utiliza el comando pm list para verlos.
+
+Se puede entrar a la consola del celular escribiendo "adb shell" y luego directamente ejecutar los comandos del smartphone.
+
+"dumpsys window windows" muestra todas las aplicaciones abiertas en el celular.
+
+dumpsys window windows | grep "mCurrentFocus" // Busca una palabra clave luego de filtrar todo el texto.
+
+mCurrentFocus nos indica cuál de todas las ventanas abiertas es la que está en el foco (mostrada). Este comando muestra además el paquete y sus activities (pantallas
+de la app). 
+package.activity es el formato de la sección que nos indica la actividad.
+
+Appium se rompe si no se le pasan las capabilites adecuadas.
+
+App instalada: appPackage, appActivity
+App no instalada: app, appPackage, appActivity (en la app se le debe pasar la ruta en el rígido de donde se encuentra la apk para que la pueda instalar).
+
+En el test necesitaré la pantalla inicial y las capabilities. Por el momento las seteamos desde el test (no la mejor opción setear las capabilities aquí).
+La activity se debe preceder con un punto ".".
+
+Además de setear el package y la activity se le debe indicar además qué va a levantar. En nuestro caso un celular con Android.
+Se deben setear:
+	deviceName: "android"
+	platformName: "android"
+SON NECESARIAS Y NO OPCIONALES
+
+*****************************************
+EN TOTAL SON 4 LAS CAPABILITIES A SETEAR.
+*****************************************
+
+La activity a setear es la inicial, luego si el test me lleva a otra Page ya no importa a cual.
+
+-------------------------------------------
+
+Appium aporta nuevas anotaciones: @AndroidFindBy y @iOSFindBy.
+Se permite que un WebElement tenga más de una anotación y así el PageObject puede ser usado para correr el mismo test en Android y iOS (reutilziación de código). 
+Cambiará el id o el xpath del elemento seguro. ESTO SE PUEDE HACER SIEMPRE QUE LA APP TENGA EL MISMO DISEÑO (MISMO PAGEOBJECT)
+
+En el caso de la Calculator puntual los id de los WebElement cambian su nombre del paquete original.
+En las apps nuevas como todos los elementos poseen como id = prefijo + id_particular, Appium se dio cuenta de esto y se le puede especificar directamente
+la id que concatenará con el prefijo. Igualmente es recomendable no abusar de esto y se prefiere añadir el prefijo manualmente en el código ya que si no puede
+hacer intentos raros y demorar los test.
+
+Regla: si el id no comienza con un prefijo que tenga como nombre al package se lo pone todo en el test.
+
+La calculadora presenta un retraso en la animación ya que abre la calculadora científica y luego la normal. Se le agregó un waitFor() al PageObject para 
+sortear esto.
+
+En CommonOperations todo método tiene un waitFor() para siempre asegurarnos que el elemento sea interactuable.
+
+En Java se pasan los parámetros por referencia constante. La referencia a memoria no se puede alterar, será siempre la misma. Sin embargo, si la clase tiene getters y
+setters (o cualquier método que la permite alterar) el objeto ahora si verá afectado su estado. "El objeto no puede cambiar en sí, pero si puede cambiar su estado
+interno."
+
+Los tests deben estar escritos para que lo pueda leer una persona normal. La sintaxis a utilizar es Gherkin.
+
+
+
+
+

@@ -9,6 +9,7 @@
         <module name="api-testing" />
         <module name="framework" />
         <module name="mercadolibre" />
+        <module name="mobile-testing" />
         <module name="ui-testing" />
       </profile>
     </annotationProcessing>
@@ -16,6 +17,8 @@
       <module name="api-testing" target="1.8" />
       <module name="framework" target="1.8" />
       <module name="mercadolibre" target="1.8" />
+      <module name="mobile-testing" target="1.8" />
+      <module name="mobiletesting" target="1.8" />
       <module name="parent" target="1.8" />
       <module name="ui-testing" target="1.8" />
     </bytecodeTargetLevel>

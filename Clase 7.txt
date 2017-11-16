@@ -1,0 +1,77 @@
+Errores de la práctica de ayer:
+
+La librería de WebDriver no soporta paralelismo.
+Se debe cambiar la implementación ya que se setea el driver a partir del primer thread que entra.
+IntelliJ no conoce que los tests corren en paralelo.
+
+El Ruso creo la clase MyChromeWebDriver que soluciona estos inconvenientes.
+
+Mobile Testing
+
+Estaremos utilizando:
+	Appium (implementación de WebDriver para dispositivos móviles (Android, iOS)).
+	UI Automator --> Android
+	UI Automation --> luego cambió a --> XC UI Test --> Apple
+
+Appium utiliza una interfaz común (comportamiento similar). Permite las mismas operaciones que en WebTesting: click, type, etc. Appium se encarga
+de traducir todo lo que recibe en su servidor a código iOS o Android.
+
+Android SDK: librería provista por Google. Provee una herramienta llamada Android Debug Breach (ADB).
+Utilizaremos las tools (trae la SDK que permite instalar un programa a línea de comandos que permite instalar
+manualmente librerías del repositorio de Google). Trae un emulador de Android muy malo.
+
+GenyMotion es un emulador de Android a las plataformas x86. En una máquina semidecente anda bastante bien.
+Aparecerá un teléfono en la pantalla donde se pueden hacer todos los gestos que realizamos con el smartphone.
+
+En iOS se puede utilizar el iOS Simulator.
+
+En definitiva, para los test necesitaremos:
+	Código Java para los tests y un framework
+	Appium (WebDriver)
+	SDK de Android (Appium lo utiliza)
+
+El SDK se debe agregar a las variables de entorno de Windows. También la carpeta bin debe estar agregada al PATH.
+La variable de entorno debe estar apuntando a la carpeta donde se descomprimió el SDK.
+
+Escribiendo en la consola sdkmanager nos permite conocer todo lo que se puede hacer con él. Con "list" vemos todas las
+versiones disponibles para descargar.
+Se debe descargar build-tools 27.0.1 (sdkmanager build-tools 27.0.1). Se descarga inmediatamente en donde esté el SDK
+manager. 
+También se debe descargar platform.
+Hay una relación entre versión y platform level. Se puede utilizar el celular propio (conectándolo vía USB y en modo debug)
+en lugar del emulador.
+Se debe buscar la versión de Android del dispositivo y bajar el
+platform adecuado. Igualmente puedo descargar todas y ya dejarlas listas para utilizarlas cuando desee.
+Instalando esto aparecerán muchas nuevas funcionalidades.
+Utilizando devices se pueden ver todos los dispositivos conectados.
+
+El smartphone debe tener habilitado la depuración por USB.
+
+La variable de entorno PATH le indica a Windows donde buscar los ejecutables. Cuando se tira un comando, antes de lanzar
+el mensaje de error.
+
+Appium no solo automatiza aplicaciones nativas en iOS o en Android, sino que también lo hace en Windows.
+Las capabilitites son parámetros de configuración del driver que abrirá el server.
+
+Chrome tiene una función especial en su dirección chrome://inspect que lista todos los dispositivos conectados.
+Las aplicaciones en la telefonía celular tienen dos modos:
+	Modo Web (Ej: modo
+	Modo Nativo (aplicaciones propias de Android)
+
+Cuando uno quiere trabajar con la parte Web de la aplicación puede usar el inspector. Haciendo click en inspect, solamente
+se puede acceder a lo web, lo nativo aparecerá grisado.
+Es posible switcher entre el modo web y nativo.
+
+La otra opción es usar el uiautomatorviewer corriéndolo desde la consola.
+Permite reconocer todas las componentes de forma NATIVA. Cada elemento contendrá un conjunto de propiedades.
+El resource-id es el mejor atributo para buscar elementos.
+
+En Appium se tiene un inspector funcionando en Android, iOS, Windows. (El uiautomatorviewer es sólo para Android).
+Se debe armar manualmente el JSON a mandar al server. Las capabilities no son cualquiera. Las imprescindibles son:
+deviceName, platformName y appPackage. Se puede encontrar algún paquete con alguna apk (exe en Android) y decirle a
+Appium que agregue el paquete al appPackage.
+Seguir los pasos en el PDF para encontrar el nombre del paquete adecuado (en launchable-activity).
+
+Si esto no funciona poner un campo app seleccionando la apk descargada en la máquina.
+
+Para buscar elementos lo mejor es id y lo peor es el xpath.
