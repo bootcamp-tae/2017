@@ -55,5 +55,10 @@
           <artifactId>selenium-support</artifactId>
           <version>RELEASE</version>
       </dependency>
+      <dependency>
+          <groupId>io.appium</groupId>
+          <artifactId>java-client</artifactId>
+          <version>5.0.4</version>
+      </dependency>
   </dependencies>
 </project>

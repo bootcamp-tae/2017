@@ -19,6 +19,7 @@
     <module>framework-bootcamp</module>
     <module>apitest</module>
     <module>MercadoLibre</module>
+    <module>mobile</module>
   </modules>
 
   <build>
