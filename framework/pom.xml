@@ -62,6 +62,13 @@
             <version>1.7.2</version>
         </dependency>
 
+        <!-- APPIUM DEPENDENCY -->
+        <dependency>
+            <groupId>io.appium</groupId>
+            <artifactId>java-client</artifactId>
+            <version>5.0.4</version>
+        </dependency>
+
         <!-- DEPENDENCY TO SIMPLIFY LOGGING -->
 
         <dependency>

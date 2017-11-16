@@ -1,4 +1,4 @@
-package com.globant.automation.bootcamp.webdriver;
+package com.globant.automation.bootcamp.webdriver.web;
 
 import com.globant.automation.bootcamp.logging.Logging;
 import io.github.bonigarcia.wdm.*;
@@ -11,13 +11,13 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import static java.lang.String.format;
 
-public enum BrowserFixed implements Initializable, HasCapabilities, Logging {
+public enum Browser implements Initializable, HasCapabilities, Logging {
 
   CHROME {
     @Override
     public void initialize() {
       INITIALIZED.computeIfAbsent(ordinal(), n -> {
-        new BrowserFixed.MyChromeDriverManager().setup();
+        new Browser.MyChromeDriverManager().setup();
         return true;
       });
     }
@@ -31,7 +31,7 @@ public enum BrowserFixed implements Initializable, HasCapabilities, Logging {
     @Override
     public void initialize() {
       INITIALIZED.computeIfAbsent(ordinal(), n -> {
-        new BrowserFixed.MyFirefoxDriverManager().setup();
+        new Browser.MyFirefoxDriverManager().setup();
         return true;
       });
     }
@@ -45,7 +45,7 @@ public enum BrowserFixed implements Initializable, HasCapabilities, Logging {
     @Override
     public void initialize() {
       INITIALIZED.computeIfAbsent(ordinal(), n -> {
-        new BrowserFixed.MyIEDriverManager().arch32().setup(); // Arch64 is known to misbehave...
+        new Browser.MyIEDriverManager().arch32().setup(); // Arch64 is known to misbehave...
         return true;
       });
     }
@@ -59,7 +59,7 @@ public enum BrowserFixed implements Initializable, HasCapabilities, Logging {
     @Override
     public void initialize() {
       INITIALIZED.computeIfAbsent(ordinal(), n -> {
-        new BrowserFixed.MyEdgeDriverManager().setup();
+        new Browser.MyEdgeDriverManager().setup();
         return true;
       });
     }
@@ -72,10 +72,12 @@ public enum BrowserFixed implements Initializable, HasCapabilities, Logging {
 
   private static final Map<Integer, Boolean> INITIALIZED = new ConcurrentHashMap<>();
 
-  BrowserFixed() {
-    getLogger().info(format("Initializing configuration for browser [%s]...", name()));
+  Browser() {
+    getLogger().info(format("Initializing configuration for device [%s]...", name()));
   }
 
+
+  // Following are classes meant to FIX Thread Safety issue in WebDriverManager library
   private static class MyChromeDriverManager extends ChromeDriverManager {
 
     @Override
