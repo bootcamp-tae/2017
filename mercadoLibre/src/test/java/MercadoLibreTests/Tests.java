@@ -3,7 +3,7 @@ package MercadoLibreTests;
 import PageObjects.Landing.Home;
 import PageObjects.Products.FiltersComponent;
 import PageObjects.Products.HaveAccount;
-import com.globant.automation.bootcamp.webDriver.WebTest;
+import com.globant.automation.bootcamp.webDriver.Web.WebTest;
 import org.junit.Test;
 
 import static org.hamcrest.Matchers.isEmptyOrNullString;

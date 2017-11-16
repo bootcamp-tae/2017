@@ -1,26 +1,11 @@
 package com.globant.automation.bootcamp.ui.pageObjects;
 
-import com.globant.automation.bootcamp.ui.pages.PageObjectsByMe.CheapTickets.Models.HotelForm;
-import com.globant.automation.bootcamp.ui.pages.PageObjectsByMe.CheapTickets.Models.HotelForm;
-import com.globant.automation.bootcamp.ui.pages.PageObjectsByMe.CheapTickets.PageObjects.Hotels.HotelCard;
 import com.globant.automation.bootcamp.ui.pages.PageObjectsByMe.CheapTickets.PageObjects.Landing.Home;
 import com.globant.automation.bootcamp.ui.pages.PageObjectsByMe.CheapTickets.PageObjects.LogIn.SignIn;
-import com.globant.automation.bootcamp.webDriver.WebTest;
-import io.github.bonigarcia.wdm.ChromeDriverManager;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.BeforeClass;
+import com.globant.automation.bootcamp.webDriver.Web.WebTest;
 import org.junit.Test;
-import org.openqa.selenium.chrome.ChromeDriver;
 
-import static com.globant.automation.bootcamp.ui.pages.PageObjectsByMe.CheapTickets.Models.HotelForm.Builder.aHotelCriteria;
-import static org.hamcrest.Matchers.containsString;
 import static org.junit.Assert.assertThat;
-
-import org.junit.Test;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
 
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.assertThat;
