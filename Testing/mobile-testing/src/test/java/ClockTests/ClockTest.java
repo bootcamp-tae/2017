@@ -21,7 +21,6 @@ public class ClockTest extends MobileTest<ClockInitialPage> {
                 .timeOut(500)
                 .stop();
 
-        System.out.println("Tiempo" + chronometer.getTime());
         assertThat("The chronometer works", Double.valueOf(chronometer.getTime()), is(greaterThan(0d)));
 
         chronometer.reset();

@@ -5,14 +5,18 @@ import org.openqa.selenium.WebElement;
 
 public class ChronometerPage extends ClockInitialPage{
 
-    @AndroidFindBy(id = "fab")
+    @AndroidFindBy(id = ANDROID_CLOCK_PACKAGE + "fab")
     WebElement startButton;
 
-    @AndroidFindBy(id = "fab")
+    @AndroidFindBy(id = ANDROID_CLOCK_PACKAGE + "fab")
     WebElement stopButton;
 
-    @AndroidFindBy(id = "stopwatch_time_text")
+    @AndroidFindBy(id = ANDROID_CLOCK_PACKAGE + "left_button")
+    WebElement resetButton;
+
+    @AndroidFindBy(id = ANDROID_CLOCK_PACKAGE + "stopwatch_time_text")
     WebElement clock;
+
 
 
     public ChronometerPage start(){
@@ -35,8 +39,7 @@ public class ChronometerPage extends ClockInitialPage{
     }
 
     public ChronometerPage reset(){
-        type(clock, "0");
-
+        click(resetButton);
         return this;
     }
 
