@@ -2,10 +2,8 @@ package com.globant.automation.bootcamp.ui.pageObjects.cheaptickets;
 
 import com.globant.automation.bootcamp.ui.cheaptickets.models.HotelCriteria;
 import com.globant.automation.bootcamp.ui.cheaptickets.pages.hotels.HotelCard;
-import com.globant.automation.bootcamp.ui.cheaptickets.pages.hotels.HotelDetails;
 import com.globant.automation.bootcamp.ui.cheaptickets.pages.landing.DontWannaSaveExtra;
-import com.globant.automation.bootcamp.ui.cheaptickets.pages.landing.WizardContainer;
-import com.globant.automation.bootcamp.webdriver.WebTest;
+import com.globant.automation.bootcamp.webdriver.web.WebTest;
 import org.junit.Test;
 
 import static com.globant.automation.bootcamp.ui.cheaptickets.models.HotelCriteria.Builder.aHotelCriteria;

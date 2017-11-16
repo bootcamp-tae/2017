@@ -1,6 +1,6 @@
 package com.globant.automation.bootcamp;
 
-import com.globant.automation.bootcamp.webdriver.Page;
+import com.globant.automation.bootcamp.webdriver.web.Page;
 
 import java.util.Set;
 

@@ -1,4 +1,4 @@
-package com.globant.automation.bootcamp.webdriver;
+package com.globant.automation.bootcamp.webdriver.web;
 
 import org.openqa.selenium.remote.server.SeleniumServer;
 import ch.qos.logback.classic.Level;

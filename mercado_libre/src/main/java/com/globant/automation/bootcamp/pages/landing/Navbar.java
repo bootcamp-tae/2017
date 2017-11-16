@@ -1,7 +1,7 @@
 package com.globant.automation.bootcamp.pages.landing;
 
 import com.globant.automation.bootcamp.pages.products.SearchResults;
-import com.globant.automation.bootcamp.webdriver.Component;
+import com.globant.automation.bootcamp.webdriver.web.Component;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 

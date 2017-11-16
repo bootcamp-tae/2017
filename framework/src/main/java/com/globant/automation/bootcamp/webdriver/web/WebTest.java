@@ -1,7 +1,8 @@
-package com.globant.automation.bootcamp.webdriver;
+package com.globant.automation.bootcamp.webdriver.web;
 
 import com.globant.automation.bootcamp.tests.junit.ParametrizedParallelism;
 import com.globant.automation.bootcamp.logging.Logging;
+import com.globant.automation.bootcamp.webdriver.Context;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.runner.RunWith;
@@ -38,7 +39,7 @@ public abstract class WebTest<T extends Page> implements Logging{
 
     @Before
     public void setUp() throws MalformedURLException{
-        WebDriver driver = Context.INSTANCE.initBrowser(browser);
+        WebDriver driver = Context.INSTANCE.init(browser);
         Class<T> pageObjectType = getParameterizedType();
         try {
             getLogger().debug(format("Creating instance of [%s] with browser [%s]...", pageObjectType.getSimpleName(), driver));

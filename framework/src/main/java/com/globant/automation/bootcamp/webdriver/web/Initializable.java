@@ -1,4 +1,4 @@
-package com.globant.automation.bootcamp.webdriver;
+package com.globant.automation.bootcamp.webdriver.web;
 
 /**
  * Created by Facundo on 11/11/2017.

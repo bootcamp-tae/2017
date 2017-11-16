@@ -1,9 +1,8 @@
 package com.globant.automation.bootcamp.ui.cheaptickets.pages;
 
-import com.globant.automation.bootcamp.webdriver.Page;
+import com.globant.automation.bootcamp.webdriver.web.Page;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 
 
 import java.util.Set;

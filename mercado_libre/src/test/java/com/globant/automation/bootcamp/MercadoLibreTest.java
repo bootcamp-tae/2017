@@ -2,7 +2,7 @@ package com.globant.automation.bootcamp;
 
 import com.globant.automation.bootcamp.pages.landing.Home;
 import com.globant.automation.bootcamp.pages.products.ProductCard;
-import com.globant.automation.bootcamp.webdriver.WebTest;
+import com.globant.automation.bootcamp.webdriver.web.WebTest;
 import org.junit.Test;
 
 import static org.hamcrest.Matchers.*;
