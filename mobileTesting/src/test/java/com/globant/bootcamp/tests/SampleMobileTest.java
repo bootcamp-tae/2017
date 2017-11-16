@@ -1,6 +1,8 @@
 package com.globant.bootcamp.tests;
 
 import com.globant.automation.bootcamp.webdriver.mobile.MobileTest;
+import org.hamcrest.Matchers;
+import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import pages.CalculatorPage;
@@ -12,9 +14,11 @@ public class SampleMobileTest extends MobileTest<CalculatorPage>{
     public void testCalculator(){
         CalculatorPage calculatorPage = getInitialPage();
         calculatorPage.two();
-        calculatorPage.three();
         calculatorPage.plus();
-        calculatorPage.result();
+        calculatorPage.three();
+        String result =  calculatorPage.getResult();
+
+        Assert.assertThat("2 + 3 = 5", result, Matchers.is(result));
     }
 
     @Override
@@ -27,6 +31,5 @@ public class SampleMobileTest extends MobileTest<CalculatorPage>{
         capabilities.setCapability("appPackage" , "com.android.calculator2");
         capabilities.setCapability("appActivity", ".Calculator");
     }
-
 
 }
