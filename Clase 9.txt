@@ -1,0 +1,93 @@
+16/11/2017
+
+Integración continua
+	Utilización constante de sistemas de software para asistir en tareas rutinarias a las personas.
+
+Después de una fase de estimación, se asignan las tareas a las personas. Los tests unitarios son una garantía de que las cosas desarrolladas funcionen.
+Luego del desarrollo se prosigue con el testing y se trabaja en equipo.
+
+Los programas compilados pueden ser un jar que se puede correr directamente desde línea de comandos.
+Los compilados se suben a un repositorio remoto.
+Los binarios compilados y testeados son subidos a un repositorio donde se crea una versión de ellos y están disponibles para el acceso de todos los equipos.
+
+mvn clean compile test package
+// Comandos de mvn
+
+Las clases compiladas se almacenan en la carpeta target de IntelliJ con formato .class.
+
+Clean: borra la carpeta target
+Compile: compila el código
+Test: corre los test (y hace un compile implícito)
+Package: empaqueta los códigos.
+
+Una vez que se tienen los archivos compilados y empaquetados deben ser deployados en un servidor de producción. Con esto se actualiza la versión que haya en el mismo.
+
+La integración de todas estas fases sea automática para hacer las cosas más fáciles. Se recurre a una herramienta de integración que va desde la compilación hasta el
+deployado en los servidores.
+El programa es configurable (comandos a correr, donde conectarse, etc.). Se le debe configurar un pipeline. 
+Cuando TODO el proceso se realiza de forma automática (desde el push del desarrollador hasta que el usuario utiliza la aplicación) se conoce como "Continuous Delivery".
+
+Ejemplos: Jenkins, TFS (Team Foundation Server).
+
+De todos los miles servidores algunos son open source y otros debe pagarse por su uso. De los opensource es el más famoso.
+Jenkins se utiliza para integraciómn continua y monitorear errores y tráfico. Se le puede enseñar a interactuar con cualquier cosa. Se le pueden pedir reportes, traer
+plugins, llamar por teléfono, etc, todo a través de plugins.
+
+Jenkins
+	Al correr por primera vez se debe completar con la contraseña autogenerada.
+	Se pueden instalar los plugins sugeridos o customizarlos. También se pueden instalar desde dentro del programa los plugins necesarios para el proyecto que los
+necesite.
+	Jenkins tiene "Jobs" que son las tareas que queremos que uno haga. Ej. compilar, bajar.
+	Los jobs se deben crear y existe una gran variedad. A mayor cantidad de plugins mayores opciones. Los jobs pueden ser marcados como freestyle y ser "multitarea"
+o ya marcarlos como algo específico. Si se elige esto último es complicado volver hacia atrás.
+	El job es una secuencia de pasos, una receta. Si alguno de los pasos falla el job fallará (a menos que se le indique lo contrario).
+	La burbujita es verde BUENO, rojo MALO, amarillo indica que fallé anteriormente y en gris que nunca me configuraron/corrieron. El weather con un sol indica que
+viene andando bien hace rato, nublado indica que fallé hace tiempo y lluvia nos dice que anduvo mal todas las veces anteriores.
+	Las tareas se pueden programar para correr automáticamente en un horario determinado o cuando detecte algún cambio en algún espacio. Obviamente se pueden 
+correr los jobs manualmente.
+	Cada job tiene una carpeta específica en el disco rígido (workspace).
+	En la última parte de la configuración se pueden agregar tareas extras que se correrán de manera secuencial. Cuantos mayores plugins mayores opciones habrá.
+	También se cuenta con acciones postbuild para ejecutarse aunque la secuencia de pasos falle (similar al @After).
+
+	En la sección "Source Code Management" se configura todo lo referente a Git.
+	Los Build Triggers son los disparadores del job.
+
+	Poll SCM (Source Control Management = Git en nuesto caso): consulta el servidor de control de versiones cada el lapso de tiempo que se le indique y verifica
+si ha habido algún cambio en el branch del repositorio que se le indicó.
+
+	Los plugins se deben configurar desde la sección "Configurar al Sistema" luego de instalarlos.
+
+	Jenkins cuenta con executores que por defecto tiene 2. Es distribuible, una computadora puede ser la que organice todos los jobs y delegar su ejecución en
+las diferentes máquinas para luego recopilar la información que haya surgido de ellos.
+
+***************************************
+
+Selenium Server
+	Permite correr los test contra Firefox (v < 47) y Safari. Es un servidor web que controla los browsers. Si no conoce el driver entonces delega a otro servidor 
+la corrida del test.
+	Delega cuando trabaja con:
+		ChromeDriver
+		GeckoDriver (Firefox > 47)
+		IEServerDriver
+
+	Es un router, si no puede llevar a cabo la tarea la delaga.
+
+Comando para ejecutar Selenium Server: java -jar selenium-server-standalone-3.7.1.jar
+
+Asociar el ChromeDriver al server: java -Dwebdriver.chrome.driver =chromedriver.exe jar selenium-server-standalone-3.7.1.jar
+
+El -D se utiliza para pasarle un parámetro a la JVM. Ponemos chromedriver.exe si el chromedriver está en la misma carpeta que el jar, sino se debe especificar toda la
+ruta.
+
+	Se utiliza para levantar una instancia del test en mi máquina y correrla en otra.
+
+	Si uno desea trabajar en un cluster (utilizar Selenium Grid) y trabajar con distintas máquinas.
+
+java -Dwebdriver.chrome.driver =chromedriver.exe jar selenium-server-standalone-3.7.1.jar -role hub
+
+	El modo hub coordina a los nodos.
+
+Selenium Extras
+	Es un hub que inicia un wizard que arranca a hacerte preguntas para guiarte en la configuración del Selenium Server. Automáticamente crea los archivos de
+configuración (JSON) y levanta con esos settings el server.
+

@@ -19,7 +19,7 @@ public abstract class MobileTest<T extends MobilePage> {
     @Parameter
     public Platform platform;
 
-    @Parameters(name = "Device: {0}")
+    @Parameters(name = "Platform: {0}")
     public static List<Platform> platforms() {
         return Arrays.asList(Platform.ANDROID);
     }
