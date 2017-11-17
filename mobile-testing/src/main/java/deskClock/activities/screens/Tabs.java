@@ -19,19 +19,22 @@ public class Tabs extends MobilePage {
     private WebElement stopwatchTab;
 
     public AlarmScreen getAlarmScreen() {
+        click(alarmTab);
         return new AlarmScreen();
     }
 
     public ClockScreen getClock() {
-
+        click(clockTab);
         return new ClockScreen();
     }
 
     public TimerScreen getTimer() {
+        click(timerTab);
         return new TimerScreen();
     }
 
     public StopwatchScreen getStopwatch() {
+        click(stopwatchTab);
         return new StopwatchScreen();
     }
 

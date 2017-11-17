@@ -5,7 +5,7 @@ import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
-public class MobileComponent extends CommonOperations {
+public abstract class MobileComponent extends CommonOperations {
 
     public MobileComponent(WebElement container) {
 

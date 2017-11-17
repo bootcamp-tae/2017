@@ -16,7 +16,7 @@ public class MercadoLibreTest extends WebTest<Home> {
     private final String QUESTION = "What's up?";
 
     @Test
-    public void test() {
+    public void commentTest() {
         Register register = getInitialPage()
                 .search(SEARCH)
                 .applyFilter(FILTER)
@@ -25,7 +25,7 @@ public class MercadoLibreTest extends WebTest<Home> {
                 .choose()
                 .ask(QUESTION);
 
-        assertThat("Page contains text", register.getText(), containsString("¡Hola! Para preguntar, ingresa a tu cuenta"));
+        assertThat("Page contains text.", register.getMessage(), containsString("¡Hola! Para preguntar, ingresa a tu cuenta"));
     }
 
     @Override

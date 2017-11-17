@@ -7,7 +7,6 @@ public class InitialScreen extends MobilePage {
     private Tabs tabs = new Tabs();
 
     public Tabs getTabsBar() {
-
         return tabs;
     }
 }
