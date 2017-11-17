@@ -8,6 +8,7 @@ public class ClockInitialPage extends MobilePage{
 
     protected static final String  ANDROID_CLOCK_PACKAGE= "com.android.deskclock:id/";
 
+    //It works, but i should see a better identificator or another way to identificate this element
     @AndroidFindBy(accessibility = "Stopwatch")
     private MobileElement chronometer;
 

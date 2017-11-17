@@ -1,6 +1,7 @@
 package pages.clock_pages;
 
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AndroidFindBySet;
 
@@ -25,8 +26,6 @@ public class ChronometerPage extends ClockInitialPage{
 
     @AndroidFindBy(id = ANDROID_CLOCK_PACKAGE + "stopwatch_time_text")
     private MobileElement clock;
-
-
 
     public ChronometerPage start(){
         click(startButton);
@@ -53,8 +52,8 @@ public class ChronometerPage extends ClockInitialPage{
     }
 
     public String getTime() {
-        waitFor(visibilityOf(lblValue));
-        return clock.getAttribute("content-desc");
-
+        //"name" for "content-desc" attribute
+        return lblValue.getAttribute("name");
     }
+
 }
