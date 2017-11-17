@@ -1,0 +1,352 @@
+7/11
+AssumeThat: 
+AsserThat: ademas del msj le puedo dar algo mas legible, agrega 
+complejidad mediante Matchers (metodos que permiten ser mas verborragicos), para poder entenderlos mejor.
+
+Hamcrest: libreria que posee validaciones. Junit la incluyo como estandar.
+
+Los testrunner pueden utilizar métodos 
+TearDown y SetUp, el cual es codigo que se ejecuta antes y despues de cada test y esta garantizado que se va a ejecutar.
+Se anota con @Before en JUnit, se va a ejecutar antes de cada test.
+Se anota con @After en Junit, se ejecuta despues de cada test.
+
+Se anota con @BeforeMethod en TestNg.
+Se anota con @AfterMethod en TestNg.
+
+Ambos métodos deben ser estaticos para que los motores puedan acceder a ese método sin instanciar la clase.
+@BeforeClass una vez que se instancie la clase que contiene los métodos de Test a correr. 
+@AfterClass.
+
+Un solo hilo = Secuencial
+Para darle paralelismo a JUnit hay que utilizar @RunWith(Parallelism.class(Es un motor de testing))
+							BlockJUnit4ClassRunner -> Solo corre test en secuencia.
+
+Scheduler: objeto que se encarga de administrar la creacion y devolucion de hilos.
+
+
+WebDriver
+Para test funcional se utiliza WebDriver es un estandar. Selenium es una implementacion de este estandar. 
+Se espera poder controlar los navegadores web remotamente, para simular acciones de un usuario.
+Es una arquitectura de Cliente Servidor, el Servidor es quien hace las acciones, y el cliente que quiero que haga.
+La comunicacion es Tipo HTTP y se maneja via Json. Para cada Browser tengo un servidor distinto. 
+Estos servidores poseen el nombre de Driver.
+<!-- SELENIUM WEB DRIVER MODULE -->
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>3.7.0</version>
+        </dependency>
+Maven me trae un jar que posee la biblioteca de las dependencias de selenium junto con una implementación de cada Browser.
+Todas extienden de RemoteWebDriver.
+
+Agregar libreria de dependencias, para los web drivers. Encontrar un selector o un Identificador
+Lo busca por By.
+Xpath un sistema de busqueda de nodos, como hago referencia rapida a un nodo de todo este arbol. Se basa en el uso de 
+un sistema de jerarquías. Ej: "/Html/head/body/div[2]/input/etc..." //*(raiz) cualquier tag
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8/11
+WebDriverManager es una libreria de un manejador de web drivers. 
+Usar PageObject consiste en modelar una pagina web, como una clase en java.
+DSL: Domain Syntax Language 
+Capa de Test -> Capa de PageObject
+El pageObject nunca muestra evidencia de la tecnologia que utiliza(objetivo final)
+Permite tener una API fluida
+
+FindElement = @FindBy -> falla al no inicializar la variable
+Factory de PageObject -> Inicializa los elementos obteniendo ciertos parametros, driver, clase o una instancia de una clase.
+
+git reset --hard origin/master
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+9/11
+Es preferible no utilizar Java en los test, por si el dia de mañana se puede leer de manera mas facil.
+
+Abstraer lo más posible, crear una clase abstracta de test en el cual se realizen las operaciones mas comunes para no repetir código, y que sirva para más de 1 caso
+
+Test Parametrizados: test que corre tantas veces como parametros le de.
+ TEST -> 	POM (PAGE OBJECT MODEL) -> 		TECH(WEB DRIVER)
+		Debe pedir una instancia de web driver
+
+Enumeracion
+Es como una clase pero no puede deribarse, no puede crearse una clase a partir de esa. No puede instanciarse. Tampoco puede extender de otras clases.
+Es una mención a una N de elementos. Define constantes que estan ordenadas, osea poseen ordanilidad.
+Es parecido a utilizar algo estatico. Se usa para enumerar cosas. Es constante. Es serializable. Es thread safe. Lo carga la JVM a la mera mención del enum.
+Mientras una Enum no tenga más de un Elemento es un Singleton.
+
+Se debe utilizar un ThreadLocal para determinar que driver corresponde a cada PoM que fue inicializado con X driver.
+Es un atributo de la instancia, private static final
+ThreadLocal: Es un mapa donde esta implicito que la key es siempre el Id del thread.
+Si no esta nulo el thread se quita, se puede perder memoria real del sistema, puede dejar abierto procesos, X.
+El mismo thread dentro del threadLocal debe ser removido para evitar MemoryLeaks y problemas más severos. NO OLVIDAR
+ThreadLocal.remove()
+Before corre init y el After al Terminate
+
+NO HACER THREAD SLEEP
+Selenium posee varios TimeOuts, tiene esperas implicitas y explicitas. Se pueden manejar los time outs (tiempo de carga de la pagina).
+Implicito: aquel que viene por defecto configurado en el Selenium.
+Explicita: 
+Espera Fluida: FluentWait(UTILIZAR, puede trabajar con cualquier elemento) - WebDriverWait(Es unicamente contra el driver)
+new FluentWait.withTimeOut con un pulling(reintento de que se cumpla la condicion), ignorando excepciones(hace un try catch) y un Until que toma una function.
+ExpectedConditions clase dentro de la libreria Selenium.
+
+Pages != Components  
+Java puede crear una clase on the fly, de cualquier cosa que posea una interfaz.
+Proxy requiere thread.currentThread.getContextClassLoader, la clase y un InvocationHandler que diga que hacer cada vez que llamo a las interfaces.
+Es un interceptor de llamados de métodos
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+10/11
+El cliente es el nuestro web driver instanciado. New WebDriver = Cliente Http
+El WebDriver es un mini servidor para nuestro WebDriver instanciado,que solamente maneja el navegador que se instancia.
+SeleniumServer, permite descargar un server standalone que sirve como proxy/handler/distribuidor, para todos los demas drivers que debemos manejar.
+Incluye Firefox <47 y Safari.
+WebDriver es un estandar, lo que cambia son las Capabilities(Configuracion de como abrir los browsers en los cuales vamos a correr los tests).
+Las Capabilities siempre se pasan!
+@Parameters
+Sirve para anotar el metodo publico statico con la cantidad de parametros a testear!
+@Parameter
+Cada vez que corre el test, va a tomar el valor de parameters en nuestra variable con la anotacion Parameter
+También debo utilizar. @RunWith para correrlo con paralelismo.
+
+
+SERVICE TESTING
+Se pueden probar Endpoints de servicios web, conectar con servidores de mail. Componentes de software que escuchan un puerto, un recurso de ubicacion de red
+Es testing de capas, donde no se asocia una UI, simplemente se interactua con el sistema de otra forma, osea intercambiando mensajes.
+Siempre desde la persepctiva donde exitamos el componente para ver si reacciona de la manera que esperamos.
+Test Runners de API (Api Testing = ServiceTesting) --RestAssure(NO USAR,es completamente procedural).
+
+
+Métodos HTTP
+GET - POST - PUT - PATCH - OPTIONS - DELETE - HEAD - TRACE - CONNECT 
+GET: Lectura
+POST PUT PATCH: Métodos de escritura. POST: Permite enviar informacion nueva. PUT y PATCH: es para realizar updates.
+DELETE: Escritura destructiva
+HEAD: es para consultar al Server si la informacion existe antes de ir a buscarla.
+OPTIONS: Si estamos utilizando un proxy.
+TRACE: El cliente puede ver lo que el server esta recibiendo.
+Tenemos Retrofit y RestEasy (libreria de Jboss, es un cliente HTTP): Son las más famosas y permiten trabajar con orientación a objetos. Modelar la API como interfaces.
+
+Diferencia Radical
+RetroFit: viene con un cliente HTTP que soporta ser usado en las plataformas Android, ergo es un cliente mucho más liviano y rápido.
+Después de la versión 2.X la forma de usarlo
+cambiaron los formas sincronicas(bloqueante la operación por defecto toda actividad input y output es bloqueante) y asincronicas.
+En Retrofit2 se debe envolver el resultado de las operaciones con un Call.
+Execute es bloqueante y Enqueue es asincrono
+RestEasy: solamente se instancia la API.
+Por defecto RestEasy no es ThreadSafe, no garantiza que todo salga bien de movida.
+
+
+api-test
+apis (interfaces de apis)
+model(clases con los valores a recibir)
+
+Retrofit
+@GET("ENDPOINT")
+
+@GET("ENDPOINT/{ALGO}") @Path("algo") Retrofit me lo cambia automaticamente
+Si quiero pasar un parametro utilizo @Query("var")
+
+Retrofit posee un converter: Se debe agregar una libreria para deserializar una respuesta Json o lo que sea, y transformarlo a un objeto.
+RestEasy posee un provider: Se debe agregar una libreria para deserializar una respuesta Json o lo que sea, y transformarlo a un objeto.
+@JsonProperty de texto a objeto o viceversa. Se le puede agregar un nombre value = "lo que quiera" cuando no posee nombre significa que poseen los mismos nombres que 
+la variable en java.
+
+--Transient: no son candidatas para serializacion.
+ 
+new Retrofit.Builder().build() Debe obtener los argumentos para crearlos 
+Pasarle la baseUrl 
+Tambien hay que decirle a Retrofit el conversor que se utiliza mediante addConverterFactory(en este caso JacksonConverterFactoy.create())
+
+Con Instancia de nuestra api = retrofit.create("Api") -> Creamos nuestra API.
+Response Instancia del Objeto = api.ourMethod().execute(); //Devuelve exception de input/output 
+
+
+RestEasy
+@GET
+@Path("ENDPOINT")
+
+@PathParam("parametro a pasar") Format to POJO
+
+
+13/11
+ComputeIfAbsent (es el get del HashMap en java 8)
+
+----------------------------------------------------------------------------------------------------------------------------------------------
+14/11
+Appium es una implementacion de protocolo web driver para dispositivos mobiles, en particular Android y iOS.
+Api como WebDriver.
+Android Debug Breach ? Android SDK libreria java para programar Android
+
+sdk -- list
+sdkmanager ; nombre y version a bajar;
+DEPENDENCIA QUE HACE FALTA
+sdk buildtools
+Esta relacionado con el nivel de la API que se quiere automatizar. PARA LA VERSION DE ANDROID que quiero manejar 
+sdk platform 
+
+Con el ADB podemos manejar el android de la manera que queramos. Appium manipula este ADB.
+adb devices nos devuelve un listado de emuladores que estemos corriendo.
+
+Si enchufamos nuestro celular hay que dejarlo en modo debug.
+
+ANDROID_HOME: debe apuntar a donde descomprimos la sdk de android
+
+path: variable de entorno, indica donde se encuentran los ejecutables comunes para windows.
+
+Appium no solo automatiza aplicaciones nativas en iOS y Android, tambien puede automatizar aplicaciones Windows (ej: calculadora, buscamina)
+
+AppiumDriver toma la URL del server del Appium instalado. URL :PUERTOAPPIUM/wb/hub
+DesiredCappabilities: clase que viene con selenium. Parametros de configuracion del servidor. DesiredCappabilities.Android() Sv de Android
+chrome://inspect nos permite ver el listado de dispositivos conectados a nuestra computadora
+WebDriver puede Switchear entre el modo web y el modo nativo.
+
+IMPORTANTE
+uiautomatorviewer comando que aparece cuando instalamos el SDKManager, solo sirve para android a diferencia de Appium.
+Se maneja con el ADB- Esto maneja el emulador o dispositivo que poseamos conectados.
+
+ADB crear otra variable de entorno -- No se que va
+Posee dos botones, uno permite tomar un screenshot, permite identificar todos los componentes en formato nativo (ANDROID)
+Resource-id: hace de id de los atributos html, la mejor forma para buscar elementos.
+AutomatorViewer nos permite ver lo que esta dentro.
+Appium posee un inpsector que hace lo mismo que el AutomatorViewer, pero es agnostico ose que se puede usar tanto para iOS, Windows y Android.
+
+Appium se puede configurar con la URL y las Capabilities y te muestra el Json que se enviara al server para devolvernos el Driver deseado.
+Apk android y Ipa para Ios, son los ejecutables de cada arquitectura.
+Appium puede tomar un apk o un Ipa y realizar las acciones necesarias para ejecutar el test.
+pm -> packagemanager
+package - launchable activity
+
+----------------------------------------------------------------------------------------------------------------------------------------------
+15/11
+
+Appium puede correr tanto en servidor local como remoto. 
+acd: android virtual device.
+Vamos a utilizar appActivity y appPackage sirve de identificador de las aplicaciones. Esto es lo requerido minimamente.
+Si se requiere instalar la aplicación vamos a necesitar de utilizar 3. Las dos anteriores más app para instalarla.
+dumpsys window windows -> te trae un dump de todo lo que este abierto dentro del dispositivo que estemos utilizando
+mCurrentFocus - La aplicacion que posea el primer plano o foco te devuelve la informacion del paquete y activity.
+deviceName: el tipo de mobile device = android
+platformName: android
+
+@AndroidFindBy = @FindBy = @iOSFindBy
+No usar TagName. Buscar por Id - Accessibility - Xpath
+
+RESOURCE-ID utilizarlo dentro del AndroidFindBy
+
+Gherkin Given When Then
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------
+16/11
+Integración continua
+Compilar codigo -> Correr las pruebas unitarias para validar que ese codigo sea correcto -> limpiar -> compilar -> empaquetar -> deployar
+Maven es un servidor artefacto,central,binario, online y open source.
+mvn clean compile test package
+compile y test es redundante, ya que test compila automaticamente
+
+Queremos que un programa moritonee un repositorio, que traiga el codigo cambiado, que lo compile, que corra los tests, que lo deploye, lo envie al
+servidor artefacto, y luego al servidor de producción. Puede ser configurable.
+Se configura un pipeline para esto, y  el programa lo hace por nosotros.
+Cuando no posee intervencion humana y se le realiza toda la configuración del Pipeline se le denomina Continous Delivery.
+Puede hacer practicamente todo mediante Plugins.
+
+Jobs = Tareas = Pipeline
+Freestyle: luego puede cambiarse
+S
+No corrido - Andando - Fallido - Amarillo (falle anteriormente y previamente)
+W
+Icono meteorologo que indica como anduvo el job
+
+Nosotros le decimos como debe correr, tiene infinitas maneras para hacer esto, y es configurable.
+
+Build es el Pipeline principal
+Pose acciones Post Build, haya fallado o no. 
+
+Clean Test (Maven)
+
+SCM Source Control Management (SVN - Git)
+Revisa si hay algun cambio.
+Consulta el servidor de control de version cada X cantidad de tiempo.
+
+Ejecutores: puede construir jobs en paralelo, puede ser configurable, al instalarlo por 1ra vez, solamente vamos a tener 2.
+
+Selenium Server (basicamente es un router) es un servidor que controla el RemoteWebDriver, para Firefox y Safari. 
+Maneja Firefox < 47 y Safari. Las que no pueda manejar las delega a ChromeDriver, GeckoDriver(>47) y los demás.
+
+Se crea una variable Java que se le pasa a la JVM con -D + property = valor
+-Dwebdriver.chrome.driver = chromedriver.exe
+
+Selenium Grid - varias instancias en conjunto de Selenium, se indica el rol hub (maestro), node(esclavo)
+Por defecto los nodos empiezan con el puerto 5555
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------
+17/11
+Conviene Reducir el scope de los elemetnos que buscamos -> Component 
+Behaviour Driver Development = Bdd (Desarrollo basado en comportamiento)
+Primero el test y luego 
+Comportamiento es como deberia comportarse la aplicacion, esto esta dado por la forma en que lo escribe los business analyst.
+Cosas que se pretenden hacer son escenarios
+Gherkin 
+Scenario
+GIVEN
+WHEN
+THEN
+AND
+BUT
+
+Cucumber y JBehave
+Cucumber es mejor. La forma de vincular estos escenarios con el codigo java es mediante anotaciones, pero anotaciones especiales.
+
+Steps o Definiciones es lo que vincula a cada linea dentro de los features es donde poseen las anotaciones.
+
+Feature =  Scenario
+Son los escenarios donde estan nuestros test
+
+El texto dentro de las anotaciones lo toma como una expresión regular
+
+. = comodin (cualquier char pero una sola vez)
+? = cuantificadores 0 o 1 vez(opcional)  / non greedy - luego de ser utilizado de un + o *, aplica esto hasta la minima 
++ = cuantificadores 1 o más veces
+* = cuantificadores 0 o más veces
+\w = alphabetic char (one time only)
+\d = digit char (one time only) 
+| = logic or 
+{} = la llave modifica la cantidad de digitos o caracteres que puede contener una expresión regular. 
+Los parentesis son grupos. Son parametros
+
+Necesitamos un runner donde tenga especificado donde tenemos features 
+Cucumber junit y Cucumber Java
+CucumberOptions son  las opciones para pasarle a Junit para correr Cucumber
+FEATURES =  directorio donde estan alojados los features a correr (FEATURES)
+GLUE = donde estan las calses que pega el codigo java con las features (STEPS)
+STRICT = se estricto que la relacion de matching se encuentra
+TAGS = Cada escenario puede tener tags asi como los features
+Outline poner todos los pasos y luego poner Examples (tabla)
+
+Cuenta como Test cada Step 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -29,6 +29,8 @@ public class CalculatorPage extends MobilePage {
     @AndroidFindBy(id = ANDROID_PREFIX + "formula")
     private WebElement result;
 
+
+
     public CalculatorPage() { waitFor(visibilityOfAllElements(asList(two,three,equals,add, result)));}
 
     public CalculatorPage two() {
