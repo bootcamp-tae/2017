@@ -11,9 +11,9 @@ public class ProductPage extends MercadoLibreHome{
     @FindBy(id = "question-btn")
     private WebElement questionButton;
 
-    public ProductPage ask(String question){
+    public LogInPage ask(String question){
         type(questionBar, question);
         click(questionButton);
-        return this;
+        return new LogInPage();
     }
 }

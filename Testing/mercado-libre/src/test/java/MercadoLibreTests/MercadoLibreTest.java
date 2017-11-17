@@ -2,15 +2,18 @@ package MercadoLibreTests;
 
 import com.globant.automation.bootcamp.webdriver.webdriver.WebTest;
 import org.junit.Test;
+import pages.LogInPage;
 import pages.MercadoLibreHome;
-import pages.ProductPage;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.Is.is;
 
 
 public class MercadoLibreTest extends WebTest<MercadoLibreHome> {
 
     @Test
     public void search(){
-        ProductPage product = getInitialPage()
+        LogInPage logIn = getInitialPage()
                 .searchProduct("IPhone8")
                 .applyFilter()
                 .getResults()
@@ -18,7 +21,7 @@ public class MercadoLibreTest extends WebTest<MercadoLibreHome> {
                 .select()
                 .ask("Esta es una pregunta?");
 
-        //assertThat("",,"¡Hola! Para preguntar, ingresa a tu cuenta")
+        assertThat("Se realizo los pasos correctos", logIn.getMessage(), is("¡Hola! Para preguntar, ingresa a tu cuenta"));
     }
 
     @Override

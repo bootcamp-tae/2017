@@ -13,7 +13,7 @@ public class MercadoLibreResults extends MercadoLibreHome {
     @FindBy(className = "qcat-truncate")
     private WebElement filter;
 
-    @FindBy(className = "main-title")
+    @FindBy(className = "item__info")
     private List<WebElement> products;
 
     /*@FindBy(className = "rowItem item item--stack new with-reviews")

@@ -9,7 +9,7 @@ public class ProductCard extends Component {
      * @param container
      */
 
-    @FindBy(linkText = "#MLA684897679 > div.item__info-container > div > h2 > a > span")
+    @FindBy(className = "item__info-title")
     private WebElement link;
 
     protected ProductCard(WebElement container) {
