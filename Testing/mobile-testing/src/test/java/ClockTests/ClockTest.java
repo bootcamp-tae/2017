@@ -6,7 +6,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import pages.clock_pages.ChronometerPage;
 import pages.clock_pages.ClockInitialPage;
 
-import static org.hamcrest.Matchers.greaterThan;
+import static org.hamcrest.Matchers.not;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
@@ -21,11 +21,12 @@ public class ClockTest extends MobileTest<ClockInitialPage> {
                 .timeOut(500)
                 .stop();
 
-        assertThat("The chronometer works", Double.valueOf(chronometer.getTime()), is(greaterThan(0d)));
+        System.out.println(chronometer.getTime());
+        assertThat("The chronometer works", chronometer.getTime(), is(not("0 minutes 0 seconds")));
 
         chronometer.reset();
 
-        assertThat("The chronometer has been reset", Double.valueOf(chronometer.getTime()), is((0d)));
+        assertThat("The chronometer has been reset", chronometer.getTime(), is("0 minutes 0 seconds"));
     }
 
     @Override

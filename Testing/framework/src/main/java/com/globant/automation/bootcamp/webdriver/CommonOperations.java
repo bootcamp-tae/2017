@@ -1,5 +1,6 @@
 package com.globant.automation.bootcamp.webdriver;
 
+import io.appium.java_client.MobileElement;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
