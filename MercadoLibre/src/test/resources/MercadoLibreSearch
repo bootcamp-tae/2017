@@ -1,0 +1,6 @@
+Feature: MercadoLibre Search
+
+  Scenario: Perform a search on the navsearch
+    Given I am at MercadoLibreHome page
+    When I perform a search for "camisetas"
+    Then I should see a list of items on the MercadoLibreResults
