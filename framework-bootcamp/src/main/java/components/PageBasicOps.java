@@ -1,9 +1,6 @@
 package components;
 
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Select;
@@ -62,6 +59,7 @@ public abstract class PageBasicOps {
                 .withTimeout(60, SECONDS)
                 .pollingEvery(1, SECONDS)
                 .ignoring(NoSuchElementException.class)
+                .ignoring(StaleElementReferenceException.class)
                 .until(condition);
     }
 }

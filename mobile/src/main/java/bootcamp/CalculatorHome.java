@@ -72,7 +72,7 @@ public class CalculatorHome extends CalculatorPage{
     public CalculatorHome (){
         waitFor(visibilityOfAllElements(Arrays.asList(resultElement,addElement,subElement,multiplyElement
         ,deleteElement,equalElement,decPointElement,nineNumberElement,eightNumberElement,sevenNumberElement,sixNumberElement
-        ,fiveNumberElement,fourNumberElement,threeNumberElement,twoNumberElement,oneNumberElement,ceroNumberElement,padAdvanced)));
+        ,fiveNumberElement,fourNumberElement,threeNumberElement,twoNumberElement,oneNumberElement,ceroNumberElement)));
     }
 
     public CalculatorHome cero(){
@@ -147,6 +147,7 @@ public class CalculatorHome extends CalculatorPage{
         return getText(formulaElement);
     }
     public String getResult(){
+        click(equalElement);
         return getText(resultElement);
     }
 }
