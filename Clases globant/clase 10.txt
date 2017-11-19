@@ -1,0 +1,141 @@
+component y page
+
+@FindBy(id = "emails-table")
+WebElement emailEntriesContainer
+
+WebElement EmailEntries emailEntries = new EmailEntries(emailEntriesContainer)
+
+class EmailEntries extends Component {
+	
+	@FindBy(tagName = "xxxxx")
+	List<WebElement> emails;
+	
+	EmailEntries (WebElement c){
+		super(c);
+	}
+
+	public List<Mail> getMails(){
+		return emails.streams().map(e -> new Mail(e).collect(toList()));
+	}	
+}
+
+class Mail extends Component {
+	
+	@FindBy(className = "wasd")
+	private List<WebElement> emails;
+
+	Mail(WebElement emails){
+		super(container);
+	}
+}
+
+*****************************************************************
+
+
+Hasta ahora vimos TDD, hoy vemos BDD dirigido por el comportamiento
+
+En BDD es utilizado por la gente de negocios, ellos escriben los TestCases, los escenarios
+en sintaxis Gherkins:
+
+
+Scenario: Valid user log in
+GIVEN I navigate to a login page
+WHEN I enter "mama" and "papa" as user credentials
+AND I click the Login button
+THEN I am taken to my account page
+AND I can see my user name on the top bar
+
+JBehave y Cucumber, las librerias
+
+Usamos Cucumber
+
+Tenemos steps, features
+Pero necesitamos algo que una el codigo con los archivos de texto, eso son los steps
+
+
+**************
+
+Expresion regular
+
+. = cualquier caracter(una sola vez)
+
+{
+
+? = 0 o 1 vez (opcional)/non greedy
+
++ = 1 o mas veces
+
+* = 0 o mas veces
+
+} cuantificadores, modifican al caracter previo
+
+ej 'a+' : al menos tiene que haber una 'a'
+
+
+
+\w = alphabetic char(una sola vez)
+
+\d = digit char(una sola vez)
+
+'\d+' : al menos un numero o mas
+
+Por ej para un documento
+
+'\d\d.\d\d\d.\d\d\d'
+
+\d{2}\.\d{3}\.\d{3}
+
+\d{3,} : minimo 3
+
+\d{3, 9} : minimo 3 y maximo 9
+
+\d{,9} : no hay minimo pero hasta 9
+
+| = logic OR
+
+'(a+ | ca+)'
+
+\d = [0 - 9]
+
+\w = [a - z]
+
+un '?' luego de un '*' o '+' es para especificar non greedy, cortaria en la primera que matchee
+
+.*? : lo ponemos para que no nos pongan una comilla ' 
+
+*************
+
+Cucumber maneja expresiones regulares
+
+Los parentesis agrupan expresion regular para cucumber
+
+java regex
+
+***********
+
+Los pageObjects son iguales, esa parte no cambia,
+tenemos modulo steps, donde estan las anotaciones cucumber que matchean con el archivo feature
+Tenemos el test runner para que corra con el Runner de cucumber
+con unas opciones @CucumberOptions, las necesarias son
+
+features = donde estan los archivos features, desde la raiz del modulo maven donde estoy trabajando
+
+glue = donde estan las clases que pegan las features con el codigo java
+
+format = en que formato queres los reportes de salida
+
+strict = true : si hay alguna linea que no mapee gherkins con codigo java, que reviente inmediatamente sin correr
+los tests
+
+tag = uno puede tagear las features, puede haber una tag para cada escenario tambien, no necesariamente
+al principio de la feature
+
+tag = -@ignore : todos los que no estan ignorados, si uno tiene @ignore, el test no se corre
+
+scenario outline: me permite poner los pasos y luego Examples, es decir los pasos a cumplir y en examples para que
+browsers por ejemplo corra esa escenario
+
+los corchetes angulares son una variable interna para cucumber
+
+
+Tenemos 2 dependencias, cucumber-java y cucumber-junit

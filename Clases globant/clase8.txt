@@ -1,0 +1,69 @@
+appium interactua con adb, es un server
+el server puede ser local o en internet, lo haremos local
+
+en lo conceptual es lo mismo que con ui-testing 
+MobileDriver extiende de RemoteWebDriver que tiene capabilities al igual que en WebUITesting dependen de cada
+browser
+
+http://appium.io/slate/en/master/?java#android-only
+aca tenemos los metodos de appium
+
+cuando conecto el telefono puede poner adb shell
+y ya entro en el adb y no tengo que poner los comandos tan largos
+
+dumpsys window windows: me despliega todas las ventanas y apps abiertas en el celular
+
+dumpsys window windows | grep "palabraClave"
+
+"mCurrentFocus" y tira unicamente esa linea, el currentFocus de todas las abiertas es unicamente la que se ve
+la que esta abierta actualmente, nos dice el paquete y la activity("main/ pantalla inicial")
+(las apps android tienen una serie de pantallas/activities)
+
+
+com.android.calculator2.Calculator
+
+com.android.calculator2 : es el paquete appPackage
+
+Calculator : es la activity appActivity
+
+appium necesita de estos parametros como minimo
+
+debo decirle 2 cosas minimo para un Test generico
+las capabilities y con que pageObject arranca
+
+las capabilities sera el package y la activity
+appPackage, "nombreDelPaquete"
+
+appActivity, ."NombreDelActivity"
+
+dentro de las capabilities debo decirle tambien con que SO quiero trabajar
+
+deviceName	"android"
+platformName	"andriod"
+
+@AndriodFindBy
+@iOSFindBy
+
+si tengo una app para ios y andriod y son iguales
+pongo las 2 anotaciones
+
+en android no anda tagName(no existe en android ni ios)
+
+para el caso de la calculadora el id es muy largo, entonces hay una constante en la CalculatorPackage
+para achicar los id
+
+CalculatorPackage tendra todo lo comun al paquete de la aplicacion
+
+si no ponemos la ruta completa del id
+hace 3 combinaciones para tratar de detectar el id
+
+si el id tiene el mismo prefijo del package pongo una barra "/"
+
+para mapear usamos el inspector de uiautomator viewer o el de appium
+
+le puso un waitFor(visibilityOfAllElements) en el constructor porque hay un delay al abrir la app
+
+directamente esperamos que carguen las activity, que esta toda cargada para su uso
+
+para el inspector usarlo con el appium tengo que armar el JSON con appPackage platformName deviceName y appActivity en 
+desiredCapabilities

@@ -1,0 +1,49 @@
+la libreria web driver manager es para los drivers de los diferentes browsers los baja y los usa
+
+*************************
+patron pageObject: consiste en modelar una pagina como una clase en java, debe ser una representacion funcional, que me
+permita realizar diversas funciones, objetivos
+
+nunca el pageObject muestra referencia de la tecnologia que usa
+
+mirando un test no debo saber la tecnologia que usa por ejemplo webDriver
+
+el test se comunica con el pageObject y el pageObject con webDriver
+
+API fluida
+
+no hacer uso excesivo de encadenado de metodos
+
+un pageObject no retorna void, por lo menos devolver el this, para garantizar la fluidez de la API
+
+*************************
+DSL: Domain Syntax Language, hablemos en el dominio del lenguaje
+
+    @FindBy(id = "lst-ib")
+    private WebElement searchBox;
+
+para que ese elemento me lo busque por id pero eso no me instancia el webElement
+y voy a tener ese codigo para cada elemento por eso usamos un patron Factory
+de pageFactory me inicializa o no los elementos de @FindBy si le saco ese annotation asume 
+
+si no tiene modificador de acceso por default le da acceso solo al paquete
+con protected puede haber una clase de otro paquete que acceda a este extendiendo de usa clase
+
+
+src main java para los pageObjects
+
+src test java para los test
+
+tengo packages para los distintos test, ej los test de busqueda de hoteles en un paquete "hotels"
+busqueda de pasajes aereos en "flights"
+
+si tiene un metodo mas de 4 o 5 parametros hagamos un objeto con los atributos y le pasamos el objeto
+
+Clase inmutable:
+objetos que no cambian su estado
+con getters pero sin setters clase final para no extenderla atributos final y seteados en el constructor
+estas clases son ThreadSafe
+
+git reset --hard origin/master
+
+para igualar lo que tengo en el master <--hard> borra todo lo que tenia en el local

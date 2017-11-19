@@ -1,0 +1,62 @@
+Con paralelismo no funciona con el uso de instanciacion de driver con new
+
+Appium tiene la misma interfaz de metodos que Selenium
+dentro esta se encarga de pasar a codigo de iOS o Android
+
+ADB: Android Debug Bridge
+Andriod SDK: Libreria de Java para desarrollar android
+
+Usaremos las tools de android.
+Viene con SDK manager y un emulador de Android
+
+Usaremos como emulador GenyMotion
+
+La mecanica es la misma, tenemos un test ....
+
+Agregar el SDK a la variable de entorno de windows la carpeta bin debe estar en el path
+Tambien debe haber una variable de entorno ANDROID_HOME que apunte a donde esta el SDK de Android
+
+
+SDKManager te abre los comandos
+
+Dependencias/Librerias indispensables 
+buildTools v27.001
+platform(alguna): relacionado con nivel de api que se utilizara
+
+
+
+
+//Con los mismos celulares podremos testear (sin emulador) debemos ver version de andriod y ver su platform level de
+esa version por ejemplo 6.0 version 23
+pero se pueden bajar todas, por lo menos la del dispositivo a manejar
+
+
+Comandos Appium
+
+adb devices : lista la cantidad de dispositivos detectados
+
+IMPORTANTE Si enchufamos el celular, debe estar en forma debugger(depuracion USB)
+
+cmd / sdkmanager
+
+se pueden detectar los elementos de una aplicacion movil desde el chrome es las developer tools
+conectando el dispositivo
+
+comando uiautomationviewer
+
+appium:
+en automatic server tenemos las desired capabilities le ponemos los parametros
+y nos mostrara el JSON que se envia al server 
+
+deviceName	
+platformName
+appName /con el paquete de la aplicacion que saco con adb shell pm list packages ... ESTO ESTA EN LOS DOCUMENTOS
+app con la direccion de la apk
+         
+adb pull <paquete app> :descarga la apk al disco de la pc
+y busco el launchableActivity
+
+tengo un inspector en appium tambien
+
+fijarse de anadir todo a las variables de entorno
+agregar adb.exe al path para escribir adb en consola y que lo corra

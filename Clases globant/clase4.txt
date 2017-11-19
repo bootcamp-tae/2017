@@ -1,0 +1,97 @@
+en el test no debe quedar nada de la tecnologia(web driver)
+el test no debe cambiar si cambia la tecnologia
+y tampoco instanciacion de objetos con sintaxis java (new)
+
+las fechas se ponen como int como dias desde la dia de la fecha
+si pongo 2 serias 2 dias despues de la fecha actual
+
+no siempre se usan todos los parametros de busqueda, para eso usamos un patron Builder para utilizar solos
+los criterios que querramos
+
+los test tienen una clase generica con todos los elementos en comun para cualquier test haremos una clase para esto
+y extenderemos los test de esta misma
+WebTest<T>
+
+ese tipo T puede ser de cualquier cosa que seria la pagina inicial T extiende de Page
+
+El test habla con POM y el POM con la tech(webdriver)
+pero NUNCA el test se comunica con webdriver,
+
+para solucionar el tema de que el test deba pasarle el driver al POM
+el POM ira a buscar el driver
+
+todo lo generico al modulo de framework
+
+todas las paginas de por ejemplo cheaptickets extenderan de cheapTicketsPage que es lo minimo que todas las
+paginas de CT tendran
+
+aplicaremos Singleton utilizando enums, es la forma mas eficiente
+
+ENUM
+constructor privado
+no se puede instanciar, lo instancia la JVM con el class loader
+se definen constante ordinalizadas desde el indice 0
+la enumeracion se utiliza(como si fuera clase static)
+no pueden ser nulos, son elementos finitos
+es ThreadSafe
+cuando un enum tiene un elemento es un singleton
+
+
+MAP(interfaz)
+
+tabla de key, value
+
+
+Para los distintos navegadores que ingresan al Context con Threads
+puede usar un map de Map<ThreadId, WebDriver> esto es muy similar a un ThreadLocal que ya toma que la clave
+es un ThreadId por los tanto solo debo especificar el valor es decir el WebDriver
+
+Map<ThreadId, WebDriver> = ThreadLocal<WebDriver> (conceptualmente, no a nivel practico y de implementacion)
+
+hacerle un get() es lo mismo que hacer un get con el ThreadId que esta en ese momento corriendo
+
+es importante para el ThreadLocal terminarlos, es importante ya que si un test falla quedaria en el ThreadLocal
+un value sin poder acceder y no va a poder ser recolectada por el GarbageCollector por lo tanto es memoria inutilizada
+que para los webdriver es mucho ya que tenemos un server que queda abierto un navegador abierto, etc(mucho desperdicio)
+
+en el @Before se llama a init
+en el @After se llama a terminate
+
+si no tiene private protected ni public es a nivel paquete su alcance(scope), package level
+
+desde mi framework solo puede acceder desde afuera a Page y WebTest, no le doy a un usuario mas cosas de las que debe
+ni menos de las que necesita
+
+debemos usar metodos para interactuar con los elementos, para esto ademas debemos esperar su visibilidad, su existencia.
+
+la implementacion de selenium para los wait tiene esperas implicitas e explicitas
+
+
+no usar sleep()
+
+
+espera activa o explicita
+
+FluentWait no usar WebDriverWait ya que esta utiliza tipo generico WebDriver y no siempre voy a querer esperar sobre
+el driver
+
+En la libreria ExpectedConditions de selenium estan las condiciones para los elementos
+
+usar las condiciones de wait no usar condiciones de mas, redundantes.
+
+Component and Page concepts
+
+los separo, a los page le inicializo segun los driver
+
+
+cuando por ejemplo uso elementos que aun no cargaron java las inicializa igual y no explotan cuando las utilizo
+ya que usan un proxy se queda con la definicion de lo que quiero ir a buscar hasta que lo quiero ir a buscar
+
+proxy dinamicos 
+java puede crear una clase en tiempo de ejecucion de cualquier cosa que sea una interfaz y webelement es una interfaz
+
+Proxy java.reflect
+
+
+
+

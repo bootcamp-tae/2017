@@ -1,0 +1,144 @@
+Hasta ahora el cliente es el WebDriver, el cliente pasa de codigo java a cliente http que sabe comunicarse con el server
+que como no le dijimos donde se encuentra lo toma como el local:host, el server es el archivo .exe del driver
+
+El cliente es ChromeDriver
+
+driver.getInstance() bajabamos gracias a Selenium un server especifico parar Chrome(hasta ahora)
+new Chrome Driver() abre un cliente de Chrome
+
+Selenium tiene un standAlone server que sirve para todos los demas driver que uno puede bajar independientemente
+Para usarlo debemos tener los driver de los browser
+
+Las capabilities son los valores del pageLoad de JSON con las caracteristicas de cada browser
+
+Vamos a utilizar RemoteWebDriver, tiene varios constructores, uno de ellos toma capabilities que se las paso.
+otro es con un url, si no le digo nada es con un local. 
+Las capabilities SIEMPRE se pasan, le tengo que decir cuales son.
+
+Cada browser tiene sus capabilities las conocemos con DesiredCapabilities, aqui esta lo minimo e indispensable
+de cada navegador
+
+System.getProperty(par1, par2)
+par1 = la ruta que quiero que vaya
+par2 = por defecto si no encuentro par1
+
+Ahora usaremos test parametrizados
+@RunWith(Pamareterized.Class)
+
+
+
+@Parameter : por cada uno de los elementos de @Parameters los mete de a uno en la variable @Parameter y corre el test
+
+@Parameters : me dice cuantos parametros y cuales correra el test, como una lista los devuelve
+
+Para correrlo parametrizado y en paralelo
+@RunWith(ParameterizedParallelism.class)
+
+
+NUNCA driver especifico, siempre RemoteWebDriver
+
+
+--------------------------------------------------------------------
+
+
+SERVICE TESTING -----> API TESTING
+
+El service testing esta orientado a componentes de software que escuchan un puerto o exponen un recurso de ubicacion
+de red, testing de capas donde no se asocia una UI, se interactua de otra forma con el sistema, mandando mensajes.
+
+TestRunners
+
+Usamos : RestEasy, Retrofit, son las mas famosas, y permiten trabajar orientado a objetos
+
+Tambien hay : RestAssure(NO), JDK 9
+
+
+
+Verbo HTTP
+
+HTTP es un protocolo, es cada pedido al server le tengo que decir que hago, es stateless
+
+metodos http
+
+GET: leer, permite enviar a que recurso del server quiero conectarme, si quiero pasarle parametros se lo paso en la URL
+?var=valor&var=valor&var=valor
+
+POST: escribir, enviar informacion, subo informacion que considero no existe, algo nuevo
+
+PUT: escribir/modificar, update, agrego o actualizo
+
+PATCH: escribir, update, agrego o actualizo
+
+OPTIONS: cuando se usa un proxy
+
+DELETE: escritura destructiva, borrar un recurso del server
+
+HEAD: Consultar si existe la informacion, encabezado con informacion del server y si existe o no la url
+
+TRACE: Para ver que se recibe del otro lado
+
+Los que vamos a usar:
+------
+GET
+POST
+PUT
+PATCH
+DELETE
+------
+
+Comportamiento restfull
+
+RestEasy y Retrofit, facilitan la serializacion
+
+Retrofit 
+viene con OKHTTP un cliente web
+
+
+RestEasy no es ThreadSafe por defecto
+
+Las 2 librerias modelan una API como una interfaz de Java
+
+Los objetos que modelen el test van en un paquete model
+
+@GET("/endpoint")
+
+@GET("comments/[algo]")
+List<Comment> get(@Path("algo") int id)
+Retrofit me hace la sustitucion de algo por id
+
+
+List<Comment> get(@Path("algo") int id, @Query("var") String valor)
+
+la api toma 2 parametros obligatorios
+
+Converter(Retrofit)/Provider(RestEasy) hace la deserializacion de un texto en JSON por ejemplo, a un POGO, a un objeto java
+
+@JsonProperty("nombreEnElJSON") cuales quiero las propiedades que quiero, las debo marcar para deserializarlas
+si no tiene nada como parametro se llama igual en java que en el json
+
+Retrofit tiene un patron Builder
+
+addConverterFactory(Factory el convertor que vamos a usar JSON, XML, YAML)
+
+retrofit.create(Comments.class) : creamos el servicio de api  
+
+En retrofit2 hay que agregar Call<lo que quiero traer con el GET>
+
+Sincronicamente execute (operaciones input/ouput, conectarse DB, escribir disco rigido, etc)
+Asincronicamente enqueue(no se usa mucho en testing)
+
+Estos metodos me devuelven un Response, estos objetos Response le puede tomar el body()
+el code()[404 not found, 200 ok, 403 forbidden, etc]
+
+
+RestEasy
+@GET
+@Path("/comments")
+List<Comment> getAll()
+
+jsonschema2pojo.org
+
+para crear la clase java desde un json
+
+"FORMAT" to POJO
+

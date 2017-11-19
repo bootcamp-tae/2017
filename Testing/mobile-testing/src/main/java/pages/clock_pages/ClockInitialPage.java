@@ -12,6 +12,8 @@ public class ClockInitialPage extends MobilePage{
     @AndroidFindBy(accessibility = "Stopwatch")
     private MobileElement chronometer;
 
+
+
     public ChronometerPage goToChronometer(){
         click(chronometer);
         return new ChronometerPage();

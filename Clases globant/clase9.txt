@@ -1,0 +1,67 @@
+integracion continua:
+
+mvn clean compile test package
+
+continious delivery: desde que pusheo el codigo hasta que aparece en alguna aplicacion
+
+jenkins: se usa para integracion continua hasta monitorear trafico
+se le puede ensenar a interactuar con casi cualquier cosa
+
+a la primera vez de instalado hay que generar la contrasena esta en un archivo
+
+install suggested plugins
+
+despues vemos las que faltan
+
+jenkins tiene jobs, que son las tareas que queremos que haga, debemos crearlo
+hay distintos tipos de jobs, el freestyle project y luego podemos cambiarlo
+
+le ponemos nombre y aceptamos
+
+
+el job tiene state(S) y weather(W)
+el job es como una receta que cumple ciertos pasos
+el state si no corrio esa gris, si corre es verde, si corre mal rojo, y amarillo es que fallo anteriormente
+pero ahora no
+
+el weather es para ver como esta el job si viene fallando y andando bien
+
+cada job tiene su workspace que es el espacio asignado en el disco para ese job
+
+en el job voy agregando pasos (build, ejecutar) en secuencia que luego se iran ejecutando en orden
+
+y post build para acciones que ejecutara luego de cada job falle o tenga exito
+
+jenkins tiene plugins para casi todo twitter, mail, ...
+
+podemos armar el schedule que es cada cuanto realizara ese job
+lo podemos armar manualmente o con SCM del repositorio
+le decimos que por ejemplo cada 15 min, revise el repositorio
+
+Entorno de ejecucion borramos todo lo que hay en el workspace
+
+SELENIUM SERVER
+
+cd Downloads
+
+java -jar selenium-server-standalone-3.7.1.jar
+
+en el puerto 4444
+
+java -jar -Dwebdriver.chrome.driver="ruta del chrome driver" selenium-server-standalone-3.7.1.jar
+
+para usar el selenium grid para usar varias instancias de selenium
+
+hub: maestro
+node: 'esclavo'
+
+Entonces hacemos en 2 consolas distintas
+
+java -jar -Dwebdriver.chrome.driver="ruta del chrome driver" selenium-server-standalone-3.7.1.jar -role hub
+
+java -jar -Dwebdriver.chrome.driver="ruta del chrome driver" selenium-server-standalone-3.7.1.jar -role node
+
+java -jar -Dwebdriver.chrome.driver="ruta del chrome driver" selenium-server-standalone-3.7.1.jar -role node -port 5556
+//para otro nodo en otro puerto
+
+

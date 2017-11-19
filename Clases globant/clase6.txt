@@ -1,0 +1,8 @@
+computeIfAbsent busca el valor si no esta,
+
+enum tiene ordinal(), me dice en que posicion esta, desde el 0
+
+INITIALIZED
+
+hashmap, para saber que drivers ya descargue, por si tengo muchos test que corren en un navegador, si esta inicializado
+o no TRUE OR FALSE
